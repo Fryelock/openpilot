@@ -1,0 +1,1 @@
+# class that receives control data from the controlsd thread (such as abstracted actuators commands, see CarController in /data/openpilot/cereal/car.capnp) and packs them into CAN messages using the dbc file. CAN messages are sent both on Powertrain CAN Bus and Radar CAN Bus.

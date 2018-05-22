@@ -18,6 +18,9 @@ class TOYOTA:
 class GM:
   VOLT = "CHEVROLET VOLT PREMIER 2017"
 
+class SUBARU:
+  XV2018 = "SUBARU XV 2018"
+
 _DEBUG_ADDRESS = {1880: 8}   # reserved for debug purposes
 
 _FINGERPRINTS = {
