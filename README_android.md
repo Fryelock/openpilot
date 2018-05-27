@@ -1,6 +1,13 @@
 Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
 --------------------------------------------------------------------------------
 
+TODO
+- UI: OpenGL ES graphics is not shown on top (spinner works)
+- waze and spotify apk patching fails
+- visiond, gpsd, sensord and other binary modules run but are currently untested
+- _hierarchy.so does not load (using python module as workaround)
+
+INSTALL/PORT NOTES
 - root android using twrp and supersu
   currently required for libusb and ui, will wipe the phone
 - install termux app from play store
@@ -92,7 +99,7 @@ Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
   
   cd boardd
 
-- fix Makefile
+- fix Makefiles
 - comment out -lgnustl_shared
 - add
   PREFIX = /data/data/com.termux/files/usr
