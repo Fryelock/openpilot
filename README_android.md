@@ -122,20 +122,20 @@ Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
   cd ../logcatd
   make -j8
   cd ../orbd
-  # temporarily comment out ioctl in /data/data/com.termux/files/usr/include/bits/ioctl.h
+  temporarily comment out ioctl in /data/data/com.termux/files/usr/include/bits/ioctl.h
   make -j8
   cd ../proclogd
   make -j8
   cd ../ui
-  # patch Makefile
-  # add missing #include <EGL/egl.h>
+  patch Makefile
+    add missing #include <EGL/egl.h>
   make -j8
   cd spinner
-  # create Makefile
-  # add missing #include <EGL/egl.h>
+    create Makefile
+    add missing #include <EGL/egl.h>
   make -j8
 
-  # ui/spinner libunwind missing symbols fix
+- ui/spinner libunwind missing symbols fix
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/system/lib64 ./spinner 'testing 1-2-3'
 
 - pre-build openpilot
