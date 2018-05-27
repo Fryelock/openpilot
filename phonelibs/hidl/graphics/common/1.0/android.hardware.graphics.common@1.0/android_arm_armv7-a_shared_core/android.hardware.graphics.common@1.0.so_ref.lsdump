@@ -1,0 +1,2122 @@
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_11PixelFormatEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_11PixelFormatEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::PixelFormat"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_11PixelFormatE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_11PixelFormatE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_11BufferUsageEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEy"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_11BufferUsageEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEy"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::BufferUsage"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_11BufferUsageE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_11BufferUsageE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9TransformEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9TransformEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::Transform"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::Transform"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9TransformE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9TransformE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9DataspaceEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9DataspaceEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::Dataspace"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::Dataspace"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9DataspaceE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9DataspaceE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9ColorModeEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_9ColorModeEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::ColorMode"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::ColorMode"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9ColorModeE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_9ColorModeE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_14ColorTransformEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_14ColorTransformEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::ColorTransform"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_14ColorTransformE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_14ColorTransformE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_3HdrEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringINS3_3HdrEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::common::V1_0::Hdr"
+        }
+        linker_set_key: "android::hardware::graphics::common::V1_0::Hdr"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::common::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_3HdrE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6common4V1_08toStringENS3_3HdrE"
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Hdr"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::PixelFormat"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::PixelFormat"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGBA_8888"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGBX_8888"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGB_888"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGB_565"
+      access: public_access
+      linker_set_key: "4"
+    }
+    enum_field_value: 4
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::BGRA_8888"
+      access: public_access
+      linker_set_key: "5"
+    }
+    enum_field_value: 5
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::YCBCR_422_SP"
+      access: public_access
+      linker_set_key: "16"
+    }
+    enum_field_value: 16
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::YCRCB_420_SP"
+      access: public_access
+      linker_set_key: "17"
+    }
+    enum_field_value: 17
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::YCBCR_422_I"
+      access: public_access
+      linker_set_key: "20"
+    }
+    enum_field_value: 20
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGBA_FP16"
+      access: public_access
+      linker_set_key: "22"
+    }
+    enum_field_value: 22
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RAW16"
+      access: public_access
+      linker_set_key: "32"
+    }
+    enum_field_value: 32
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::BLOB"
+      access: public_access
+      linker_set_key: "33"
+    }
+    enum_field_value: 33
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::IMPLEMENTATION_DEFINED"
+      access: public_access
+      linker_set_key: "34"
+    }
+    enum_field_value: 34
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::YCBCR_420_888"
+      access: public_access
+      linker_set_key: "35"
+    }
+    enum_field_value: 35
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RAW_OPAQUE"
+      access: public_access
+      linker_set_key: "36"
+    }
+    enum_field_value: 36
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RAW10"
+      access: public_access
+      linker_set_key: "37"
+    }
+    enum_field_value: 37
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RAW12"
+      access: public_access
+      linker_set_key: "38"
+    }
+    enum_field_value: 38
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::RGBA_1010102"
+      access: public_access
+      linker_set_key: "43"
+    }
+    enum_field_value: 43
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::Y8"
+      access: public_access
+      linker_set_key: "538982489"
+    }
+    enum_field_value: 538982489
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::Y16"
+      access: public_access
+      linker_set_key: "540422489"
+    }
+    enum_field_value: 540422489
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::PixelFormat::YV12"
+      access: public_access
+      linker_set_key: "842094169"
+    }
+    enum_field_value: 842094169
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "unsigned long long"
+      size: 8
+      alignment: 8
+    }
+    name: "android::hardware::graphics::common::V1_0::BufferUsage"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::BufferUsage"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_READ_MASK"
+      access: public_access
+      linker_set_key: "15"
+    }
+    enum_field_value: 15
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_READ_NEVER"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_READ_RARELY"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_READ_OFTEN"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_WRITE_MASK"
+      access: public_access
+      linker_set_key: "240"
+    }
+    enum_field_value: 240
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_WRITE_NEVER"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_WRITE_RARELY"
+      access: public_access
+      linker_set_key: "32"
+    }
+    enum_field_value: 32
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CPU_WRITE_OFTEN"
+      access: public_access
+      linker_set_key: "48"
+    }
+    enum_field_value: 48
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::GPU_TEXTURE"
+      access: public_access
+      linker_set_key: "256"
+    }
+    enum_field_value: 256
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::GPU_RENDER_TARGET"
+      access: public_access
+      linker_set_key: "512"
+    }
+    enum_field_value: 512
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::COMPOSER_OVERLAY"
+      access: public_access
+      linker_set_key: "2048"
+    }
+    enum_field_value: 2048
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::COMPOSER_CLIENT_TARGET"
+      access: public_access
+      linker_set_key: "4096"
+    }
+    enum_field_value: 4096
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::PROTECTED"
+      access: public_access
+      linker_set_key: "16384"
+    }
+    enum_field_value: 16384
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::COMPOSER_CURSOR"
+      access: public_access
+      linker_set_key: "32768"
+    }
+    enum_field_value: 32768
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::VIDEO_ENCODER"
+      access: public_access
+      linker_set_key: "65536"
+    }
+    enum_field_value: 65536
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CAMERA_OUTPUT"
+      access: public_access
+      linker_set_key: "131072"
+    }
+    enum_field_value: 131072
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::CAMERA_INPUT"
+      access: public_access
+      linker_set_key: "262144"
+    }
+    enum_field_value: 262144
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::RENDERSCRIPT"
+      access: public_access
+      linker_set_key: "1048576"
+    }
+    enum_field_value: 1048576
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::VIDEO_DECODER"
+      access: public_access
+      linker_set_key: "4194304"
+    }
+    enum_field_value: 4194304
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::SENSOR_DIRECT_DATA"
+      access: public_access
+      linker_set_key: "8388608"
+    }
+    enum_field_value: 8388608
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::GPU_DATA_BUFFER"
+      access: public_access
+      linker_set_key: "16777216"
+    }
+    enum_field_value: 16777216
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::VENDOR_MASK"
+      access: public_access
+      linker_set_key: "4026531840"
+    }
+    enum_field_value: 4026531840
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::BufferUsage"
+        size: 8
+        alignment: 8
+      }
+      name: "android::hardware::graphics::common::V1_0::BufferUsage::VENDOR_MASK_HI"
+      access: public_access
+      linker_set_key: "18446462598732840960"
+    }
+    enum_field_value: -281474976710656
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::Transform"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::Transform"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Transform::FLIP_H"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Transform::FLIP_V"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Transform::ROT_90"
+      access: public_access
+      linker_set_key: "4"
+    }
+    enum_field_value: 4
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Transform::ROT_180"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Transform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Transform::ROT_270"
+      access: public_access
+      linker_set_key: "7"
+    }
+    enum_field_value: 7
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::Dataspace"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::Dataspace"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::UNKNOWN"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::ARBITRARY"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_SHIFT"
+      access: public_access
+      linker_set_key: "16"
+    }
+    enum_field_value: 16
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_MASK"
+      access: public_access
+      linker_set_key: "4128768"
+    }
+    enum_field_value: 4128768
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_UNSPECIFIED"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT709"
+      access: public_access
+      linker_set_key: "65536"
+    }
+    enum_field_value: 65536
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT601_625"
+      access: public_access
+      linker_set_key: "131072"
+    }
+    enum_field_value: 131072
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT601_625_UNADJUSTED"
+      access: public_access
+      linker_set_key: "196608"
+    }
+    enum_field_value: 196608
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT601_525"
+      access: public_access
+      linker_set_key: "262144"
+    }
+    enum_field_value: 262144
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT601_525_UNADJUSTED"
+      access: public_access
+      linker_set_key: "327680"
+    }
+    enum_field_value: 327680
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT2020"
+      access: public_access
+      linker_set_key: "393216"
+    }
+    enum_field_value: 393216
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT2020_CONSTANT_LUMINANCE"
+      access: public_access
+      linker_set_key: "458752"
+    }
+    enum_field_value: 458752
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_BT470M"
+      access: public_access
+      linker_set_key: "524288"
+    }
+    enum_field_value: 524288
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_FILM"
+      access: public_access
+      linker_set_key: "589824"
+    }
+    enum_field_value: 589824
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_DCI_P3"
+      access: public_access
+      linker_set_key: "655360"
+    }
+    enum_field_value: 655360
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::STANDARD_ADOBE_RGB"
+      access: public_access
+      linker_set_key: "720896"
+    }
+    enum_field_value: 720896
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_SHIFT"
+      access: public_access
+      linker_set_key: "22"
+    }
+    enum_field_value: 22
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_MASK"
+      access: public_access
+      linker_set_key: "130023424"
+    }
+    enum_field_value: 130023424
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_UNSPECIFIED"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_LINEAR"
+      access: public_access
+      linker_set_key: "4194304"
+    }
+    enum_field_value: 4194304
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_SRGB"
+      access: public_access
+      linker_set_key: "8388608"
+    }
+    enum_field_value: 8388608
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_SMPTE_170M"
+      access: public_access
+      linker_set_key: "12582912"
+    }
+    enum_field_value: 12582912
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_GAMMA2_2"
+      access: public_access
+      linker_set_key: "16777216"
+    }
+    enum_field_value: 16777216
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_GAMMA2_6"
+      access: public_access
+      linker_set_key: "20971520"
+    }
+    enum_field_value: 20971520
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_GAMMA2_8"
+      access: public_access
+      linker_set_key: "25165824"
+    }
+    enum_field_value: 25165824
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_ST2084"
+      access: public_access
+      linker_set_key: "29360128"
+    }
+    enum_field_value: 29360128
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::TRANSFER_HLG"
+      access: public_access
+      linker_set_key: "33554432"
+    }
+    enum_field_value: 33554432
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_SHIFT"
+      access: public_access
+      linker_set_key: "27"
+    }
+    enum_field_value: 27
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_MASK"
+      access: public_access
+      linker_set_key: "939524096"
+    }
+    enum_field_value: 939524096
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_UNSPECIFIED"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_FULL"
+      access: public_access
+      linker_set_key: "134217728"
+    }
+    enum_field_value: 134217728
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_LIMITED"
+      access: public_access
+      linker_set_key: "268435456"
+    }
+    enum_field_value: 268435456
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::RANGE_EXTENDED"
+      access: public_access
+      linker_set_key: "402653184"
+    }
+    enum_field_value: 402653184
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::SRGB_LINEAR"
+      access: public_access
+      linker_set_key: "512"
+    }
+    enum_field_value: 512
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_SRGB_LINEAR"
+      access: public_access
+      linker_set_key: "138477568"
+    }
+    enum_field_value: 138477568
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_SCRGB_LINEAR"
+      access: public_access
+      linker_set_key: "406913024"
+    }
+    enum_field_value: 406913024
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::SRGB"
+      access: public_access
+      linker_set_key: "513"
+    }
+    enum_field_value: 513
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_SRGB"
+      access: public_access
+      linker_set_key: "142671872"
+    }
+    enum_field_value: 142671872
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_SCRGB"
+      access: public_access
+      linker_set_key: "411107328"
+    }
+    enum_field_value: 411107328
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::JFIF"
+      access: public_access
+      linker_set_key: "257"
+    }
+    enum_field_value: 257
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_JFIF"
+      access: public_access
+      linker_set_key: "146931712"
+    }
+    enum_field_value: 146931712
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT601_625"
+      access: public_access
+      linker_set_key: "258"
+    }
+    enum_field_value: 258
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_BT601_625"
+      access: public_access
+      linker_set_key: "281149440"
+    }
+    enum_field_value: 281149440
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT601_525"
+      access: public_access
+      linker_set_key: "259"
+    }
+    enum_field_value: 259
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_BT601_525"
+      access: public_access
+      linker_set_key: "281280512"
+    }
+    enum_field_value: 281280512
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT709"
+      access: public_access
+      linker_set_key: "260"
+    }
+    enum_field_value: 260
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::V0_BT709"
+      access: public_access
+      linker_set_key: "281083904"
+    }
+    enum_field_value: 281083904
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::DCI_P3_LINEAR"
+      access: public_access
+      linker_set_key: "139067392"
+    }
+    enum_field_value: 139067392
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::DCI_P3"
+      access: public_access
+      linker_set_key: "155844608"
+    }
+    enum_field_value: 155844608
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::DISPLAY_P3_LINEAR"
+      access: public_access
+      linker_set_key: "139067392"
+    }
+    enum_field_value: 139067392
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::DISPLAY_P3"
+      access: public_access
+      linker_set_key: "143261696"
+    }
+    enum_field_value: 143261696
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::ADOBE_RGB"
+      access: public_access
+      linker_set_key: "151715840"
+    }
+    enum_field_value: 151715840
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT2020_LINEAR"
+      access: public_access
+      linker_set_key: "138805248"
+    }
+    enum_field_value: 138805248
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT2020"
+      access: public_access
+      linker_set_key: "147193856"
+    }
+    enum_field_value: 147193856
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::BT2020_PQ"
+      access: public_access
+      linker_set_key: "163971072"
+    }
+    enum_field_value: 163971072
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::DEPTH"
+      access: public_access
+      linker_set_key: "4096"
+    }
+    enum_field_value: 4096
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Dataspace"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Dataspace::SENSOR"
+      access: public_access
+      linker_set_key: "4097"
+    }
+    enum_field_value: 4097
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::ColorMode"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::ColorMode"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::NATIVE"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::STANDARD_BT601_625"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::STANDARD_BT601_625_UNADJUSTED"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::STANDARD_BT601_525"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::STANDARD_BT601_525_UNADJUSTED"
+      access: public_access
+      linker_set_key: "4"
+    }
+    enum_field_value: 4
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::STANDARD_BT709"
+      access: public_access
+      linker_set_key: "5"
+    }
+    enum_field_value: 5
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::DCI_P3"
+      access: public_access
+      linker_set_key: "6"
+    }
+    enum_field_value: 6
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::SRGB"
+      access: public_access
+      linker_set_key: "7"
+    }
+    enum_field_value: 7
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::ADOBE_RGB"
+      access: public_access
+      linker_set_key: "8"
+    }
+    enum_field_value: 8
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorMode"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorMode::DISPLAY_P3"
+      access: public_access
+      linker_set_key: "9"
+    }
+    enum_field_value: 9
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::ColorTransform"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::ColorTransform"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::IDENTITY"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::ARBITRARY_MATRIX"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::VALUE_INVERSE"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::GRAYSCALE"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::CORRECT_PROTANOPIA"
+      access: public_access
+      linker_set_key: "4"
+    }
+    enum_field_value: 4
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::CORRECT_DEUTERANOPIA"
+      access: public_access
+      linker_set_key: "5"
+    }
+    enum_field_value: 5
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::ColorTransform"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::ColorTransform::CORRECT_TRITANOPIA"
+      access: public_access
+      linker_set_key: "6"
+    }
+    enum_field_value: 6
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::common::V1_0::Hdr"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::common::V1_0::Hdr"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Hdr"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Hdr::DOLBY_VISION"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Hdr"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Hdr::HDR10"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::Hdr"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::common::V1_0::Hdr::HLG"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  source_file: "/out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers/gen/android/hardware/graphics/common/1.0/types.h"
+}

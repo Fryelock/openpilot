@@ -1,0 +1,2914 @@
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+      size: 12
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::allocator::V2_0::IAllocator"
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hidl::base::V1_0::IBase"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  mangled_record_name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+  vtable_layout {
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 4
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZNK7android8hardware8graphics9allocator4V2_010IAllocator8isRemoteEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21setHALInstrumentationEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator4pingEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21notifySyspropsChangedEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -4
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -4
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase10onFirstRefEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase15onLastStrongRefEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase20onIncStrongAttemptedEjPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase13onLastWeakRefEPKv"
+      component_value: 0
+    }
+  }
+}
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      size: 92
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "std::mutex"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_mMutex"
+      access: private_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "std::vector<android::sp<android::hardware::hidl_binder_death_recipient>, std::allocator<android::sp<android::hardware::hidl_binder_death_recipient> > >"
+        size: 12
+        alignment: 4
+      }
+      name: "_hidl_mDeathRecipients"
+      access: private_access
+    }
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::BpInterface<android::hardware::graphics::allocator::V2_0::IAllocator>"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::details::HidlInstrumentor"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  mangled_record_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+  vtable_layout {
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 84
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZNK7android8hardware8graphics9allocator4V2_013BpHwAllocator8isRemoteEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21setHALInstrumentationEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator4pingEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21notifySyspropsChangedEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpInterfaceINS0_8graphics9allocator4V2_010IAllocatorEE10onAsBinderEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 80
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -4
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpInterfaceINS0_8graphics9allocator4V2_010IAllocatorEE10onAsBinderEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 76
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -8
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase10onFirstRefEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase15onLastStrongRefEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase20onIncStrongAttemptedEjPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -24
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -76
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -76
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -76
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -84
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -84
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase10onFirstRefEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase15onLastStrongRefEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware11BpHwRefBase20onIncStrongAttemptedEjPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase13onLastWeakRefEPKv"
+      component_value: 0
+    }
+  }
+}
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+      size: 80
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_mImpl"
+      access: private_access
+    }
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hidl::base::V1_0::BnHwBase"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  mangled_record_name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+  vtable_layout {
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 72
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder8transactEjRKNS0_6ParcelEPS2_jNSt3__18functionIFvRS2_EEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder11linkToDeathERKNS_2spINS0_7IBinder14DeathRecipientEEEPvj"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder13unlinkToDeathERKNS_2wpINS0_7IBinder14DeathRecipientEEEPvjPS5_"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZNK7android8hardware7IBinder13checkSubclassEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder12attachObjectEPKvPvS4_PFvS3_S4_S4_E"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZNK7android8hardware9BHwBinder10findObjectEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder12detachObjectEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware9BHwBinder11localBinderEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware7IBinder12remoteBinderEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator10onTransactEjRKNS0_6ParcelEPS5_jNSt3__18functionIFvRS5_EEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -20
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -72
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -72
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase10onFirstRefEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase15onLastStrongRefEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase20onIncStrongAttemptedEjPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase13onLastWeakRefEPKv"
+      component_value: 0
+    }
+  }
+}
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+      size: 68
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+        size: 4
+        alignment: 4
+      }
+      name: "mImpl"
+      access: private_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::details::TaskRunner"
+        size: 8
+        alignment: 4
+      }
+      name: "mOnewayQueue"
+      access: private_access
+    }
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::allocator::V2_0::IAllocator"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  base_specifiers {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::details::HidlInstrumentor"
+      }
+      name: ""
+      access: public_access
+    }
+    is_virtual: false
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  mangled_record_name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+  vtable_layout {
+    vtable_components {
+      kind: VBaseOffset
+      mangled_component_name: ""
+      component_value: 60
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZNK7android8hardware8graphics9allocator4V2_010IAllocator8isRemoteEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21setHALInstrumentationEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator4pingEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21notifySyspropsChangedEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+      component_value: 0
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -4
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: 0
+    }
+    vtable_components {
+      kind: VCallOffset
+      mangled_component_name: ""
+      component_value: -60
+    }
+    vtable_components {
+      kind: OffsetToTop
+      mangled_component_name: ""
+      component_value: -60
+    }
+    vtable_components {
+      kind: RTTI
+      mangled_component_name: "android::hardware::graphics::allocator::V2_0::BsAllocator"
+      component_value: 0
+    }
+    vtable_components {
+      kind: CompleteDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD1Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: DeletingDtorPointer
+      mangled_component_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorD0Ev"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase10onFirstRefEv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase15onLastStrongRefEPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase20onIncStrongAttemptedEjPKv"
+      component_value: 0
+    }
+    vtable_components {
+      kind: FunctionPointer
+      mangled_component_name: "_ZN7android7RefBase13onLastWeakRefEPKv"
+      component_value: 0
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::isRemote"
+    access: public_access
+    linker_set_key: "_ZNK7android8hardware8graphics9allocator4V2_010IAllocator8isRemoteEv"
+  }
+  mangled_function_name: "_ZNK7android8hardware8graphics9allocator4V2_010IAllocator8isRemoteEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::dumpDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::allocate"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<unsigned int> &"
+      }
+      name: "descriptor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "count"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Error, unsigned int, const hidl_vec<hidl_handle> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::interfaceChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_string> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::debug"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_handle &"
+      }
+      name: "fd"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<android::hardware::hidl_string> &"
+      }
+      name: "options"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::interfaceDescriptor"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getHashChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_array<unsigned char, 32> > &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::setHALInstrumentation"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21setHALInstrumentationEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21setHALInstrumentationEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::linkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "cookie"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::ping"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator4pingEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator4pingEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const DebugInfo &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::notifySyspropsChanged"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21notifySyspropsChangedEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator21notifySyspropsChangedEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::unlinkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> >"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::castFrom"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8castFromERKNS_2spIS4_EEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8castFromERKNS_2spIS4_EEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: "parent"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "emitError"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> >"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::castFrom"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8castFromERKNS_2spINS_4hidl4base4V1_05IBaseEEEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator8castFromERKNS_2spINS_4hidl4base4V1_05IBaseEEEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hidl::base::V1_0::IBase> &"
+      }
+      name: "parent"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "emitError"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::tryGetService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::tryGetService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceEPKcb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceEPKcb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const char *"
+        size: 4
+        alignment: 4
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::tryGetService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceERKNS0_11hidl_stringEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceERKNS0_11hidl_stringEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_string &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::tryGetService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator13tryGetServiceEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceEPKcb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceEPKcb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const char *"
+        size: 4
+        alignment: 4
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceERKNS0_11hidl_stringEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceERKNS0_11hidl_stringEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_string &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::getService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceEb"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10getServiceEb"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "bool"
+        size: 1
+        alignment: 1
+      }
+      name: "getStub"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::registerAsService"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator17registerAsServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator17registerAsServiceERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::registerForNotifications"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator24registerForNotificationsERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEERKNS_2spINS_4hidl7manager4V1_020IServiceNotificationEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator24registerForNotificationsERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEERKNS_2spINS_4hidl7manager4V1_020IServiceNotificationEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "serviceName"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hidl::manager::V1_0::IServiceNotification> &"
+      }
+      name: "notification"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_08toStringERKNS_2spINS3_10IAllocatorEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_08toStringERKNS_2spINS3_10IAllocatorEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::BpHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorC2ERKNS_2spINS0_7IBinderEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorC2ERKNS_2spINS0_7IBinderEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::IBinder> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::BpHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorC1ERKNS_2spINS0_7IBinderEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocatorC1ERKNS_2spINS0_7IBinderEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::IBinder> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::isRemote"
+    access: public_access
+    linker_set_key: "_ZNK7android8hardware8graphics9allocator4V2_013BpHwAllocator8isRemoteEv"
+  }
+  mangled_function_name: "_ZNK7android8hardware8graphics9allocator4V2_013BpHwAllocator8isRemoteEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::_hidl_dumpDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator19_hidl_dumpDebugInfoEPNS0_10IInterfaceEPNS0_7details16HidlInstrumentorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator19_hidl_dumpDebugInfoEPNS0_10IInterfaceEPNS0_7details16HidlInstrumentorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::IInterface *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::details::HidlInstrumentor *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this_instrumentor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::_hidl_allocate"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator14_hidl_allocateEPNS0_10IInterfaceEPNS0_7details16HidlInstrumentorERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNSA_INS0_11hidl_handleEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator14_hidl_allocateEPNS0_10IInterfaceEPNS0_7details16HidlInstrumentorERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNSA_INS0_11hidl_handleEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::IInterface *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::details::HidlInstrumentor *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this_instrumentor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<unsigned int> &"
+      }
+      name: "descriptor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "count"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Error, unsigned int, const hidl_vec<hidl_handle> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::dumpDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::allocate"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<unsigned int> &"
+      }
+      name: "descriptor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "count"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Error, unsigned int, const hidl_vec<hidl_handle> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::interfaceChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_string> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::debug"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_handle &"
+      }
+      name: "fd"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<android::hardware::hidl_string> &"
+      }
+      name: "options"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::interfaceDescriptor"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::getHashChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_array<unsigned char, 32> > &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::setHALInstrumentation"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21setHALInstrumentationEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21setHALInstrumentationEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::linkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "cookie"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::ping"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator4pingEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator4pingEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::getDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const DebugInfo &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::notifySyspropsChanged"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21notifySyspropsChangedEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator21notifySyspropsChangedEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BpHwAllocator::unlinkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BpHwAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BpHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC2ERKNS_2spINS3_10IAllocatorEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC2ERKNS_2spINS3_10IAllocatorEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC1ERKNS_2spINS3_10IAllocatorEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC1ERKNS_2spINS3_10IAllocatorEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC2ERKNS_2spINS3_10IAllocatorEEERKNSt3__112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEESI_"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC2ERKNS_2spINS3_10IAllocatorEEERKNSt3__112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEESI_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "HidlInstrumentor_package"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "HidlInstrumentor_interface"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC1ERKNS_2spINS3_10IAllocatorEEERKNSt3__112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEESI_"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorC1ERKNS_2spINS3_10IAllocatorEEERKNSt3__112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEESI_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator> &"
+      }
+      name: "_hidl_impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "HidlInstrumentor_package"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const std::basic_string<char, std::char_traits<char>, std::allocator<char> > &"
+      }
+      name: "HidlInstrumentor_interface"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::~BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD2Ev"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD2Ev"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::~BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD1Ev"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD1Ev"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::~BnHwAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD0Ev"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocatorD0Ev"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::onTransact"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator10onTransactEjRKNS0_6ParcelEPS5_jNSt3__18functionIFvRS5_EEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator10onTransactEjRKNS0_6ParcelEPS5_jNSt3__18functionIFvRS5_EEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_code"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::Parcel &"
+      }
+      name: "_hidl_data"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::Parcel *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_reply"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_flags"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Parcel &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "true"
+    }
+    default_arg: true
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::getImpl"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator7getImplEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator7getImplEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::_hidl_dumpDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator19_hidl_dumpDebugInfoEPNS_4hidl4base4V1_08BnHwBaseERKNS0_6ParcelEPSA_NSt3__18functionIFvRSA_EEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator19_hidl_dumpDebugInfoEPNS_4hidl4base4V1_08BnHwBaseERKNS0_6ParcelEPSA_NSt3__18functionIFvRSA_EEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hidl::base::V1_0::BnHwBase *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::Parcel &"
+      }
+      name: "_hidl_data"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::Parcel *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_reply"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Parcel &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::_hidl_allocate"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator14_hidl_allocateEPNS_4hidl4base4V1_08BnHwBaseERKNS0_6ParcelEPSA_NSt3__18functionIFvRSA_EEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator14_hidl_allocateEPNS_4hidl4base4V1_08BnHwBaseERKNS0_6ParcelEPSA_NSt3__18functionIFvRSA_EEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hidl::base::V1_0::BnHwBase *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_this"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::Parcel &"
+      }
+      name: "_hidl_data"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::Parcel *"
+        size: 4
+        alignment: 4
+      }
+      name: "_hidl_reply"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Parcel &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::ping"
+    access: private_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator4pingEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator4pingEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BnHwAllocator::getDebugInfo"
+    access: private_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_013BnHwAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BnHwAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const DebugInfo &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::BsAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorC2ENS_2spINS3_10IAllocatorEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorC2ENS_2spINS3_10IAllocatorEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+      }
+      name: "impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "void"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::BsAllocator"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorC1ENS_2spINS3_10IAllocatorEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocatorC1ENS_2spINS3_10IAllocatorEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::graphics::allocator::V2_0::IAllocator>"
+      }
+      name: "impl"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::dumpDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13dumpDebugInfoENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::allocate"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator8allocateERKNS0_8hidl_vecIjEEjNSt3__18functionIFvNS1_6mapper4V2_05ErrorEjRKNS5_INS0_11hidl_handleEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<unsigned int> &"
+      }
+      name: "descriptor"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "count"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (Error, unsigned int, const hidl_vec<hidl_handle> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::interfaceChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator14interfaceChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_11hidl_stringEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_string> &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::debug"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator5debugERKNS0_11hidl_handleERKNS0_8hidl_vecINS0_11hidl_stringEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_handle &"
+      }
+      name: "fd"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::hidl_vec<android::hardware::hidl_string> &"
+      }
+      name: "options"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::interfaceDescriptor"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator19interfaceDescriptorENSt3__18functionIFvRKNS0_11hidl_stringEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_string &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::getHashChain"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getHashChainENSt3__18functionIFvRKNS0_8hidl_vecINS0_10hidl_arrayIhLj32EJEEEEEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const hidl_vec<hidl_array<unsigned char, 32> > &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::setHALInstrumentation"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21setHALInstrumentationEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21setHALInstrumentationEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::linkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator11linkToDeathERKNS_2spINS0_20hidl_death_recipientEEEy"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "cookie"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::ping"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator4pingEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator4pingEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::getDebugInfo"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator12getDebugInfoENSt3__18functionIFvRKNS_4hidl4base4V1_09DebugInfoEEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void (const DebugInfo &)>"
+      }
+      name: "_hidl_cb"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::notifySyspropsChanged"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21notifySyspropsChangedEv"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator21notifySyspropsChangedEv"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<bool>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::unlinkToDeath"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13unlinkToDeathERKNS_2spINS0_20hidl_death_recipientEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::sp<android::hardware::hidl_death_recipient> &"
+      }
+      name: "recipient"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::Return<void>"
+    }
+    name: "android::hardware::graphics::allocator::V2_0::BsAllocator::addOnewayTask"
+    access: private_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13addOnewayTaskENSt3__18functionIFvvEEE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics9allocator4V2_011BsAllocator13addOnewayTaskENSt3__18functionIFvvEEE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/BsAllocator.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "std::function<void ()>"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+global_vars {
+  basic_abi {
+    type_abi {
+      name: "const char *"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::allocator::V2_0::IAllocator::descriptor"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics9allocator4V2_010IAllocator10descriptorE"
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0_genc++_headers/gen/android/hardware/graphics/allocator/2.0/IAllocator.h"
+}

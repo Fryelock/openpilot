@@ -1,0 +1,535 @@
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::media::V1_0::AnwBufferAttributes"
+      size: 40
+      alignment: 8
+    }
+    name: "android::hardware::media::V1_0::AnwBufferAttributes"
+    access: public_access
+    linker_set_key: "android::hardware::media::V1_0::AnwBufferAttributes"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "width"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "height"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "stride"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::common::V1_0::PixelFormat"
+        size: 4
+        alignment: 4
+      }
+      name: "format"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "usage"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "generationNumber"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "layerCount"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned long long"
+        size: 8
+        alignment: 8
+      }
+      name: "id"
+      access: public_access
+    }
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  mangled_record_name: "android::hardware::media::V1_0::AnwBufferAttributes"
+}
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::media::V1_0::AnwBuffer"
+      size: 56
+      alignment: 8
+    }
+    name: "android::hardware::media::V1_0::AnwBuffer"
+    access: public_access
+    linker_set_key: "android::hardware::media::V1_0::AnwBuffer"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::hidl_handle"
+        size: 16
+        alignment: 8
+      }
+      name: "nativeHandle"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::media::V1_0::AnwBufferAttributes"
+        size: 40
+        alignment: 8
+      }
+      name: "attr"
+      access: public_access
+    }
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  mangled_record_name: "android::hardware::media::V1_0::AnwBuffer"
+}
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::media::V1_0::Rect"
+      size: 16
+      alignment: 4
+    }
+    name: "android::hardware::media::V1_0::Rect"
+    access: public_access
+    linker_set_key: "android::hardware::media::V1_0::Rect"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "left"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "top"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "right"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "bottom"
+      access: public_access
+    }
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  mangled_record_name: "android::hardware::media::V1_0::Rect"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::media::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_08toStringERKNS2_19AnwBufferAttributesE"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_08toStringERKNS2_19AnwBufferAttributesE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBufferAttributes &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::media::V1_0::operator=="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_0eqERKNS2_19AnwBufferAttributesES5_"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_0eqERKNS2_19AnwBufferAttributesES5_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBufferAttributes &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBufferAttributes &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::media::V1_0::operator!="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_0neERKNS2_19AnwBufferAttributesES5_"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_0neERKNS2_19AnwBufferAttributesES5_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBufferAttributes &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBufferAttributes &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::media::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_08toStringERKNS2_9AnwBufferE"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_08toStringERKNS2_9AnwBufferE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBuffer &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::media::V1_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_08toStringERKNS2_4RectE"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_08toStringERKNS2_4RectE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::Rect &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::media::V1_0::operator=="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_0eqERKNS2_4RectES5_"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_0eqERKNS2_4RectES5_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::Rect &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::Rect &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "bool"
+      size: 1
+      alignment: 1
+    }
+    name: "android::hardware::media::V1_0::operator!="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_0neERKNS2_4RectES5_"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_0neERKNS2_4RectES5_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::Rect &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::Rect &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::media::V1_0::readEmbeddedFromParcel"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_022readEmbeddedFromParcelERKNS2_9AnwBufferERKNS0_6ParcelEjj"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_022readEmbeddedFromParcelERKNS2_9AnwBufferERKNS0_6ParcelEjj"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/hwtypes.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBuffer &"
+      }
+      name: "obj"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::Parcel &"
+      }
+      name: "parcel"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "parentHandle"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "parentOffset"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::media::V1_0::writeEmbeddedToParcel"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware5media4V1_021writeEmbeddedToParcelERKNS2_9AnwBufferEPNS0_6ParcelEjj"
+  }
+  mangled_function_name: "_ZN7android8hardware5media4V1_021writeEmbeddedToParcelERKNS2_9AnwBufferEPNS0_6ParcelEjj"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers/gen/android/hardware/media/1.0/hwtypes.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::media::V1_0::AnwBuffer &"
+      }
+      name: "obj"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::Parcel *"
+        size: 4
+        alignment: 4
+      }
+      name: "parcel"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "parentHandle"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "parentOffset"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}

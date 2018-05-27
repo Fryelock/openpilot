@@ -1,0 +1,94 @@
+ 0x0000000e (SONAME)                     Library soname: [android.hardware.media@1.0.so]
+  
+Symbol   contains 90 entries:
+Num:   Type Bind Vis Ndx Name
+0:   NOTYPE LOCAL DEFAULT UND
+1:   FUNC GLOBAL DEFAULT UND __cxa_finalize@LIBC (2)
+2:   FUNC GLOBAL DEFAULT UND __cxa_atexit@LIBC (2)
+3:   FUNC GLOBAL DEFAULT UND __register_atfork@LIBC (2)
+4:   FUNC GLOBAL DEFAULT UND _ZN7android8hardware6Parc
+5:   FUNC GLOBAL DEFAULT UND _ZN7android8hardware8grap
+6:   FUNC GLOBAL DEFAULT UND _ZNK7android8hardware11hi
+7:   FUNC GLOBAL DEFAULT UND _ZNK7android8hardware11hi
+8:   FUNC GLOBAL DEFAULT UND _ZNK7android8hardware6Par
+9:   FUNC GLOBAL DEFAULT UND _ZNKSt3__16locale9use_fac
+10:   FUNC GLOBAL DEFAULT UND _ZNKSt3__18ios_base6getlo
+11:   FUNC GLOBAL DEFAULT UND __aeabi_memclr@LIBC_N (3)
+12:   FUNC GLOBAL DEFAULT UND __vsnprintf_chk@LIBC (2)
+13:   FUNC GLOBAL DEFAULT UND dl_iterate_phdr@LIBC (4)
+14:   FUNC GLOBAL DEFAULT UND dladdr@LIBC (4)
+15:   OBJECT GLOBAL DEFAULT UND _ZNSt3__15ctypeIcE2idE
+16:   FUNC GLOBAL DEFAULT UND _ZNSt3__16localeC1Ev
+17:   FUNC GLOBAL DEFAULT UND _ZNSt3__16localeD1Ev
+18:   OBJECT GLOBAL DEFAULT UND _ZNSt3__17num_putIcNS_19o
+19:   FUNC GLOBAL DEFAULT UND _ZNSt3__18ios_base4initEP
+20:   FUNC GLOBAL DEFAULT UND _ZNSt3__18ios_base5clearE
+21:   FUNC GLOBAL DEFAULT UND _ZNSt3__18ios_baseD2Ev
+22:   FUNC GLOBAL DEFAULT UND _ZNSt3__19to_stringEi
+23:   FUNC GLOBAL DEFAULT UND _ZNSt3__19to_stringEj
+24:   FUNC GLOBAL DEFAULT UND _ZNSt3__19to_stringEy
+25:   FUNC GLOBAL DEFAULT UND _ZSt18uncaught_exceptionv
+26:   FUNC GLOBAL DEFAULT UND _ZdlPv
+27:   FUNC GLOBAL DEFAULT UND _Znwj
+28:   FUNC GLOBAL DEFAULT UND __aeabi_memclr4@LIBC_N (3)
+29:   FUNC GLOBAL DEFAULT UND __aeabi_memcpy@LIBC_N (3)
+30:   FUNC GLOBAL DEFAULT UND __aeabi_memmove@LIBC_N (3)
+31:   FUNC GLOBAL DEFAULT UND __aeabi_memset@LIBC_N (3)
+32:   FUNC GLOBAL DEFAULT UND __stack_chk_fail@LIBC (2)
+33:   OBJECT GLOBAL DEFAULT UND __stack_chk_guard@LIBC (2)
+34:   FUNC GLOBAL DEFAULT UND abort@LIBC (2)
+35:   OBJECT GLOBAL DEFAULT UND __sF@LIBC (2)
+36:   FUNC GLOBAL DEFAULT UND fflush@LIBC (2)
+37:   FUNC GLOBAL DEFAULT UND fprintf@LIBC (2)
+38:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+39:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+40:   OBJECT WEAK DEFAULT 17 _ZTCNSt3__119basic_ostrin
+41:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+42:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+43:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+44:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+45:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+46:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+47:   FUNC WEAK DEFAULT 12 _ZTv0_n12_NSt3__113basic_
+48:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+49:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+50:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_stringbu
+51:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+52:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+53:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+54:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+55:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+56:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+57:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_stringbu
+58:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+59:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+60:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+61:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+62:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+63:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+64:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+65:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+66:   FUNC WEAK DEFAULT 12 _ZNSt3__113basic_ostreamI
+67:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+68:   OBJECT WEAK DEFAULT 17 _ZTVNSt3__115basic_stream
+69:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+70:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_stringbu
+71:   OBJECT WEAK DEFAULT 17 _ZTVNSt3__119basic_ostrin
+72:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_stringbu
+73:   NOTYPE GLOBAL DEFAULT ABS __bss_start
+74:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_stringbu
+75:   NOTYPE GLOBAL DEFAULT ABS _end
+76:   FUNC WEAK DEFAULT 12 _ZTv0_n12_NSt3__113basic_
+77:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+78:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+79:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+80:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+81:   NOTYPE GLOBAL DEFAULT ABS _edata
+82:   FUNC WEAK DEFAULT 12 _ZNKSt3__115basic_stringb
+83:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+84:   FUNC WEAK DEFAULT 12 _ZNSt3__112basic_stringIc
+85:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+86:   FUNC GLOBAL DEFAULT 12 _ZN7android8hardware5medi
+87:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu
+88:   OBJECT WEAK DEFAULT 17 _ZTVNSt3__115basic_string
+89:   FUNC WEAK DEFAULT 12 _ZNSt3__115basic_streambu

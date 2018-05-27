@@ -1,0 +1,544 @@
+records {
+  basic_abi {
+    type_abi {
+      name: "android::hardware::graphics::mapper::V2_0::YCbCrLayout"
+      size: 24
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::YCbCrLayout"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::mapper::V2_0::YCbCrLayout"
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "void *"
+        size: 4
+        alignment: 4
+      }
+      name: "y"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "void *"
+        size: 4
+        alignment: 4
+      }
+      name: "cb"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "void *"
+        size: 4
+        alignment: 4
+      }
+      name: "cr"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "yStride"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "cStride"
+      access: public_access
+    }
+  }
+  fields {
+    basic_abi {
+      type_abi {
+        name: "unsigned int"
+        size: 4
+        alignment: 4
+      }
+      name: "chromaStep"
+      access: public_access
+    }
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  mangled_record_name: "android::hardware::graphics::mapper::V2_0::YCbCrLayout"
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator|"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0orENS3_5ErrorES4_"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0orENS3_5ErrorES4_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator|"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0orEiNS3_5ErrorE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0orEiNS3_5ErrorE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const int"
+        size: 4
+        alignment: 4
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator|"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0orENS3_5ErrorEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0orENS3_5ErrorEi"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const int"
+        size: 4
+        alignment: 4
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator&"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0anENS3_5ErrorES4_"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0anENS3_5ErrorES4_"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator&"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0anEiNS3_5ErrorE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0anEiNS3_5ErrorE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const int"
+        size: 4
+        alignment: 4
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator&"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0anENS3_5ErrorEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0anENS3_5ErrorEi"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "lhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const int"
+        size: 4
+        alignment: 4
+      }
+      name: "rhs"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int &"
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator|="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0oRERiNS3_5ErrorE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0oRERiNS3_5ErrorE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int &"
+      }
+      name: "v"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "e"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "int &"
+    }
+    name: "android::hardware::graphics::mapper::V2_0::operator&="
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_0aNERiNS3_5ErrorE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_0aNERiNS3_5ErrorE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int &"
+      }
+      name: "v"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "e"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::mapper::V2_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_08toStringINS3_5ErrorEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_08toStringINS3_5ErrorEEENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "int"
+        size: 4
+        alignment: 4
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+  template_info {
+    elements {
+      basic_abi {
+        type_abi {
+          name: "android::hardware::graphics::mapper::V2_0::Error"
+        }
+        linker_set_key: "android::hardware::graphics::mapper::V2_0::Error"
+      }
+    }
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::mapper::V2_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_08toStringENS3_5ErrorE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_08toStringENS3_5ErrorE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+      }
+      name: "o"
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+functions {
+  basic_abi {
+    type_abi {
+      name: "std::basic_string<char, std::char_traits<char>, std::allocator<char> >"
+    }
+    name: "android::hardware::graphics::mapper::V2_0::toString"
+    access: public_access
+    linker_set_key: "_ZN7android8hardware8graphics6mapper4V2_08toStringERKNS3_11YCbCrLayoutE"
+  }
+  mangled_function_name: "_ZN7android8hardware8graphics6mapper4V2_08toStringERKNS3_11YCbCrLayoutE"
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+  parameters {
+    basic_abi {
+      type_abi {
+        name: "const android::hardware::graphics::mapper::V2_0::YCbCrLayout &"
+      }
+      name: ""
+      access: public_access
+      linker_set_key: "false"
+    }
+    default_arg: false
+  }
+}
+enums {
+  basic_abi {
+    type_abi {
+      name: "int"
+      size: 4
+      alignment: 4
+    }
+    name: "android::hardware::graphics::mapper::V2_0::Error"
+    access: public_access
+    linker_set_key: "android::hardware::graphics::mapper::V2_0::Error"
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::NONE"
+      access: public_access
+      linker_set_key: "0"
+    }
+    enum_field_value: 0
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::BAD_DESCRIPTOR"
+      access: public_access
+      linker_set_key: "1"
+    }
+    enum_field_value: 1
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::BAD_BUFFER"
+      access: public_access
+      linker_set_key: "2"
+    }
+    enum_field_value: 2
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::BAD_VALUE"
+      access: public_access
+      linker_set_key: "3"
+    }
+    enum_field_value: 3
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::NO_RESOURCES"
+      access: public_access
+      linker_set_key: "5"
+    }
+    enum_field_value: 5
+  }
+  enum_fields {
+    basic_abi {
+      type_abi {
+        name: "android::hardware::graphics::mapper::V2_0::Error"
+        size: 4
+        alignment: 4
+      }
+      name: "android::hardware::graphics::mapper::V2_0::Error::UNSUPPORTED"
+      access: public_access
+      linker_set_key: "7"
+    }
+    enum_field_value: 7
+  }
+  source_file: "/data/aosp/out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0_genc++_headers/gen/android/hardware/graphics/mapper/2.0/types.h"
+}
