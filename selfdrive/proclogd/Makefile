@@ -3,6 +3,7 @@ CXX = clang++
 
 PHONELIBS = ../../phonelibs
 BASEDIR = ../..
+PREFIX = /data/data/com.termux/files/usr
 
 WARN_FLAGS = -Werror=implicit-function-declaration \
              -Werror=incompatible-pointer-types \
@@ -13,10 +14,10 @@ WARN_FLAGS = -Werror=implicit-function-declaration \
 CFLAGS = -std=gnu11 -g -fPIC -O2 $(WARN_FLAGS)
 CXXFLAGS = -std=c++11 -g -fPIC -O2 $(WARN_FLAGS)
 
-ZMQ_FLAGS = -I$(PHONELIBS)/zmq/aarch64/include
+ZMQ_FLAGS = -I$(PHONELIBS)/zmq/aarch64/include -I$(PREFIX)/include
 ZMQ_LIBS = -L$(PHONELIBS)/zmq/aarch64/lib \
-           -l:libczmq.a -l:libzmq.a \
-           -lgnustl_shared
+	   -L$(PREFIX)/lib \
+           -lczmq -lzmq 
 
 .PHONY: all
 all: proclogd

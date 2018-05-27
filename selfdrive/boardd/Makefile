@@ -6,6 +6,7 @@ OS := $(shell uname -o)
 
 BASEDIR = ../..
 PHONELIBS = ../../phonelibs
+PREFIX = /data/data/com.termux/files/usr
 
 WARN_FLAGS = -Werror=implicit-function-declaration \
              -Werror=incompatible-pointer-types \
@@ -18,12 +19,12 @@ CXXFLAGS = -std=c++11 -g -fPIC -I../../ -O2 $(WARN_FLAGS)
 
 ZMQ_FLAGS = -I$(PHONELIBS)/zmq/aarch64/include
 ZMQ_LIBS = -L$(PHONELIBS)/zmq/aarch64/lib \
-           -l:libczmq.a -l:libzmq.a \
-           -lgnustl_shared
+	   -L$(PREFIX)/lib \
+           -lczmq -lzmq
 
 JSON_FLAGS = -I$(PHONELIBS)/json/src
 
-EXTRA_LIBS = -lusb
+EXTRA_LIBS = -lusb-1.0
 
 # ifeq ($(OS),GNU/Linux)
 # # for Drive PX2
@@ -39,6 +40,9 @@ EXTRA_LIBS = -lusb-1.0 -lpthread
 CXXFLAGS += -I/usr/include/libusb-1.0
 CFLAGS += -I/usr/include/libusb-1.0
 endif
+
+CXXFLAGS += -I$(PREFIX)/include/libusb-1.0
+CFLAGS += -I$(PREFIX)/include/libusb-1.0
 
 .PHONY: all
 all: boardd

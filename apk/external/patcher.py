@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/data/data/com.termux/files/usr/bin/env python
 
 import os
 import sys
@@ -11,7 +11,7 @@ import subprocess
 
 EXTERNAL_PATH = os.path.dirname(os.path.abspath(__file__))
 
-if os.path.exists("/init.qcom.rc"):
+if os.path.exists("/init.bullhead.rc"):
   # android
   APKPATCH = os.path.join(EXTERNAL_PATH, 'tools/apkpatch_android')
   SIGNAPK = os.path.join(EXTERNAL_PATH, 'tools/signapk_android')
@@ -85,9 +85,9 @@ def process(download, patch):
 
     # ignoring lots of TOCTTOU here...
 
-    apk_temp = "/tmp/"+k+".patched"
+    apk_temp = "/data/tmp/"+k+".patched"
     remove(apk_temp)
-    apk_temp2 = "/tmp/"+k+".signed"
+    apk_temp2 = "/data/tmp/"+k+".signed"
     remove(apk_temp2)
 
     try:

@@ -1,4 +1,7 @@
-#!/usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
+
+# fix for missing symbols in ui
+LD_LIBRARY_PATH=/system/lib64:$LD_LIBRARY_PATH
 
 if [ -z "$PASSIVE" ]; then
   export PASSIVE="1"
@@ -20,10 +23,10 @@ function launch {
   echo 0-3 > /dev/cpuset/system-background/cpus
   echo 0-3 > /dev/cpuset/foreground/boost/cpus
   echo 0-3 > /dev/cpuset/foreground/cpus
-  echo 0-3 > /dev/cpuset/android/cpus
+  #echo 0-3 > /dev/cpuset/cpus
 
   # check if NEOS update is required
-  while [ "$(cat /VERSION)" -lt 4 ] && [ ! -e /data/media/0/noupdate ]; do
+  while [ "$(cat /data/VERSION)" -lt 4 ] && [ ! -e /data/media/0/noupdate ]; do
     # wait for network
     (cd selfdrive/ui/spinner && exec ./spinner 'waiting for network...') & spin_pid=$!
     until ping -W 1 -c 1 8.8.8.8; do sleep 1; done

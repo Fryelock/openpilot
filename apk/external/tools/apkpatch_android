@@ -2,6 +2,6 @@
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-export LD_LIBRARY_PATH=/system/lib64
 export CLASSPATH="$DIR"/ApkPatch.android.jar
-exec app_process "$DIR" ApkPatch "$@"
+unset LD_LIBRARY_PATH LD_PRELOAD
+exec /system/bin/app_process "$DIR" ApkPatch "$@"

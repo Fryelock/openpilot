@@ -38,7 +38,7 @@ static void cloudlog_init() {
   s.ctx_j = json_mkobject();
   s.zctx = zmq_ctx_new();
   s.sock = zmq_socket(s.zctx, ZMQ_PUSH);
-  zmq_connect(s.sock, "ipc:///tmp/logmessage");
+  zmq_connect(s.sock, "ipc:///data/tmp/logmessage");
 
   s.print_level = CLOUDLOG_WARNING;
   const char* print_level = getenv("LOGPRINT");

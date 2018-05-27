@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 export PASSIVE="0"
 exec ./launch_chffrplus.sh

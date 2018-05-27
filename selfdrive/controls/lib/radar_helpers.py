@@ -112,15 +112,15 @@ class Track(object):
 
 # ******************* Cluster *******************
 
-if platform.machine() == 'aarch64':
-  for x in sys.path:
-    pp = os.path.join(x, "phonelibs/hierarchy/lib")
-    if os.path.isfile(os.path.join(pp, "_hierarchy.so")):
-      sys.path.append(pp)
-      break
-  import _hierarchy  #pylint: disable=import-error
-else:
-  from scipy.cluster import _hierarchy
+#if platform.machine() == 'aarch64':
+#  for x in sys.path:
+#    pp = os.path.join(x, "phonelibs/hierarchy/lib")
+#    if os.path.isfile(os.path.join(pp, "_hierarchy.so")):
+#      sys.path.append(pp)
+#      break
+#  import _hierarchy  #pylint: disable=import-error
+#else:
+from scipy.cluster import _hierarchy
 
 def fcluster(Z, t, criterion='inconsistent', depth=2, R=None, monocrit=None):
   # supersimplified function to get fast clustering. Got it from scipy

@@ -2,6 +2,6 @@
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-export LD_LIBRARY_PATH=/system/lib64
 export CLASSPATH="$DIR"/signapk.android.jar
-exec app_process "$DIR" com.android.signapk.SignApk "$@"
+unset LD_LIBRARY_PATH LD_PRELOAD
+exec /system/bin/app_process "$DIR" com.android.signapk.SignApk "$@"

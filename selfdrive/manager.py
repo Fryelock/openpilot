@@ -1,13 +1,14 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 import os
 import sys
 import fcntl
 import errno
 import signal
+import re
 
 if __name__ == "__main__":
-  if os.path.isfile("/init.qcom.rc") \
-      and (not os.path.isfile("/VERSION") or int(open("/VERSION").read()) < 4):
+  if os.path.isfile("/init.bullhead.rc") \
+      and (not os.path.isfile("/data/VERSION") or int(open("/data/VERSION").read()) < 4):
     raise Exception("NEOS outdated")
 
   # get a non-blocking stdout
@@ -71,10 +72,10 @@ EON = os.path.exists("/EON")
 
 # comment out anything you don't want to run
 managed_processes = {
-  "uploader": "selfdrive.loggerd.uploader",
+#  "uploader": "selfdrive.loggerd.uploader",
   "controlsd": "selfdrive.controls.controlsd",
-  "radard": "selfdrive.controls.radard",
-  "ubloxd": "selfdrive.locationd.ubloxd",
+#  "radard": "selfdrive.controls.radard",
+#  "ubloxd": "selfdrive.locationd.ubloxd",
   "locationd_dummy": "selfdrive.locationd.locationd_dummy",
   "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
   "logmessaged": "selfdrive.logmessaged",
@@ -82,13 +83,13 @@ managed_processes = {
   "logcatd": ("selfdrive/logcatd", ["./logcatd"]),
   "proclogd": ("selfdrive/proclogd", ["./proclogd"]),
   "boardd": ("selfdrive/boardd", ["./boardd"]),   # not used directly
-  "pandad": "selfdrive.pandad",
-  "ui": ("selfdrive/ui", ["./ui"]),
-  "visiond": ("selfdrive/visiond", ["./visiond"]),
-  "sensord": ("selfdrive/sensord", ["./sensord"]),
-  "gpsd": ("selfdrive/sensord", ["./gpsd"]),
-  "orbd": ("selfdrive/orbd", ["./orbd"]),
-  "updated": "selfdrive.updated",
+#  "pandad": "selfdrive.pandad",
+#  "ui": ("selfdrive/ui", ["./ui"]),
+#  "visiond": ("selfdrive/visiond", ["./visiond"]),
+#  "sensord": ("selfdrive/sensord", ["./sensord"]),
+#  "gpsd": ("selfdrive/sensord", ["./gpsd"]),
+#  "orbd": ("selfdrive/orbd", ["./orbd"]),
+#  "updated": "selfdrive.updated",
   #"gpsplanner": "selfdrive.controls.gps_plannerd",
 }
 
@@ -537,7 +538,8 @@ def get_installed_apks():
   ret = {}
   for x in dat:
     if x.startswith("package:"):
-      v,k = x.split("package:")[1].split("=")
+      p = x.split("package:")[1]
+      a,v,k = re.split(r'(.*apk)=', p)
       ret[k] = v
   return ret
 

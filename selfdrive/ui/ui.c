@@ -8,6 +8,7 @@
 #include <cutils/properties.h>
 
 #include <GLES3/gl3.h>
+#include <EGL/egl.h>
 #include <EGL/eglext.h>
 
 #include <json.h>
@@ -300,7 +301,7 @@ static const mat4 device_transform = {{
   0.0,  0.0, 0.0, 1.0,
 }};
 
-// frame from 4/3 to box size with a 2x zoon
+// frame from 4/3 to box size with a 2x zoom
 static const mat4 frame_transform = {{
   2*(4./3.)/((float)viz_w/box_h), 0.0, 0.0, 0.0,
                                            0.0, 2.0, 0.0, 0.0,
@@ -1931,7 +1932,7 @@ int main() {
 
   float smooth_light_sensor = LIGHT_SENSOR_B;
 
-  const int EON = (access("/EON", F_OK) != -1);
+  const int EON = (access("/data/EON", F_OK) != -1);
 
   while (!do_exit) {
     pthread_mutex_lock(&s->lock);

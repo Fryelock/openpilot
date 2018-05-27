@@ -1,7 +1,7 @@
 UNAME_M ?= $(shell uname -m)
 UNAME_S ?= $(shell uname -s)
 
-
+PREFIX = /data/data/com.termux/files/usr
 
 CEREAL_CFLAGS = -I$(PHONELIBS)/capnp-c/include
 
@@ -31,7 +31,8 @@ CEREAL_CXXFLAGS = -I$(PHONELIBS)/capnp-cpp/include
 ifeq ($(CEREAL_LIBS),)
   CEREAL_LIBS = -L$(PHONELIBS)/capnp-cpp/aarch64/lib/ \
                 -L$(PHONELIBS)/capnp-c/aarch64/lib/ \
-                -l:libcapn.a -l:libcapnp.a -l:libkj.a
+		-L$(PREFIX)/lib/ \
+                -lcapnp_c -lcapnp -lkj
 endif
 
 endif

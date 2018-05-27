@@ -15,5 +15,5 @@ def read_thermal():
   dat.thermal.cpu3 = read_tz(12)
   dat.thermal.mem = read_tz(2)
   dat.thermal.gpu = read_tz(16)
-  dat.thermal.bat = read_tz(29)
+  #dat.thermal.bat = read_tz(29)
   return dat

@@ -3,6 +3,7 @@ CXX = clang++
 
 BASEDIR = ../..
 PHONELIBS := ../../phonelibs
+PREFIX = /data/data/com.termux/files/usr
 
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)
@@ -15,7 +16,7 @@ WARN_FLAGS = -Werror=implicit-function-declaration \
              -Wno-deprecated-declarations
 
 CFLAGS = -std=gnu11 -g -fPIC -O2 $(WARN_FLAGS)
-CXXFLAGS = -std=c++11 -g -fPIC -O2 $(WARN_FLAGS)
+CXXFLAGS = -std=c++14 -g -fPIC -O2 $(WARN_FLAGS)
 
 ifeq ($(UNAME_S),Darwin)
 	ZMQ_LIBS = -L/usr/local/lib -lzmq
@@ -26,8 +27,8 @@ else ifeq ($(UNAME_M),x86_64)
 	ZMQ_FLAGS = -I$(EXTERNAL)/zmq/include
 	ZMQ_LIBS = -L$(EXTERNAL)/zmq/lib -l:libzmq.a
 else ifeq ($(UNAME_M),aarch64)
-	ZMQ_FLAGS = -I$(PHONELIBS)/zmq/aarch64/include
-	ZMQ_LIBS = -L$(PHONELIBS)/zmq/aarch64/lib -l:libzmq.a
+	ZMQ_FLAGS = -I$(PREFIX)/include
+	ZMQ_LIBS = -L$(PREFIX)/lib -lzmq
 endif
 
 OPENDBC_PATH := $(shell python -c 'import opendbc; print opendbc.DBC_PATH')

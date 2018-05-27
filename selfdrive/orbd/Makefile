@@ -35,8 +35,7 @@ else
 # phone
 ZMQ_FLAGS = -I$(PHONELIBS)/zmq/aarch64/include
 ZMQ_LIBS = -L$(PHONELIBS)/zmq/aarch64/lib \
-	-l:libczmq.a -l:libzmq.a \
-	-lgnustl_shared
+	-lczmq -lzmq
 
 OPENCV_FLAGS = -I$(PHONELIBS)/opencv/include
 OPENCV_LIBS = -Wl,--enable-new-dtags -Wl,-rpath,/usr/local/lib/python2.7/site-packages -L/usr/local/lib/python2.7/site-packages -l:cv2.so
