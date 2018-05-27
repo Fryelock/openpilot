@@ -13,9 +13,6 @@
 [submodule "phonelibs/android_hardware_interfaces"]
 	path = phonelibs/android_hardware_interfaces
 	url = https://android.googlesource.com/platform/hardware/interfaces
-[submodule "phonelibs/hidl"]
-	path = phonelibs/hidl
-	url = https://android.googlesource.com/platform/system/tools/hidl
 [submodule "phonelibs/c-capnproto"]
 	path = phonelibs/c-capnproto
 	url = https://github.com/commaai/c-capnproto.git
