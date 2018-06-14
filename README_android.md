@@ -1,31 +1,33 @@
 Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
---------------------------------------------------------------------------------
+================================================================================
 
 TODO
-- UI: OpenGL ES graphics is not shown on top (spinner works)
-- waze and spotify apk patching fails
-- visiond, gpsd, sensord and other binary modules run but are currently untested
-- _hierarchy.so does not load (using python module as workaround)
+====
+  * UI: OpenGL ES graphics is not shown on top (spinner works)
+  * waze and spotify apk patching fails
+  * visiond, gpsd, sensord and other binary modules run but are currently untested
+  * _hierarchy.so does not load (using python module as workaround)
 
 INSTALL/PORT NOTES
-- root android using twrp and supersu
-  currently required for libusb and ui, will wipe the phone
-- install termux app from play store
-- confirm that su works in termux (grant by default in supersu, FIXME)
-- install openssh and screen
-  apt install openssh screen
+==================
+  * root android using twrp and supersu
+    currently required for libusb and ui, will wipe the phone
+  * install termux app from play store
+  * confirm that su works in termux (grant by default in supersu, FIXME)
+  * install openssh and screen
+    apt install openssh screen
 
-- add your ssh public key to .ssh/authorized_keys (eg. copy-paste from e-mail)
-- start sshd server on the phone
-  sshd
+  * add your ssh public key to .ssh/authorized_keys (eg. copy-paste from e-mail)
+  * start sshd server on the phone
+    sshd
 
-- ssh into phone
-  ssh ip -p 8022
-- start screen session
-  screen
+  * ssh into phone
+    ssh ip -p 8022
+  * start screen session
+    screen
 
-- install dev tools
-  apt install git python2-dev autoconf automake libtool clang pkg-config curl
+  * install dev tools
+    apt install git python2-dev autoconf automake libtool clang pkg-config curl
 
 - set python2 as default
   cd $PREFIX/bin
