@@ -156,47 +156,47 @@ INSTALL/PORT NOTES
   ./launch_openpilot.sh
 
 Build Android AOSP 8.1 image for Nexus 5X
------------------------------------------
+=========================================
 
-- create cloud vm (16 core, 30GB RAM, 10GB ubuntu 16.04, 300GB SSD)
-- add ssh public key
-  sudo fdisk /dev/sdb
-  sudo mkfs.ext4 /dev/sdb1
-  sudo mkdir /data
-  sudo mount /dev/sdb1 /data
-  sudo chown martin /data
-  cd /data
+  * create cloud vm (16 core, 30GB RAM, 10GB ubuntu 16.04, 300GB SSD)
+  * add ssh public key
+    sudo fdisk /dev/sdb
+    sudo mkfs.ext4 /dev/sdb1
+    sudo mkdir /data
+    sudo mount /dev/sdb1 /data
+    sudo chown martin /data
+    cd /data
 
-- https://source.android.com/setup/build/initializing
+  * https://source.android.com/setup/build/initializing
 
-  mkdir aosp
-  cd aosp
-  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-  chmod a+x ~/bin/repo
-  export PATH=~/bin:$PATH
-  git config --global user.name "Martin Lillepuu"
-  git config --global user.email "martin@mlp.ee"
-  repo init -u https://android.googlesource.com/platform/manifest -b android-8.1.0_r27
-  repo sync
+    mkdir aosp
+    cd aosp
+    curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+    chmod a+x ~/bin/repo
+    export PATH=~/bin:$PATH
+    git config --global user.name "Martin Lillepuu"
+    git config --global user.email "martin@mlp.ee"
+    repo init -u https://android.googlesource.com/platform/manifest -b android-8.1.0_r27
+   repo sync
 
-- https://source.android.com/setup/build/downloading#verifying-git-tags
-  gpg --import
+  * https://source.android.com/setup/build/downloading#verifying-git-tags
+    gpg --import
 
-- https://source.android.com/setup/build/building
-  mkdir ../drivers
-  cd ../drivers
-  wget https://dl.google.com/dl/android/aosp/lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
-  wget https://dl.google.com/dl/android/aosp/qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
-  tar xvzf lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
-  tar xvzf qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
-  cd ../aosp
-  echo "I ACCEPT" | ../drivers/extract-lge-bullhead.sh
-  echo "I ACCEPT" | ../drivers/extract-qcom-bullhead.sh
-  make clobber
-  . build/envsetup.sh
+  * https://source.android.com/setup/build/building
+    mkdir ../drivers
+    cd ../drivers
+    wget https://dl.google.com/dl/android/aosp/lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
+    wget https://dl.google.com/dl/android/aosp/qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
+    tar xvzf lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
+    tar xvzf qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
+    cd ../aosp
+    echo "I ACCEPT" | ../drivers/extract-lge-bullhead.sh
+    echo "I ACCEPT" | ../drivers/extract-qcom-bullhead.sh
+    make clobber
+   . build/envsetup.sh
 
-  lunch aosp_arm-eng
-  make -j16
-
-- build hidl-gen and generate hidl headers
-  https://android.googlesource.com/platform/system/tools/hidl/+/master/README.md
+   lunch aosp_arm-eng
+   make -j16
+   
+  * build hidl-gen and generate hidl headers
+    https://android.googlesource.com/platform/system/tools/hidl/+/master/README.md
