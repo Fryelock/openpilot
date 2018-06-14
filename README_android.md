@@ -2,14 +2,14 @@ Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
 ================================================================================
 
 TODO
-====
+----
 * UI: OpenGL ES graphics is not shown on top (spinner works)
 * waze and spotify apk patching fails
 * visiond, gpsd, sensord and other binary modules run but are currently untested
 * _hierarchy.so does not load (using python module as workaround)
 
 INSTALL/PORT NOTES
-==================
+------------------
 * root android using twrp and supersu
   currently required for libusb and ui, will wipe the phone
 * install termux app from play store
@@ -42,32 +42,32 @@ INSTALL/PORT NOTES
   ln -sf pip2 pip
   ```
   
-  * add its-pointless repo
+* add its-pointless repo
   ```
   curl -O https://its-pointless.github.io/setup-pointless-repo.sh
   bash setup-pointless-repo.sh
   apt install python2-scipy
   ```
   
-  * fork commaai openpilot repo on github
-  * clone your forked repo to /data
+* fork commaai openpilot repo on github
+* clone your forked repo to /data
   ```
   git clone https://github.com/<username>/openpilot.git
   git submodule update --init --recursive
   ```
-  * configure upstream url for op repo
+* configure upstream url for op repo
   ```
   cd openpilot
   git remote add upstream https://github.com/commaai/openpilot.git
   git remote -v
   ```
-  * optional: build android aosp image (check howto in the end) to get media and graphics hidl headers
-  * copy android hidl headers to phone
+* optional: build android aosp image (check howto in the end) to get media and graphics hidl headers
+* copy android hidl headers to phone
   ```
   scp -P 8022 -r hidl ip:openpilot/phonelibs/
   ```
   
-  * download and compile capnroto c and java plugins
+* download and compile capnroto c and java plugins
   ```
   cd ~/openpilot
   export PYTHONPATH=$PWD
@@ -114,32 +114,31 @@ INSTALL/PORT NOTES
   ```
 
 * install libusb and libusb-dev
-```
+  ```
   cd ~/openpilot/deb
   dpkg -i *.deb
-```
+  ```
 
-- fix openpilot modules compliation configuration
-```
+* fix openpilot modules compliation configuration
+  ```
   cd cereal
   make
   
   cd boardd
-```
+  ```
 
 * fix Makefiles
 * comment out -lgnustl_shared
 * add
-```
+  ```
   PREFIX = /data/data/com.termux/files/usr
   -L$(PREFIX)/lib \
   -I$(PREFIX)/include \
-```
-- add termux include and library directories
-```
+  ```
+* add termux include and library directories
+  ```
   -I$(PREFIX)/include
   -I$(PREFIX)/include/libusb-1.0
-
 
   -L$(PREFIX)/lib
 
@@ -165,74 +164,73 @@ INSTALL/PORT NOTES
   make -j8
   cd ../ui
   patch Makefile
-    add missing #include <EGL/egl.h>
+  add missing #include <EGL/egl.h>
   make -j8
   cd spinner
     create Makefile
     add missing #include <EGL/egl.h>
   make -j8
-```
-- ui/spinner libunwind missing symbols fix
-```
+  ```
+* ui/spinner libunwind missing symbols fix
+  ```
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/system/lib64 ./spinner 'testing 1-2-3'
-```
-- pre-build openpilot
-```
+  ```
+* pre-build openpilot
+  ```
   make
-```
-- fix #$PREFIX/bin/bash in *.sh
+  ```
+* fix #$PREFIX/bin/bash in *.sh
 
-- run openpilot
-```
+* run openpilot
+  ```
   ./launch_openpilot.sh
-```
+  ```
 Build Android AOSP 8.1 image for Nexus 5X
-=========================================
+-----------------------------------------
 
-  * create cloud vm (16 core, 30GB RAM, 10GB ubuntu 16.04, 300GB SSD)
-  * add ssh public key
+* create cloud vm (16 core, 30GB RAM, 10GB ubuntu 16.04, 300GB SSD)
+* add ssh public key
   ```
-    sudo fdisk /dev/sdb
-    sudo mkfs.ext4 /dev/sdb1
-    sudo mkdir /data
-    sudo mount /dev/sdb1 /data
-    sudo chown martin /data
-    cd /data
+  sudo fdisk /dev/sdb
+  sudo mkfs.ext4 /dev/sdb1
+  sudo mkdir /data
+  sudo mount /dev/sdb1 /data
+  sudo chown martin /data
+  cd /data
   ```
-  * https://source.android.com/setup/build/initializing
-    ``` 
-    mkdir aosp
-    cd aosp
-    curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-    chmod a+x ~/bin/repo
-    export PATH=~/bin:$PATH
-    git config --global user.name "Martin Lillepuu"
-    git config --global user.email "martin@mlp.ee"
-    repo init -u https://android.googlesource.com/platform/manifest -b android-8.1.0_r27
-    repo sync
-    ```
+* https://source.android.com/setup/build/initializing
+  ``` 
+  mkdir aosp
+  cd aosp
+  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+  chmod a+x ~/bin/repo
+  export PATH=~/bin:$PATH
+  git config --global user.name "Martin Lillepuu"
+  git config --global user.email "martin@mlp.ee"
+  repo init -u https://android.googlesource.com/platform/manifest -b android-8.1.0_r27
+  repo sync
+  ```
 
-  * https://source.android.com/setup/build/downloading#verifying-git-tags
-    ```
-    gpg --import
-    ```
-  * https://source.android.com/setup/build/building
-    ```
-    mkdir ../drivers
-    cd ../drivers
-    wget https://dl.google.com/dl/android/aosp/lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
-    wget https://dl.google.com/dl/android/aosp/qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
-    tar xvzf lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
-    tar xvzf qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
-    cd ../aosp
-    echo "I ACCEPT" | ../drivers/extract-lge-bullhead.sh
-    echo "I ACCEPT" | ../drivers/extract-qcom-bullhead.sh
-    make clobber
-    . build/envsetup.sh
-
-    lunch aosp_arm-eng
-    make -j16
-    ```
+* https://source.android.com/setup/build/downloading#verifying-git-tags
+  ```
+  gpg --import
+  ```
+* https://source.android.com/setup/build/building
+  ```
+  mkdir ../drivers
+  cd ../drivers
+  wget https://dl.google.com/dl/android/aosp/lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
+  wget https://dl.google.com/dl/android/aosp/qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
+  tar xvzf lge-bullhead-opm4.171019.016.a1-6ca0caeb.tgz
+  tar xvzf qcom-bullhead-opm4.171019.016.a1-adcef468.tgz
+  cd ../aosp
+  echo "I ACCEPT" | ../drivers/extract-lge-bullhead.sh
+  echo "I ACCEPT" | ../drivers/extract-qcom-bullhead.sh
+  make clobber
+  . build/envsetup.sh
+  lunch aosp_arm-eng
+  make -j16
+  ```
    
-  * build hidl-gen and generate hidl headers
-    https://android.googlesource.com/platform/system/tools/hidl/+/master/README.md
+* build hidl-gen and generate hidl headers
+  https://android.googlesource.com/platform/system/tools/hidl/+/master/README.md
