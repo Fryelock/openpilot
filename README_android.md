@@ -19,7 +19,7 @@ INSTALL/PORT NOTES
 
   * add your ssh public key to .ssh/authorized_keys (eg. copy-paste from e-mail)
   * start sshd server on the phone
-    sshd
+    ~~~~sshd~~~~
 
   * ssh into phone
     ssh ip -p 8022
