@@ -106,11 +106,23 @@ INSTALL/PORT NOTES
   pip install -r requirements_openpilot.txt
   ```
 
-* build libusb and libczmq in https://github.com/termux/termux-packages docker container
-  https://wiki.termux.com/wiki/Package_Management#Community_Repositories
-* copy libusb and libczmq debs to phone
+* build libusb and libczmq using Android NDK
   ```
-  scp -P 8022 -r deb/ 192.168.43.1:openpilot
+  git clone https://github.com/libusb/libusb.git
+  export NDK=~/Library/Android/sdk/ndk-bundle
+  $NDK/ndk-build  
+  ```
+* copy libusb and libczmq to phone using adb
+  ```
+  cd libs/arm64-v8a/
+  adb shell su -c "mount -o remount,rw /system"
+  adb push obj/local/arm64-v8a/libusb1.0.so /sdcard/
+  # Install the samples and tests
+    for B in listdevs fxload xusb sam3u_benchmark hotplugtest stress;
+    do adb push "obj/local/arm64-v8a/$B" /sdcard/; 
+    done
+  # Run listdevs
+  adb shell su -c "listdevs"
   ```
 
 * install libusb and libusb-dev
