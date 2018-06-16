@@ -104,14 +104,15 @@ INSTALL/PORT NOTES
   apt install freetype-dev libpng-dev boost-dev libcrypt-dev libffi-dev libpng-dev libzmq-dev libuuid-dev
   pip install -r requirements_openpilot.txt
   ```
+* build libczmq using termux docker image (TODO)
 
-* build libusb and libczmq using Android NDK
+* build libusb using Android NDK
   ```
   git clone https://github.com/libusb/libusb.git
   export NDK=~/Library/Android/sdk/ndk-bundle
   $NDK/ndk-build  
   ```
-* copy libusb and libczmq to phone using adb
+* copy libusb to phone using adb
   ```
   cd libs/arm64-v8a/
   adb shell su -c "mount -o remount,rw /system"
@@ -169,17 +170,17 @@ INSTALL/PORT NOTES
   cd ../logcatd
   make -j8
   cd ../orbd
-  temporarily comment out ioctl in /data/data/com.termux/files/usr/include/bits/ioctl.h
+  # temporarily comment out ioctl in /data/data/com.termux/files/usr/include/bits/ioctl.h
   make -j8
   cd ../proclogd
   make -j8
   cd ../ui
-  patch Makefile
-  add missing #include <EGL/egl.h>
+  # patch Makefile
+  # add missing #include <EGL/egl.h>
   make -j8
   cd spinner
-    create Makefile
-    add missing #include <EGL/egl.h>
+  # create Makefile
+  # add missing #include <EGL/egl.h>
   make -j8
   ```
 * ui/spinner libunwind missing symbols fix
