@@ -60,7 +60,7 @@ INSTALL/PORT NOTES
   git remote add upstream https://github.com/commaai/openpilot.git
   git remote -v
   ```
-* optional: build android aosp image (check howto in the end) to get media and graphics hidl headers
+* optional: [build android aosp image](#build-android-aosp-81-image-for-nexus-5x) to get media and graphics hidl headers
 * copy android hidl headers to phone
   ```
   scp -P 8022 -r hidl ip:openpilot/phonelibs/
