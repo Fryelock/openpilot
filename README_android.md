@@ -3,15 +3,14 @@ Openpilot on termux/android-8.1 install notes (bleeding edge, pre-alpha quality)
 
 TODO
 ----
-* UI: OpenGL ES graphics is not shown on top (spinner works)
-* waze and spotify apk patching fails
-* visiond, gpsd, sensord and other binary modules run but are currently untested
+* implement workaround for libusb root requirement. One possible solution https://stackoverflow.com/questions/16302271/using-libusb-on-android-without-rooting
+* UI: OpenGL ES graphics is not shown on top (spinner works) - requires closed-source frame apk for opengl canvas which currently crashes on Nexus 5x. FIXME: Replace with opensource frame apk
+* visiond, gpsd, sensord and other binary modules do run but are currently untested
 * _hierarchy.so does not load (using python module as workaround)
 
 INSTALL/PORT NOTES
 ------------------
-* root android using twrp and supersu
-  currently required for libusb and ui, will wipe the phone
+* root android using twrp and supersu (FIXME)
 * install termux app from play store
 * confirm that su works in termux (grant by default in supersu, FIXME)
 * install openssh and screen
