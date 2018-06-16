@@ -1,6 +1,8 @@
 Welcome to openpilot
 ======
 
+This fork is for running openpilot opensource parts on Nexus 5x and other Android 8.x devices, see https://github.com/martinl/openpilot/blob/devel/README_android.md
+
 [openpilot](http://github.com/commaai/openpilot) is an open source driving agent.
 
 Currently it performs the functions of Adaptive Cruise Control (ACC) and Lane Keeping Assist System (LKAS) for Hondas, Acuras and Toyotas. It's about on par with Tesla Autopilot at launch, and better than [all other manufacturers](http://www.thedrive.com/tech/5707/the-war-for-autonomous-driving-part-iii-us-vs-germany-vs-japan).
