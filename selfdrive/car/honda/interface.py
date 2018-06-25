@@ -8,7 +8,11 @@ from selfdrive.config import Conversions as CV
 from selfdrive.controls.lib.drive_helpers import create_event, EventTypes as ET, get_events
 from selfdrive.controls.lib.vehicle_model import VehicleModel
 from selfdrive.car.honda.carstate import CarState, get_can_parser
+<<<<<<< HEAD
 from selfdrive.car.honda.values import CruiseButtons, CM, BP, AH, CAR
+=======
+from selfdrive.car.honda.values import CruiseButtons, CM, BP, AH, CAR, HONDA_BOSCH
+>>>>>>> commaai/devel
 from selfdrive.controls.lib.planner import A_ACC_MAX
 
 try:
@@ -143,7 +147,11 @@ class CarInterface(object):
     ret.carName = "honda"
     ret.carFingerprint = candidate
 
+<<<<<<< HEAD
     if 0x1ef in fingerprint:
+=======
+    if candidate in HONDA_BOSCH:
+>>>>>>> commaai/devel
       ret.safetyModel = car.CarParams.SafetyModels.hondaBosch
       ret.enableCamera = True
       ret.radarOffCan = True
@@ -239,7 +247,11 @@ class CarInterface(object):
       ret.wheelbase = 2.66
       ret.centerToFront = ret.wheelbase * 0.41
       ret.steerRatio = 12.30
+<<<<<<< HEAD
       ret.steerKpV, ret.steerKiV = [[0.8], [0.24]]
+=======
+      ret.steerKpV, ret.steerKiV = [[0.6], [0.18]]
+>>>>>>> commaai/devel
 
       ret.longitudinalKpBP = [0., 5., 35.]
       ret.longitudinalKpV = [1.2, 0.8, 0.5]
