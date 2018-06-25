@@ -1,1 +1,0 @@
-# very similar to carstate.py, this class reads CAN messages from the Radar CAN Bus, parses them and converts them in a common radar state format: see RadarState structure in /data/openpilot/cereal/car.capnp. It’s very unlikely that your unsupported car model will require changes to this file, so you can ignore it.
