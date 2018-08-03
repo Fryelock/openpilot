@@ -114,7 +114,7 @@ class CarController(object):
         #max_steer 4095 
 
         if apply_steer < 0:
-          chksm_steer = 4096-abs(steer)
+          chksm_steer = 4096-abs(apply_steer)
         else:
           chksm_steer = apply_steer
         
