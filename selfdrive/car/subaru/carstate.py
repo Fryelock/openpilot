@@ -17,7 +17,7 @@ def get_powertrain_can_parser(CP, canbus):
     ("FR", "WHEEL_SPEEDS", 0),
     ("RL", "WHEEL_SPEEDS", 0), 
     ("RR", "WHEEL_SPEEDS", 0), 
-    #("Steer_Torque_Sensor", "Steering_Torque", 0),
+    ("Steer_Torque_Sensor", "Steering_Torque", 0),
   ]
 
   checks = [
@@ -26,7 +26,7 @@ def get_powertrain_can_parser(CP, canbus):
     ("ES_Status", 100),
     ("Steering", 100),
     ("WHEEL_SPEEDS", 100),
-    #("Steering_Torque", 100),
+    ("Steering_Torque", 100),
   ]
 
   return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, canbus.powertrain)
@@ -41,8 +41,8 @@ class CarState(object):
     self.right_blinker_on = False
     self.prev_right_blinker_on = False
     #FIXME
-    self.steer_torque_driver = 0
-    self.steer_not_allowed = True
+    #self.steer_torque_driver = 0
+    self.steer_not_allowed = False
     self.main_on = False
 
     # vEgo kalman filter
@@ -81,7 +81,7 @@ class CarState(object):
     self.standstill = self.v_ego_raw < 0.01
 
     self.angle_steers = pt_cp.vl["Steering"]['Steering_Angle']
-    #self.steer_torque_driver = pt_cp.vl["Steering_Torque"]['Steer_Torque_Sensor']
+    self.steer_torque_driver = pt_cp.vl["Steering_Torque"]['Steer_Torque_Sensor']
     self.steer_override = abs(self.steer_torque_driver) > 500.0
 
     self.prev_left_blinker_on = self.left_blinker_on
