@@ -89,11 +89,7 @@ class CarState(object):
     self.left_blinker_on = pt_cp.vl["Dashlights"]['LEFT_BLINKER'] == 1
     self.right_blinker_on = pt_cp.vl["Dashlights"]['RIGHT_BLINKER'] == 1
 
-    if self.car_fingerprint == CAR.OUTBACK:
-      self.acc_active = pt_cp.vl["ES_Status"]['Cruise_Activated']
-      self.main_on = pt_cp.vl["ES_Status"]['Cruise_Activated']
-
-    if self.car_fingerprint == CAR.XV2018:
-      self.acc_active = pt_cp.vl["ES_Status"]['Cruise_Activated']
-      self.main_on = pt_cp.vl["ES_Status"]['Cruise_Activated']
+    #if self.car_fingerprint == CAR.OUTBACK:
+    self.acc_active = pt_cp.vl["ES_Status"]['Cruise_Activated']
+    self.main_on = pt_cp.vl["ES_Status"]['Cruise_Activated']
 

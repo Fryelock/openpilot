@@ -58,7 +58,7 @@ class CarInterface(object):
     ret.enableCamera = True
     std_cargo = 136
 
-    if candidate in [CAR.OUTBACK, CAR.XV2018]:
+    if candidate in [CAR.OUTBACK, CAR.XV2018, CAR.IMPREZA2017]:
       ret.mass = 1568 + std_cargo
       ret.safetyModel = car.CarParams.SafetyModels.subaru
       ret.wheelbase = 2.75
