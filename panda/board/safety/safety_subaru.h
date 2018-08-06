@@ -48,7 +48,7 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
   // debug console output
   puts("to_fwd: ");
   puth(to_fwd->RDLR);
-  puts("\n")
+  puts("\n");
 
   // forward CAN 0 > 1
   if (bus_num == 0) {

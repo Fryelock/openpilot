@@ -4,10 +4,10 @@
 // ********************* includes *********************
 
 #include "libc.h"
-#include "safety.h"
 #include "provision.h"
 
 #include "drivers/drivers.h"
+#include "safety.h"
 
 #include "drivers/llgpio.h"
 #include "gpio.h"
@@ -557,8 +557,8 @@ int main() {
   // enable USB
   usb_init();
 
-  // default to silent mode to prevent issues with Ford
-  safety_set_mode(SAFETY_NOOUTPUT, 0);
+  // default to subaru mode on startup
+  safety_set_mode(SAFETY_SUBARU, 0);
   can_silent = ALL_CAN_LIVE;
   can_init_all();
 
