@@ -125,11 +125,16 @@ BO_ 313 NEW_MSG_8: 8 XXX
  SG_ NEW_SIGNAL_5 : 8|4@1+ (1,0) [0|15] "" XXX
 
 BO_ 290 ES_LKAS: 8 XXX
- SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
- SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
- SG_ LKAS_Request : 29|1@0+ (1,0) [0|3] "" XXX
- SG_ LKAS_Output : 16|13@1- (1,0) [0|3] "" XXX
- SG_ Left_Turn_Is_3 : 12|1@0+ (1,0) [0|3] "" XXX
+ SG_ Byte3 : 31|8@0+ (1,0) [0|255] "" XXX
+ SG_ Byte2 : 23|8@0+ (1,0) [0|255] "" XXX
+ SG_ Byte1 : 15|8@0+ (1,0) [0|255] "" XXX
+ SG_ Checksum : 7|8@0+ (1,0) [0|255] "" XXX
+
+CM  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
+CM  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
+CM  SG_ LKAS_Request : 29|1@0+ (1,0) [0|3] "" XXX
+CM  SG_ LKAS_Output : 16|13@1- (1,0) [0|3] "" XXX
+CM  SG_ Left_Turn_Is_3 : 12|1@0+ (1,0) [0|3] "" XXX
 
 BO_ 722 NEW_MSG_10: 8 XXX
  SG_ NEW_SIGNAL_1 : 27|3@1+ (1,0) [0|255] "" XXX
