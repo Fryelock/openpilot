@@ -40,15 +40,19 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
 }
 */
 
-// tesla version
+// tesla version adaptation
 static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
   
+  // convert little endian to hex?
   int32_t addr = to_fwd->RIR >> 21;
   
   // debug console output
-  puts("to_fwd: ");
-  puth(to_fwd->RDLR);
-  puts("\n");
+  //puts("RIR: ");
+  //puth(to_fwd->RIR);
+  //puts("\n");
+  //puts("addr: ");
+  //puth(addr);
+  //puts("\n");
 
   // forward CAN 0 > 1
   if (bus_num == 0) {
@@ -57,8 +61,13 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
   // forward CAN 1 > 0, except ES_LKAS
   else if (bus_num == 1) {
     
+    // subaru global
     if (addr == 0x122) {
-      return false;
+      return -1;
+    }
+    // outback 2015
+    else if (addr == 0x164) {
+      return -1;
     }
 
     return 0; // Main CAN

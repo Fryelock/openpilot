@@ -558,7 +558,8 @@ int main() {
   usb_init();
 
   // default to subaru mode on startup
-  safety_set_mode(SAFETY_SUBARU, 0);
+  safety_set_mode(SAFETY_NOOUTPUT, 0);
+  //safety_set_mode(SAFETY_SUBARU, 0);
   can_silent = ALL_CAN_LIVE;
   can_init_all();
 
