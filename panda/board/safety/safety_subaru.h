@@ -19,40 +19,10 @@ static int subaru_tx_lin_hook(int lin_num, uint8_t *data, int len) {
   return true;
 }
 
-// do not forward
-/*
-static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
-  return -1;
-}
-*/
-
-// toyota version with magical return value
-/*
-static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
-
-  // forward es to car and viceversa, filter out es_lkas cmd
-  if ((bus_num == 0 || bus_num == 1)) {
-    int addr = to_fwd->RIR>>21;
-    bool is_lkas_msg = (addr == 0x122) && bus_num == 1;
-    return is_lkas_msg ? -1 : (uint8_t)(~bus_num & 0x2);
-  }
-  return -1;
-}
-*/
-
-// tesla version adaptation
 static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
   
-  // convert little endian to hex?
+  // shifts bits 29 > 11
   int32_t addr = to_fwd->RIR >> 21;
-  
-  // debug console output
-  //puts("RIR: ");
-  //puth(to_fwd->RIR);
-  //puts("\n");
-  //puts("addr: ");
-  //puth(addr);
-  //puts("\n");
 
   // forward CAN 0 > 1
   if (bus_num == 0) {
@@ -62,11 +32,11 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
   else if (bus_num == 1) {
     
     // subaru global
-    if (addr == 0x122) {
-      return -1;
-    }
+    //if (addr == 0x122) {
+    //  return -1;
+    //}
     // outback 2015
-    else if (addr == 0x164) {
+    if (addr == 0x164) {
       return -1;
     }
 

@@ -58,12 +58,25 @@ class CarInterface(object):
     ret.enableCamera = True
     std_cargo = 136
 
-    if candidate in [CAR.OUTBACK, CAR.XV2018, CAR.IMPREZA2017]:
+    if candidate in [CAR.OUTBACK, CAR.XV2018]:
       ret.mass = 1568 + std_cargo
       ret.safetyModel = car.CarParams.SafetyModels.subaru
       ret.wheelbase = 2.75
-      ret.steerRatio = 14
+      ret.steerRatio = 7
       ret.centerToFront = ret.wheelbase * 0.5 + 1
+    
+    # testing tuning
+    ret.steerActuatorDelay = 0.1
+    ret.steerRateCost = 0
+    ret.steerControlType = car.CarParams.SteerControlType.torque
+    ret.steerLimitAlert = False
+    
+    ret.steerKf = 0.00006
+    ret.steerKiBP, ret.steerKpBP = [[0.], [0.]]
+    ret.steerKpV, ret.steerKiV = [[0.0], [0.00]]
+
+    ret.steerMaxBP = [0.] # m/s
+    ret.steerMaxV = [1.]
 
     # FIXME: from gm
     ret.gasMaxBP = [0.]
@@ -79,17 +92,10 @@ class CarInterface(object):
     ret.longitudinalKiBP = [0.]
     ret.longitudinalKiV = [0.36]
 
-    ret.steerLimitAlert = True
-
     ret.stoppingControl = True
     ret.startAccel = 0.8
 
-    ret.steerActuatorDelay = 0.1  # Default delay, not measured yet
-    ret.steerRateCost = 1.0
-    ret.steerControlType = car.CarParams.SteerControlType.torque
-
     # end from gm
-
 
     # hardcoding honda civic 2016 touring params so they can be used to
     # scale unknown params for other cars
@@ -98,8 +104,8 @@ class CarInterface(object):
     centerToFront_civic = wheelbase_civic * 0.4
     centerToRear_civic = wheelbase_civic - centerToFront_civic
     rotationalInertia_civic = 2500
-    tireStiffnessFront_civic = 85400
-    tireStiffnessRear_civic = 90000
+    tireStiffnessFront_civic = 192150
+    tireStiffnessRear_civic = 202500
     centerToRear = ret.wheelbase - ret.centerToFront
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
@@ -114,20 +120,6 @@ class CarInterface(object):
     ret.tireStiffnessRear = tireStiffnessRear_civic * \
                             ret.mass / mass_civic * \
                             (ret.centerToFront / ret.wheelbase) / (centerToFront_civic / wheelbase_civic)
-
-    # same tuning for Volt and CT6 for now
-    ret.steerKiBP, ret.steerKpBP = [[0.], [0.]]
-    ret.steerKpV, ret.steerKiV = [[0.2], [0.00]]
-    ret.steerKf = 0.00004   # full torque for 20 deg at 80mph means 0.00007818594
-
-    ret.steerMaxBP = [0.] # m/s
-    ret.steerMaxV = [1.]
-
-    ret.steerLimitAlert = True
-
-    ret.steerActuatorDelay = 0.1  # Default delay, not measured yet
-    ret.steerRateCost = 0.5
-    ret.steerControlType = car.CarParams.SteerControlType.torque
 
     return ret
 
@@ -211,6 +203,6 @@ class CarInterface(object):
     # cast to reader so it can't be modified
     return ret.as_reader()
 
-  def apply(self, c):
+  def apply(self, c, perception_state):
     self.CC.update(self.sendcan, c.enabled, self.CS, self.frame, c.actuators)
     self.frame += 1

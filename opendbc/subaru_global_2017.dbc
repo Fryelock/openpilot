@@ -33,13 +33,13 @@ NS_ :
 
 BS_:
 
-BU_: XXX
+BU_: XXX X
 
 
 BO_ 2 Steering: 8 XXX
  SG_ Counter : 25|3@1+ (1,0) [0|7] "" XXX
  SG_ Checksum : 39|8@0+ (1,0) [0|255] "" XXX
- SG_ Steering_Angle : 7|16@0- (1,0) [0|65535] "" XXX
+ SG_ Steering_Angle : 7|16@0- (0.1,0) [0|65535] "" XXX
 
 BO_ 64 Accelerator: 8 XXX
  SG_ NEW_SIGNAL_1 : 32|8@1+ (1,0) [0|255] "" XXX
@@ -130,12 +130,6 @@ BO_ 290 ES_LKAS: 8 XXX
  SG_ Byte1 : 15|8@0+ (1,0) [0|255] "" XXX
  SG_ Checksum : 7|8@0+ (1,0) [0|255] "" XXX
 
-CM  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
-CM  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
-CM  SG_ LKAS_Request : 29|1@0+ (1,0) [0|3] "" XXX
-CM  SG_ LKAS_Output : 16|13@1- (1,0) [0|3] "" XXX
-CM  SG_ Left_Turn_Is_3 : 12|1@0+ (1,0) [0|3] "" XXX
-
 BO_ 722 NEW_MSG_10: 8 XXX
  SG_ NEW_SIGNAL_1 : 27|3@1+ (1,0) [0|255] "" XXX
  SG_ NEW_SIGNAL_2 : 8|4@1+ (1,0) [0|15] "" XXX
@@ -183,9 +177,12 @@ BO_ 557 NEW_MSG_14: 8 XXX
  SG_ NEW_SIGNAL_1 : 8|4@1+ (1,0) [0|15] "" XXX
  SG_ NEW_SIGNAL_2 : 7|8@0+ (1,0) [0|255] "" XXX
 
-BO_ 576 NEW_MSG_15: 8 XXX
+BO_ 576 CruiseControl: 8 XXX
  SG_ NEW_SIGNAL_1 : 8|4@1+ (1,0) [0|15] "" XXX
  SG_ NEW_SIGNAL_2 : 7|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_5 : 42|1@1+ (1,0) [0|3] "" XXX
+ SG_ Cruise_On : 40|1@1+ (1,0) [0|3] "" XXX
+ SG_ Cruise_Activated : 41|1@1+ (1,0) [0|3] "" XXX
 
 BO_ 577 NEW_MSG_16: 8 XXX
  SG_ NEW_SIGNAL_2 : 8|4@1+ (1,0) [0|15] "" XXX
@@ -205,7 +202,7 @@ BO_ 912 Dashlights: 8 XXX
  SG_ LEFT_BLINKER : 50|1@0+ (1,0) [0|3] "" XXX
  SG_ SEATBELT_FL : 48|1@0+ (1,0) [0|1] "" XXX
 
-BO_ 940 Door: 8 XXX
+BO_ 940 Stalk: 8 XXX
  SG_ NEW_SIGNAL_1 : 8|4@1+ (1,0) [0|15] "" XXX
  SG_ NEW_SIGNAL_2 : 7|8@0+ (1,0) [0|255] "" XXX
  SG_ NEW_SIGNAL_3 : 54|1@0+ (1,0) [0|7] "" XXX
@@ -219,8 +216,9 @@ BO_ 940 Door: 8 XXX
  SG_ DOOR_OPEN_BL : 34|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_BR : 35|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_TRUNK : 36|1@0+ (1,0) [0|1] "" XXX
- SG_ DAY_LIGHTS : 58|2@0+ (1,0) [0|1] "" XXX
  SG_ FOG_LIGHTS2 : 60|1@0+ (1,0) [0|1] "" XXX
+ SG_ Highbeam : 58|1@0+ (1,0) [0|1] "" XXX
+ SG_ Lowbeam : 57|1@1+ (1,0) [0|3] "" XXX
 
 BO_ 801 ES_DashStatus: 8 XXX
  SG_ NEW_SIGNAL_9 : 63|4@0+ (1,0) [0|15] "" XXX
@@ -373,8 +371,8 @@ CM_ SG_ 544 Counter "20hz";
 CM_ SG_ 545 Counter "20hz";
 CM_ SG_ 546 Counter "20hz";
 CM_ SG_ 554 Counter "20hz";
-CM_ SG_ 940 DAY_LIGHTS "01 = low beam, 11 = high beam";
 CM_ SG_ 940 FOG_LIGHTS2 "yellow fog light in the dash";
+CM_ SG_ 940 Highbeam "01 = low beam, 11 = high beam";
 CM_ SG_ 801 Counter "10hz";
 CM_ SG_ 802 Counter "10hz";
 CM_ SG_ 805 NEW_SIGNAL_3 "always 3";
