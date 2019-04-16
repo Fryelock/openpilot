@@ -31,7 +31,7 @@ def create_steering_control(packer, car_fingerprint, idx, steer1, byte2, checksu
 
   #print("checksum " + str(checksum) + " idx " + str(idx) + " steer1 " + str(steer1) + " byte2 " + str(byte2))
 
-  return packer.make_can_msg("ES_LKAS_2015", 0, values)
+  return packer.make_can_msg("ES_LKAS", 0, values)
 
 def create_openpilot_active(packer):
   values = {
