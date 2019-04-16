@@ -12,19 +12,19 @@ class CarControllerParams():
   def __init__(self, car_fingerprint):
     self.STEER_MAX = 2047              # max_steer 4095 
     self.STEER_STEP = 2                # how often we update the steer cmd
-    self.STEER_DELTA_UP = 25           # torque increase per refresh
-    self.STEER_DELTA_DOWN = 25         # torque decrease per refresh
+    self.STEER_DELTA_UP = 50           # torque increase per refresh
+    self.STEER_DELTA_DOWN = 50         # torque decrease per refresh
     if car_fingerprint == CAR.OUTBACK:
       self.STEER_DRIVER_ALLOWANCE = 2000   # allowed driver torque before start limiting
     else:
       self.STEER_DRIVER_ALLOWANCE = 250   # allowed driver torque before start limiting
-    self.STEER_DRIVER_MULTIPLIER = 1   # weight driver torque heavily
-    self.STEER_DRIVER_FACTOR = 1     # from dbc
+    self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
+    self.STEER_DRIVER_FACTOR = 60       # from subaru_safety
     
 
 
 class CarController(object):
-  def __init__(self, canbus, car_fingerprint):
+  def __init__(self, car_fingerprint):
     self.start_time = sec_since_boot()
     self.lkas_active = False
     self.steer_idx = 0
@@ -33,7 +33,6 @@ class CarController(object):
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
-    self.canbus = canbus
     self.params = CarControllerParams(car_fingerprint)
     print(DBC)
     self.packer_pt = CANPacker(DBC[car_fingerprint]['pt'])
@@ -45,7 +44,6 @@ class CarController(object):
 
     # Send CAN commands.
     can_sends = []
-    canbus = self.canbus
 
     ### STEER ###
 
@@ -75,7 +73,7 @@ class CarController(object):
       if not lkas_enabled:
           apply_steer = 0
 
-      if self.car_fingerprint == CAR.OUTBACK:
+      if (self.car_fingerprint == CAR.OUTBACK):
         
         if apply_steer != 0:
           chksm_steer = apply_steer * -1
@@ -107,7 +105,11 @@ class CarController(object):
         byte2 = steer2 + left3
 
         checksum = ((idx + steer1 + byte2) % 256) + 35
-      can_sends.append(subarucan.create_steering_control(self.packer_pt, canbus.powertrain, CS.CP.carFingerprint, idx, steer1, byte2, checksum))
+
+      print('enabled: ' + str(enabled) + ' chksm_steer: ' + str(chksm_steer) + ' apply_steer ' + str(apply_steer) + ' actuators.steer ' + str(actuators.steer))
+
+      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, steer1, byte2, checksum))
+      can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
 
 
     sendcan.send(can_list_to_can_capnp(can_sends, msgtype='sendcan').to_bytes())

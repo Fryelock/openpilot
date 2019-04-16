@@ -11,8 +11,10 @@ from selfdrive.loggerd.config import ROOT
 from common.params import Params
 from common.realtime import sec_since_boot
 from common.numpy_fast import clip
+from common.filter_simple import FirstOrderFilter
 
 ThermalStatus = log.ThermalData.ThermalStatus
+CURRENT_TAU = 2.   # 2s time constant
 
 def read_tz(x):
   with open("/sys/devices/virtual/thermal/thermal_zone%d/temp" % x) as f:
@@ -82,6 +84,7 @@ _FAN_SPEEDS = [0, 16384, 32768, 65535]
 # max fan speed only allowed if battery is hot
 _BAT_TEMP_THERSHOLD = 45.
 
+
 def handle_fan(max_cpu_temp, bat_temp, fan_speed):
   new_speed_h = next(speed for speed, temp_h in zip(_FAN_SPEEDS, _TEMP_THRS_H) if temp_h > max_cpu_temp)
   new_speed_l = next(speed for speed, temp_l in zip(_FAN_SPEEDS, _TEMP_THRS_L) if temp_l > max_cpu_temp)
@@ -100,6 +103,23 @@ def handle_fan(max_cpu_temp, bat_temp, fan_speed):
   set_eon_fan(fan_speed/16384)
 
   return fan_speed
+
+
+def check_car_battery_voltage(should_start, health, charging_disabled):
+
+  # charging disallowed if:
+  #   - there are health packets from panda, and;
+  #   - 12V battery voltage is too low, and;
+  #   - onroad isn't started
+  if charging_disabled and (health is None or health.health.voltage > 11800):
+    charging_disabled = False
+    os.system('echo "1" > /sys/class/power_supply/battery/charging_enabled')
+  elif not charging_disabled and health is not None and health.health.voltage < 11500 and not should_start:
+    charging_disabled = True
+    os.system('echo "0" > /sys/class/power_supply/battery/charging_enabled')
+
+  return charging_disabled
+
 
 class LocationStarter(object):
   def __init__(self):
@@ -131,6 +151,7 @@ class LocationStarter(object):
       cloudlog.event("location_start", location=location.to_dict() if location else None)
       return location.speed*3.6 > 10
 
+
 def thermald_thread():
   setup_eon_fan()
 
@@ -152,11 +173,16 @@ def thermald_thread():
   passive_starter = LocationStarter()
   thermal_status = ThermalStatus.green
   health_sock.RCVTIMEO = 1500
+  current_filter = FirstOrderFilter(0., CURRENT_TAU, 1.)
+
+  # Make sure charging is enabled
+  charging_disabled = False
+  os.system('echo "1" > /sys/class/power_supply/battery/charging_enabled')
 
   params = Params()
 
   while 1:
-    td = messaging.recv_sock(health_sock, wait=True)
+    health = messaging.recv_sock(health_sock, wait=True)
     location = messaging.recv_sock(location_sock)
     location = location.gpsLocation if location else None
     msg = read_thermal()
@@ -175,8 +201,10 @@ def thermald_thread():
       msg.thermal.batteryCurrent = int(f.read())
     with open("/sys/class/power_supply/battery/voltage_now") as f:
       msg.thermal.batteryVoltage = int(f.read())
-    with open("/sys/class/power_supply/usb/online") as f:
+    with open("/sys/class/power_supply/usb/present") as f:
       msg.thermal.usbOnline = bool(int(f.read()))
+
+    current_filter.update(msg.thermal.batteryCurrent / 1e6)
 
     # TODO: add car battery voltage check
     max_cpu_temp = max(msg.thermal.cpu0, msg.thermal.cpu1,
@@ -209,11 +237,11 @@ def thermald_thread():
     # **** starting logic ****
 
     # start constellation of processes when the car starts
-    ignition = td is not None and td.health.started
+    ignition = health is not None and health.health.started
     ignition_seen = ignition_seen or ignition
 
     # add voltage check for ignition
-    if not ignition_seen and td is not None and td.health.voltage > 13500:
+    if not ignition_seen and health is not None and health.health.voltage > 13500:
       ignition = True
 
     do_uninstall = params.get("DoUninstall") == "1"
@@ -226,7 +254,7 @@ def thermald_thread():
     passive = (params.get("Passive") == "1")
 
     # start on gps movement if we haven't seen ignition and are in passive mode
-    should_start = should_start or (not (ignition_seen and td) # seen ignition and panda is connected
+    should_start = should_start or (not (ignition_seen and health) # seen ignition and panda is connected
                                     and passive
                                     and passive_starter.update(started_ts, location))
 
@@ -262,6 +290,10 @@ def thermald_thread():
          started_seen and (sec_since_boot() - off_ts) > 60:
         os.system('LD_LIBRARY_PATH="" svc power shutdown')
 
+    charging_disabled = check_car_battery_voltage(should_start, health, charging_disabled)
+
+    msg.thermal.chargingDisabled = charging_disabled
+    msg.thermal.chargingError = current_filter.x > 1.0   # if current is > 1A out, then charger might be off
     msg.thermal.started = started_ts is not None
     msg.thermal.startedTs = int(1e9*(started_ts or 0))
 
@@ -273,7 +305,7 @@ def thermald_thread():
     if (count%60) == 0:
       cloudlog.event("STATUS_PACKET",
         count=count,
-        health=(td.to_dict() if td else None),
+        health=(health.to_dict() if health else None),
         location=(location.to_dict() if location else None),
         thermal=msg.to_dict())
 

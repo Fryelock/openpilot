@@ -1,4 +1,4 @@
-from selfdrive.car.hyundai.values import DBC
+from selfdrive.car.hyundai.values import DBC, STEER_THRESHOLD
 from selfdrive.can.parser import CANParser
 from selfdrive.config import Conversions as CV
 from common.kalman.simple_kalman import KF1D
@@ -17,11 +17,13 @@ def get_can_parser(CP):
     ("YAW_RATE", "ESP12", 0),
 
     ("CF_Gway_DrvSeatBeltInd", "CGW4", 1),
+
     ("CF_Gway_DrvSeatBeltSw", "CGW1", 0),
     ("CF_Gway_TSigLHSw", "CGW1", 0),
     ("CF_Gway_TurnSigLh", "CGW1", 0),
     ("CF_Gway_TSigRHSw", "CGW1", 0),
     ("CF_Gway_TurnSigRh", "CGW1", 0),
+    ("CF_Gway_ParkBrakeSw", "CGW1", 0),
 
     ("BRAKE_ACT", "EMS12", 0),
     ("PV_AV_CAN", "EMS12", 0),
@@ -42,7 +44,13 @@ def get_can_parser(CP):
     ("CF_Clu_AmpInfo", "CLU11", 0),
     ("CF_Clu_AliveCnt1", "CLU11", 0),
 
+    ("CF_Clu_InhibitD", "CLU15", 0),
+    ("CF_Clu_InhibitP", "CLU15", 0),
+    ("CF_Clu_InhibitN", "CLU15", 0),
+    ("CF_Clu_InhibitR", "CLU15", 0),
+
     ("CF_Lvr_Gear","LVR12",0),
+    ("CUR_GR", "TCU12",0),
 
     ("ACCEnable", "TCS13", 0),
     ("ACC_REQ", "TCS13", 0),
@@ -149,7 +157,7 @@ class CarState(object):
     self.brake_pressed = cp.vl["TCS13"]['DriverBraking']
     self.esp_disabled = cp.vl["TCS15"]['ESC_Off_Step']
 
-    self.park_brake = False
+    self.park_brake = cp.vl["CGW1"]['CF_Gway_ParkBrakeSw']
     self.main_on = True
     self.acc_active = cp.vl["SCC12"]['ACCMode'] != 0
     self.pcm_acc_status = int(self.acc_active)
@@ -159,22 +167,22 @@ class CarState(object):
     self.v_wheel_fr = cp.vl["WHL_SPD11"]['WHL_SPD_FR'] * CV.KPH_TO_MS
     self.v_wheel_rl = cp.vl["WHL_SPD11"]['WHL_SPD_RL'] * CV.KPH_TO_MS
     self.v_wheel_rr = cp.vl["WHL_SPD11"]['WHL_SPD_RR'] * CV.KPH_TO_MS
-    self.v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
+    v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
 
-    self.low_speed_lockout = self.v_wheel < 1.0
+    self.low_speed_lockout = v_wheel < 1.0
 
     # Kalman filter, even though Hyundai raw wheel speed is heaviliy filtered by default
-    if abs(self.v_wheel - self.v_ego) > 2.0:  # Prevent large accelerations when car starts at non zero speed
-      self.v_ego_x = np.matrix([[self.v_wheel], [0.0]])
+    if abs(v_wheel - self.v_ego) > 2.0:  # Prevent large accelerations when car starts at non zero speed
+      self.v_ego_kf.x = np.matrix([[v_wheel], [0.0]])
 
-    self.v_ego_raw = self.v_wheel
-    v_ego_x = self.v_ego_kf.update(self.v_wheel)
+    self.v_ego_raw = v_wheel
+    v_ego_x = self.v_ego_kf.update(v_wheel)
     self.v_ego = float(v_ego_x[0])
     self.a_ego = float(v_ego_x[1])
     is_set_speed_in_mph = int(cp.vl["CLU11"]["CF_Clu_SPEED_UNIT"])
     speed_conv = CV.MPH_TO_MS if is_set_speed_in_mph else CV.KPH_TO_MS
     self.cruise_set_speed = cp.vl["SCC11"]['VSetDis'] * speed_conv
-    self.standstill = not self.v_wheel > 0.1
+    self.standstill = not v_wheel > 0.1
 
     self.angle_steers = cp.vl["SAS11"]['SAS_Angle']
     self.angle_steers_rate = cp.vl["SAS11"]['SAS_Speed']
@@ -184,7 +192,7 @@ class CarState(object):
     self.left_blinker_flash = cp.vl["CGW1"]['CF_Gway_TurnSigLh']
     self.right_blinker_on = cp.vl["CGW1"]['CF_Gway_TSigRHSw']
     self.right_blinker_flash = cp.vl["CGW1"]['CF_Gway_TurnSigRh']
-    self.steer_override = abs(cp.vl["MDPS11"]['CR_Mdps_DrvTq']) > 100.
+    self.steer_override = abs(cp.vl["MDPS11"]['CR_Mdps_DrvTq']) > STEER_THRESHOLD
     self.steer_state = cp.vl["MDPS12"]['CF_Mdps_ToiActive'] #0 NOT ACTIVE, 1 ACTIVE
     self.steer_error = cp.vl["MDPS12"]['CF_Mdps_ToiUnavail']
     self.brake_error = 0
@@ -202,7 +210,7 @@ class CarState(object):
       self.pedal_gas = cp.vl["EMS12"]['TPS']
     self.car_gas = cp.vl["EMS12"]['TPS']
 
-    # Gear Selecton - This should be compatible with all Kia/Hyundai with Auto's
+    # Gear Selecton - This is not compatible with all Kia/Hyundai's, But is the best way for those it is compatible with
     gear = cp.vl["LVR12"]["CF_Lvr_Gear"]
     if gear == 5:
       self.gear_shifter = "drive"
@@ -214,6 +222,29 @@ class CarState(object):
       self.gear_shifter = "reverse"
     else:
       self.gear_shifter = "unknown"
+
+    # Gear Selection via Cluster - For those Kia/Hyundai which are not fully discovered, we can use the Cluster Indicator for Gear Selection, as this seems to be standard over all cars, but is not the preferred method.
+    if cp.vl["CLU15"]["CF_Clu_InhibitD"] == 1:
+      self.gear_shifter_cluster = "drive"
+    elif cp.vl["CLU15"]["CF_Clu_InhibitN"] == 1:
+      self.gear_shifter_cluster = "neutral"
+    elif cp.vl["CLU15"]["CF_Clu_InhibitP"] == 1:
+      self.gear_shifter_cluster = "park"
+    elif cp.vl["CLU15"]["CF_Clu_InhibitR"] == 1:
+      self.gear_shifter_cluster = "reverse"
+    else:
+      self.gear_shifter_cluster = "unknown"
+
+    # Gear Selecton via TCU12
+    gear2 = cp.vl["TCU12"]["CUR_GR"]
+    if gear2 == 0:
+      self.gear_tcu = "park"
+    elif gear2 == 14:
+      self.gear_tcu = "reverse"
+    elif gear2 > 0 and gear2 < 9:    # unaware of anything over 8 currently
+      self.gear_tcu = "drive"
+    else:
+      self.gear_tcu = "unknown"
 
     # save the entire LKAS11 and CLU11
     self.lkas11 = cp_cam.vl["LKAS11"]
