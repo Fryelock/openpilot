@@ -1233,8 +1233,8 @@ static void bb_ui_draw_UI(UIState *s) {
             tri_state_switch = 2;
   } else {
   	read (tri_state_fd, &buffer, 10);
-	tri_state_switch = buffer[0] -48;
-	close(tri_state_fd);
+	  tri_state_switch = buffer[0] -48;
+	  close(tri_state_fd);
   }
   if (tri_state_switch == 1) {
 	  const UIScene *scene = &s->scene;
