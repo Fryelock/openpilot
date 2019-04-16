@@ -87,7 +87,7 @@ class CarController(object):
         byte2 = steer2
         checksum = (idx + steer2 + steer1 + chksm_engage) % 256
         
-      if self.car_fingerprint in [CAR.IMPREZA, CAR.XV]
+      if self.car_fingerprint in [CAR.IMPREZA, CAR.XV]:
       
         #counts from 0 to 15 then back to 0 + 16 for enable bit
         if apply_steer != 0:
