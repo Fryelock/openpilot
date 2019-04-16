@@ -11,15 +11,15 @@ from selfdrive.can.packer import CANPacker
 class CarControllerParams():
   def __init__(self, car_fingerprint):
     self.STEER_MAX = 2047              # max_steer 4095 
-    self.STEER_STEP = 2                # how often we update the steer cmd
+    self.STEER_STEP = 1                # how often we update the steer cmd
     self.STEER_DELTA_UP = 25           # torque increase per refresh
     self.STEER_DELTA_DOWN = 25         # torque decrease per refresh
     if car_fingerprint == CAR.OUTBACK:
       self.STEER_DRIVER_ALLOWANCE = 2000   # allowed driver torque before start limiting
     else:
-      self.STEER_DRIVER_ALLOWANCE = 250   # allowed driver torque before start limiting
-    self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
-    self.STEER_DRIVER_FACTOR = 60       # from subaru_safety
+      self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
+    self.STEER_DRIVER_MULTIPLIER = 5   # weight driver torque heavily
+    self.STEER_DRIVER_FACTOR = 10      # from subaru_safety
     
 
 
