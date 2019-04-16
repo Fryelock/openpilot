@@ -106,7 +106,7 @@ class CarController(object):
 
         checksum = ((idx + steer1 + byte2) % 256) + 35
 
-      print('enabled: ' + str(enabled) + ' chksm_steer: ' + str(chksm_steer) + ' apply_steer ' + str(apply_steer) + ' actuators.steer ' + str(actuators.steer))
+      #print('enabled: ' + str(enabled) + ' chksm_steer: ' + str(chksm_steer) + ' apply_steer ' + str(apply_steer) + ' actuators.steer ' + str(actuators.steer))
 
       can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, steer1, byte2, checksum))
       can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
