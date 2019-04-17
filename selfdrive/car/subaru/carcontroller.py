@@ -76,7 +76,7 @@ class CarController(object):
       if (self.car_fingerprint == CAR.OUTBACK):
         
         if apply_steer != 0:
-          chksm_steer = apply_steer * -1
+          chksm_steer = -apply_steer
           chksm_engage = 1
         else:
           chksm_steer = 0
@@ -93,23 +93,27 @@ class CarController(object):
       
         #counts from 0 to 15 then back to 0 + 16 for enable bit
         
-        chksm_steer = apply_steer * -1
-        if chksm_steer != 0:
-          left3 = 32
+        if apply_steer != 0:
+          chksm_steer = -apply_steer
+          chksm_engage = 32
         else:
-          left3 = 0
+          chksm_steer = 0
+          chksm_engage = 0
 
-        idx = ((frame / P.STEER_STEP) % 16) + 16
+        idx = (frame / P.STEER_STEP) % 16
         steer2 = (chksm_steer >> 8) & 0x1F
         steer1 =  chksm_steer - (steer2 << 8)
-        byte2 = steer2 + left3
+        byte2 = steer2 + chksm_engage
 
-        checksum = ((idx + steer1 + byte2) % 256) + 35
+        checksum = ((idx + 16 + steer1 + byte2 + 35) % 256)
+
+        # generate op_active can msg for global to trigger panda es_lkas filtering
+        can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
 
       #print('enabled: ' + str(enabled) + ' chksm_steer: ' + str(chksm_steer) + ' apply_steer ' + str(apply_steer) + ' actuators.steer ' + str(actuators.steer))
 
-      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, steer1, byte2, checksum))
-      can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
+      # generate es_lkas steering command at 100Hz
+      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, apply_steer, checksum))
 
-
+    # send generated can messages
     sendcan.send(can_list_to_can_capnp(can_sends, msgtype='sendcan').to_bytes())
