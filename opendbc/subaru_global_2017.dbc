@@ -118,17 +118,11 @@ BO_ 313 Brake_Pedal: 8 XXX
  SG_ Brake_Pedal : 36|12@1+ (1,0) [0|65535] "" XXX
 
 BO_ 290 ES_LKAS: 8 XXX
- SG_ Byte3 : 31|8@0+ (1,0) [0|255] "" XXX
- SG_ Byte2 : 23|8@0+ (1,0) [-10000|255] "" XXX
- SG_ Byte1 : 15|8@0+ (1,0) [0|255] "" XXX
- SG_ Checksum : 7|8@0+ (1,0) [0|255] "" XXX
-
-CM_ BO_ 290 ES_LKAS: 8 XXX
-CM_  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
-CM_  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
-CM_  SG_ LKAS_Output : 16|13@1- (-1,0) [0|3] "" XXX
-CM_  SG_ LKAS_Request : 29|1@0+ (1,0) [0|3] "" XXX
-CM_  SG_ SET_1 : 12|1@0+ (1,0) [0|3] "" XXX
+  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
+  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
+  SG_ LKAS_Output : 16|13@1- (-1,0) [-2047|2047] "" XXX
+  SG_ LKAS_Request : 29|1@1+ (1,0) [0|3] "" XXX
+  SG_ SET_1 : 12|1@1+ (1,0) [0|3] "" XXX
 
 BO_ 722 NEW_MSG_10: 8 XXX
  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
