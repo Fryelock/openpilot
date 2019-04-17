@@ -25,6 +25,6 @@ STEER_THRESHOLD = {
 
 DBC = {
   CAR.IMPREZA: dbc_dict('subaru_global_2017', None),
-  CAR.XV2018: dbc_dict('subaru_global_2017', None),
+  CAR.XV: dbc_dict('subaru_global_2017', None),
   CAR.OUTBACK: dbc_dict('subaru_outback_2015_eyesight', None),
 }
