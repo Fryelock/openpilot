@@ -11,22 +11,22 @@ from selfdrive.car.subaru.values import CAR, DBC
 
 # SG_ signal : start bit|num bits@little endian(1) unsigned(+) (scaling) [min|max] "units"
 
-def create_steering_control(packer, car_fingerprint, idx, steer, checksum):
+def create_steering_control(packer, car_fingerprint, idx, steer1, byte2, checksum):
   if car_fingerprint == CAR.OUTBACK:
     values = {
-      "Counter": idx,
-      "LKAS_Output": steer,
-      "LKAS_Request": 1 if steer != 0 else 0,
+      "Byte0": idx,
+      "Byte1": steer1,
+      "Byte2": byte2,
+      "Byte3": 1 if steer1 + byte2 != 0 else 0,
       "Checksum": checksum
     }
     
   if car_fingerprint in [CAR.IMPREZA, CAR.XV]:
     values = {
-      "Counter": idx,
-      "LKAS_Output": steer,
-      "LKAS_Request": 1 if steer != 0 else 0,
-      "SET_1": 1,
-      "Checksum": checksum
+      "Checksum": checksum,
+      "Byte1": idx,
+      "Byte2": steer1,
+      "Byte3": byte2
     }
 
   #print("checksum " + str(checksum) + " idx " + str(idx) + " steer1 " + str(steer1) + " byte2 " + str(byte2))

@@ -73,38 +73,42 @@ class CarController(object):
       if not lkas_enabled:
           apply_steer = 0
 
-      if self.car_fingerprint == CAR.OUTBACK:
+      if (self.car_fingerprint == CAR.OUTBACK):
         
         if apply_steer != 0:
+          chksm_steer = apply_steer * -1
           chksm_engage = 1
         else:
+          chksm_steer = 0
           chksm_engage = 0
         
         #counts from 0 to 7 then back to 0
         idx = (frame / P.STEER_STEP) % 8
-        steer2 = (apply_steer >> 8) & 0x1F
-        steer1 =  apply_steer - (steer2 << 8)
+        steer2 = (chksm_steer >> 8) & 0x1F
+        steer1 =  chksm_steer - (steer2 << 8)
         byte2 = steer2
         checksum = (idx + steer2 + steer1 + chksm_engage) % 256
         
       if self.car_fingerprint in [CAR.IMPREZA, CAR.XV]:
       
         #counts from 0 to 15 then back to 0 + 16 for enable bit
-        if apply_steer != 0:
-          chksm_engage = 32
+        
+        chksm_steer = apply_steer * -1
+        if chksm_steer != 0:
+          left3 = 32
         else:
-          chksm_engage = 0
+          left3 = 0
 
-        idx = ((frame / P.STEER_STEP) % 16)
-        steer2 = (apply_steer >> 8) & 0x1F
-        steer1 =  apply_steer - (steer2 << 8)
-        byte2 = steer2 + chksm_engage
+        idx = ((frame / P.STEER_STEP) % 16) + 16
+        steer2 = (chksm_steer >> 8) & 0x1F
+        steer1 =  chksm_steer - (steer2 << 8)
+        byte2 = steer2 + left3
 
-        checksum = ((idx + 16 + steer1 + byte2 + 35) % 256)
+        checksum = ((idx + steer1 + byte2) % 256) + 35
 
       #print('enabled: ' + str(enabled) + ' chksm_steer: ' + str(chksm_steer) + ' apply_steer ' + str(apply_steer) + ' actuators.steer ' + str(actuators.steer))
 
-      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, apply_steer, checksum))
+      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, steer1, byte2, checksum))
       can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
 
 

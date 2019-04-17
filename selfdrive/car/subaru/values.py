@@ -1,9 +1,9 @@
 from selfdrive.car import dbc_dict
 
 class CAR:
-  OUTBACK = "SUBARU OUTBACK PREMIUM 2015"
   IMPREZA = "SUBARU IMPREZA LIMITED 2019"
   XV = "SUBARU XV ACTIVE 2018"
+  OUTBACK = "SUBARU OUTBACK PREMIUM 2015"
 
 FINGERPRINTS = {
   CAR.IMPREZA: [{
@@ -25,6 +25,6 @@ STEER_THRESHOLD = {
 
 DBC = {
   CAR.IMPREZA: dbc_dict('subaru_global_2017', None),
-  CAR.XV: dbc_dict('subaru_global_2017', None),
+  CAR.XV2018: dbc_dict('subaru_global_2017', None),
   CAR.OUTBACK: dbc_dict('subaru_outback_2015_eyesight', None),
 }
