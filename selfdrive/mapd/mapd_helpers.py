@@ -63,8 +63,18 @@ def parse_speed_tags(tags):
 
       start, end = cond.split('-')
       now = datetime.now()  # TODO: Get time and timezone from gps fix so this will work correctly on replays
-      start = datetime.strptime(start, "%H:%M").replace(year=now.year, month=now.month, day=now.day)
-      end = datetime.strptime(end, "%H:%M").replace(year=now.year, month=now.month, day=now.day)
+      # TODO: add support for other and multiple conditions
+      # https://wiki.openstreetmap.org/w/index.php?title=Conditional_restrictions&uselang=en-US
+      if ':' in start:
+        # assume hh:mm-hh:mm format condition
+        start = datetime.strptime(start, "%H:%M").replace(year=now.year, month=now.month, day=now.day)
+        end = datetime.strptime(end, "%H:%M").replace(year=now.year, month=now.month, day=now.day)
+      else:
+        # assume month-month format condition
+        start = datetime.strptime(start, "%b").replace(year=now.year, day=now.day)
+        end = datetime.strptime(end, "%b").replace(year=now.year, day=now.day)
+        if (start > end):
+          end = end.replace(now.year+1)
 
       if start <= now <= end:
         max_speed = max_speed_cond
