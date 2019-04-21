@@ -50,8 +50,12 @@ class CarInterface(object):
     ret.steerLimitAlert = True
     ret.enableCamera = True
 
+    # testing fix for es disable on 30 > 40km/h acceleration
+    ret.minEnableSpeed = 8.3 # m/s, 30km/h
+    ret.minSteerSpeed = 11.1 # m/s, 40km/h
+
     std_cargo = 136
-    ret.steerRateCost = 0.7
+    ret.steerRateCost = 0.7 # Lateral MPC cost on steering rate
 
     if candidate in [CAR.IMPREZA, CAR.XV]:
       ret.mass = 1568 + std_cargo
@@ -60,9 +64,11 @@ class CarInterface(object):
       ret.steerRatio = 15
       tire_stiffness_factor = 1.0
       ret.steerActuatorDelay = 0.4   # end-to-end angle controller
+      # Kp and Ki for the lateral control
       ret.steerKf = 0.00005
-      ret.steerKiBP, ret.steerKpBP = [[0., 20.], [0., 20.]]
-      ret.steerKpV, ret.steerKiV = [[0.2, 0.3], [0.02, 0.03]]
+      # 0-30, 30-70, 70+ [km/h]
+      ret.steerKiBP, ret.steerKpBP = [[0., 8., 20.], [0., 8., 20.]]
+      ret.steerKpV, ret.steerKiV = [[0.2, 0.2, 0.3], [0.02, 0.02, 0.03]]
       ret.steerMaxBP = [0.] # m/s
       ret.steerMaxV = [1.]
 
