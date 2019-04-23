@@ -12,6 +12,7 @@ def get_powertrain_can_parser(CP):
     ("Steering_Angle", "Steering_Torque", 0),
     ("Cruise_On", "CruiseControl", 0),
     ("Cruise_Activated", "CruiseControl", 0),
+    ("ES_Fault", "ES_DashStatus", 0),
     ("Brake_Pedal", "Brake_Pedal", 0),
     ("Throttle_Pedal", "Throttle", 0),
     ("LEFT_BLINKER", "Dashlights", 0),
@@ -101,4 +102,7 @@ class CarState(object):
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
+    # ES off dash warning
+    steer_state = cp.vl["ES_DashStatus"]["ES_Fault"]
+    self.steer_error = (steer_state == 1 and self.v_ego > self.CP.minSteerSpeed)
 

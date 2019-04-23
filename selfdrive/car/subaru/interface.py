@@ -19,6 +19,7 @@ class CarInterface(object):
     self.frame = 0
     self.can_invalid_count = 0
     self.acc_active_prev = 0
+    self.low_speed_alert = False
 
     # *** init the major players ***
     self.CS = CarState(CP)
@@ -50,8 +51,12 @@ class CarInterface(object):
     ret.steerLimitAlert = True
     ret.enableCamera = True
 
+    # disable lateral below 40kph
+    ret.minSteerSpeed = 11.1  # m/s
+    # Lateral MPC cost on steering rate, higher = slower steering changes
+    ret.steerRateCost = 0.7 
+
     std_cargo = 136
-    ret.steerRateCost = 0.7 # Lateral MPC cost on steering rate
 
     if candidate in [CAR.IMPREZA, CAR.XV]:
       ret.mass = 1568 + std_cargo
@@ -141,6 +146,8 @@ class CarInterface(object):
     # timer resets when the user uses the steering wheel.
     ret.steeringPressed = self.CS.steer_override
     ret.steeringTorque = self.CS.steer_torque_driver
+    ret.steeringRequested = self.CC.apply_steer
+    ret.steeringActuators = self.CC.actuators_steer
 
     #print('steeringPressed ' + str(ret.steeringPressed))
     #print('steeringAngle ' + str(ret.steeringAngle))
@@ -151,6 +158,7 @@ class CarInterface(object):
     ret.leftBlinker = self.CS.left_blinker_on
     ret.rightBlinker = self.CS.right_blinker_on
     ret.seatbeltUnlatched = self.CS.seatbelt_unlatched
+    self.low_speed_alert = (ret.vEgo < self.CP.minSteerSpeed)
 
     buttonEvents = []
 
@@ -182,6 +190,12 @@ class CarInterface(object):
 
     if ret.seatbeltUnlatched:
       events.append(create_event('seatbeltNotLatched', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+
+    if self.CS.steer_error:
+      events.append(create_event('steerUnavailable', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE, ET.PERMANENT]))
+
+    if self.low_speed_alert:
+      events.append(create_event('belowSteerSpeed', [ET.WARNING]))
 
     if self.CS.acc_active and not self.acc_active_prev:
       events.append(create_event('pcmEnable', [ET.ENABLE]))

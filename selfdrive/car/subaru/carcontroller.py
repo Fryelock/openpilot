@@ -30,6 +30,8 @@ class CarController(object):
     self.steer_idx = 0
     self.apply_steer_last = 0
     self.car_fingerprint = car_fingerprint
+    self.apply_steer = 0
+    self.actuators_steer = 0
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
@@ -68,7 +70,7 @@ class CarController(object):
       self.apply_steer_last = apply_steer
       
       
-      lkas_enabled = enabled and not CS.steer_not_allowed and CS.v_ego >= 10.
+      lkas_enabled = enabled and not CS.steer_error
 
       if not lkas_enabled:
           apply_steer = 0
@@ -114,6 +116,9 @@ class CarController(object):
 
       # generate es_lkas steering command at 100Hz
       can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, apply_steer, checksum))
+      # record values for tuning dashboard
+      self.apply_steer = apply_steer
+      self.actuators_steer = actuators.steer
 
     # send generated can messages
     sendcan.send(can_list_to_can_capnp(can_sends, msgtype='sendcan').to_bytes())

@@ -105,6 +105,8 @@ struct CarState {
   steeringRate @15 :Float32;   # deg/s
   steeringTorque @8 :Float32;  # TODO: standardize units
   steeringPressed @9 :Bool;    # if the user is using the steering wheel
+  steeringRequested @26 :Float32; # apply_steer
+  steeringActuators @27 :Float32; # actuators.steer
 
   # cruise state
   cruiseState @10 :CruiseState;
