@@ -20,10 +20,6 @@ static void subaru_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
   int bus_number = (to_push->RDTR >> 4) & 0xFF;
   uint32_t addr = to_push->RIR >> 21;
 
-  if (addr == 0x100) {
-    subaru_op_active = 1;
-  }
-
   if ((addr == 0x119) && (bus_number == 0)){
     int torque_driver_new = ((to_push->RDLR >> 16) & 0x7FF);
     torque_driver_new = to_signed(torque_driver_new, 11);
@@ -45,6 +41,11 @@ static void subaru_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
 
 static int subaru_tx_hook(CAN_FIFOMailBox_TypeDef *to_send) {
   uint32_t addr = to_send->RIR >> 21;
+
+  // subaru_op_active presence check
+  if (addr == 0x100) {
+    subaru_op_active = 1;
+  }
 
   // steer cmd checks
   if (addr == 0x122) {
