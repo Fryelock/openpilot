@@ -13,11 +13,16 @@ int subaru_rt_torque_last = 0;
 int subaru_desired_torque_last = 0;
 uint32_t subaru_ts_last = 0;
 struct sample_t subaru_torque_driver;         // last few driver torques measured
+int subaru_op_active = 0;
 
 
 static void subaru_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
   int bus_number = (to_push->RDTR >> 4) & 0xFF;
   uint32_t addr = to_push->RIR >> 21;
+
+  if (addr == 0x100) {
+    subaru_op_active = 1;
+  }
 
   if ((addr == 0x119) && (bus_number == 0)){
     int torque_driver_new = ((to_push->RDLR >> 16) & 0x7FF);
@@ -100,18 +105,20 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
 
   // forward CAN 0 > 1
   if (bus_num == 0) {
-    return 2; // ES CAN
+    return 1; // ES CAN
   }
   // forward CAN 1 > 0, except ES_LKAS
-  else if (bus_num == 2) {
+  else if (bus_num == 1) {
 
     // outback 2015
     if (addr == 0x164) {
       return -1;
     }
     // global platform
-    if (addr == 0x122) {
-      return -1;
+    if (subaru_op_active) {
+      if (addr == 0x122) {
+       return -1;
+      }
     }
 
     return 0; // Main CAN

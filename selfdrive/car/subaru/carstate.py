@@ -12,6 +12,7 @@ def get_powertrain_can_parser(CP):
     ("Steering_Angle", "Steering_Torque", 0),
     ("Cruise_On", "CruiseControl", 0),
     ("Cruise_Activated", "CruiseControl", 0),
+    ("ES_Fault", "ES_DashStatus", 0),
     ("Brake_Pedal", "Brake_Pedal", 0),
     ("Throttle_Pedal", "Throttle", 0),
     ("LEFT_BLINKER", "Dashlights", 0),
@@ -95,6 +96,7 @@ class CarState(object):
     self.acc_active = cp.vl["CruiseControl"]['Cruise_Activated']
     self.main_on = cp.vl["CruiseControl"]['Cruise_On']
     self.steer_override = abs(self.steer_torque_driver) > STEER_THRESHOLD[self.car_fingerprint]
+    self.steer_error = cp.vl["ES_DashStatus"]["ES_Fault"] == 1
     self.angle_steers = cp.vl["Steering_Torque"]['Steering_Angle']
     self.door_open = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],

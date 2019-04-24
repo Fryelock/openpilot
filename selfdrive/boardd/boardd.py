@@ -27,6 +27,7 @@ SAFETY_NOOUTPUT = 0
 SAFETY_HONDA = 1
 SAFETY_TOYOTA = 2
 SAFETY_CHRYSLER = 9
+SAFETY_SUBARU = 10
 SAFETY_TOYOTA_NOLIMITS = 0x1336
 SAFETY_ALLOUTPUT = 0x1337
 
@@ -108,7 +109,7 @@ def can_init():
     if device.getVendorID() == 0xbbaa and device.getProductID() == 0xddcc:
       handle = device.open()
       handle.claimInterface(0)
-      handle.controlWrite(0x40, 0xdc, SAFETY_ALLOUTPUT, 0, b'')
+      handle.controlWrite(0x40, 0xdc, SAFETY_SUBARU, 0, b'')
 
   if handle is None:
     cloudlog.warn("CAN NOT FOUND")
@@ -120,7 +121,7 @@ def can_init():
 def boardd_mock_loop():
   context = zmq.Context()
   can_init()
-  handle.controlWrite(0x40, 0xdc, SAFETY_ALLOUTPUT, 0, b'')
+  handle.controlWrite(0x40, 0xdc, SAFETY_SUBARU, 0, b'')
 
   logcan = messaging.sub_sock(context, service_list['can'].port)
   sendcan = messaging.pub_sock(context, service_list['sendcan'].port)
@@ -188,6 +189,9 @@ def boardd_loop(rate=200):
     # recv @ 100hz
     can_msgs = can_recv()
 
+    #for m in can_msgs:
+    #  print "R:",hex(m[0]), str(m[2]).encode("hex")
+
     # publish to logger
     # TODO: refactor for speed
     if len(can_msgs) > 0:
@@ -197,7 +201,11 @@ def boardd_loop(rate=200):
     # send can if we have a packet
     tsc = messaging.recv_sock(sendcan)
     if tsc is not None:
-      can_send_many(can_capnp_to_can_list(tsc.sendcan))
+      cl = can_capnp_to_can_list(tsc.sendcan)
+      #for m in cl:
+      #  print "S:",hex(m[0]), str(m[2]).encode("hex")
+      can_send_many(cl)
+      #can_send_many(can_capnp_to_can_list(tsc.sendcan))
 
     rk.keep_time()
 

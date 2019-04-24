@@ -140,6 +140,10 @@ class CarInterface(object):
     ret.steeringPressed = self.CS.steer_override
     ret.steeringTorque = self.CS.steer_torque_driver
 
+    # steering values for tuning dashboard
+    ret.steeringRequested = self.CC.apply_steer
+    ret.steeringActuators = self.CC.actuators_steer
+
     # cruise state
     ret.cruiseState.available = bool(self.CS.main_on)
     ret.leftBlinker = self.CS.left_blinker_on
@@ -177,6 +181,9 @@ class CarInterface(object):
     if ret.seatbeltUnlatched:
       events.append(create_event('seatbeltNotLatched', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
 
+    if self.CS.steer_error:
+      events.append(create_event('steerUnavailable', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE, ET.PERMANENT]))
+ 
     if self.CS.acc_active and not self.acc_active_prev:
       events.append(create_event('pcmEnable', [ET.ENABLE]))
     if not self.CS.acc_active:
