@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 from common.numpy_fast import clip, interp
 from common.realtime import sec_since_boot
 from selfdrive.config import Conversions as CV
 from selfdrive.boardd.boardd import can_list_to_can_capnp
 from selfdrive.car.subaru.carstate import CarState, get_powertrain_can_parser
+=======
+#from common.numpy_fast import clip
+from common.realtime import sec_since_boot
+from selfdrive.boardd.boardd import can_list_to_can_capnp
+from selfdrive.car import apply_std_steer_torque_limits
+>>>>>>> devel
 from selfdrive.car.subaru import subarucan
 from selfdrive.car.subaru.values import CAR, DBC
 from selfdrive.can.packer import CANPacker
@@ -10,6 +17,7 @@ from selfdrive.can.packer import CANPacker
 
 class CarControllerParams():
   def __init__(self, car_fingerprint):
+<<<<<<< HEAD
     self.STEER_MAX = 2047              # max_steer 4095 
     self.STEER_STEP = 1                # how often we update the steer cmd
     self.STEER_DELTA_UP = 25           # torque increase per refresh
@@ -18,6 +26,17 @@ class CarControllerParams():
     self.STEER_DRIVER_MULTIPLIER = 5   # weight driver torque heavily
     self.STEER_DRIVER_FACTOR = 10      # from subaru_safety
     
+=======
+    self.STEER_MAX = 2047              # max_steer 4095
+    self.STEER_STEP = 2                # how often we update the steer cmd
+    self.STEER_DELTA_UP = 50           # torque increase per refresh, 0.8s to max
+    self.STEER_DELTA_DOWN = 70         # torque decrease per refresh
+    if car_fingerprint == CAR.IMPREZA:
+      self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
+      self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
+      self.STEER_DRIVER_FACTOR = 1     # from dbc
+
+>>>>>>> devel
 
 
 class CarController(object):
@@ -29,14 +48,16 @@ class CarController(object):
     self.car_fingerprint = car_fingerprint
     self.apply_steer = 0
     self.actuators_steer = 0
+    self.es_distance_cnt = -1
+    self.es_lkas_cnt = -1
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
     self.params = CarControllerParams(car_fingerprint)
     print(DBC)
-    self.packer_pt = CANPacker(DBC[car_fingerprint]['pt'])
+    self.packer = CANPacker(DBC[car_fingerprint]['pt'])
 
-  def update(self, sendcan, enabled, CS, frame, actuators):
+  def update(self, sendcan, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert):
     """ Controls thread """
 
     P = self.params
@@ -47,57 +68,35 @@ class CarController(object):
     ### STEER ###
 
     if (frame % P.STEER_STEP) == 0:
-    
-      final_steer = actuators.steer if enabled else 0.
-      apply_steer = final_steer * P.STEER_MAX
-      # limits due to driver torque
-      driver_max_torque = P.STEER_MAX + (P.STEER_DRIVER_ALLOWANCE + CS.steer_torque_driver * P.STEER_DRIVER_FACTOR) * P.STEER_DRIVER_MULTIPLIER
-      driver_min_torque = -P.STEER_MAX + (-P.STEER_DRIVER_ALLOWANCE + CS.steer_torque_driver * P.STEER_DRIVER_FACTOR) * P.STEER_DRIVER_MULTIPLIER
-      max_steer_allowed = max(min(P.STEER_MAX, driver_max_torque), 0)
-      min_steer_allowed = min(max(-P.STEER_MAX, driver_min_torque), 0)
-      apply_steer = clip(apply_steer, min_steer_allowed, max_steer_allowed)
 
-      # slow rate if steer torque increases in magnitude
-      if self.apply_steer_last > 0:
-        apply_steer = clip(apply_steer, max(self.apply_steer_last - P.STEER_DELTA_DOWN, -P.STEER_DELTA_UP), self.apply_steer_last + P.STEER_DELTA_UP)
-      else:
-        apply_steer = clip(apply_steer, self.apply_steer_last - P.STEER_DELTA_UP, min(self.apply_steer_last + P.STEER_DELTA_DOWN, P.STEER_DELTA_UP))
+
+      final_steer = actuators.steer if enabled else 0.
+      apply_steer = int(round(final_steer * P.STEER_MAX))
+
+      # limits due to driver torque
 
       apply_steer = int(round(apply_steer))
-      self.apply_steer_last = apply_steer
-      
-      
-      lkas_enabled = enabled and not CS.steer_error
+      apply_steer = apply_std_steer_torque_limits(apply_steer, self.apply_steer_last, CS.steer_torque_driver, P)
+
+      lkas_enabled = enabled and not CS.steer_not_allowed
 
       if not lkas_enabled:
-          apply_steer = 0
+        apply_steer = 0
 
-      if self.car_fingerprint in [CAR.IMPREZA, CAR.XV]:
-      
-        #counts from 0 to 15 then back to 0 + 16 for enable bit
-        
-        if apply_steer != 0:
-          chksm_steer = -apply_steer
-          chksm_engage = 32
-        else:
-          chksm_steer = 0
-          chksm_engage = 0
+      can_sends.append(subarucan.create_steering_control(self.packer, CS.CP.carFingerprint, apply_steer, frame, P.STEER_STEP))
 
-        idx = (frame / P.STEER_STEP) % 16
-        steer2 = (chksm_steer >> 8) & 0x1F
-        steer1 =  chksm_steer - (steer2 << 8)
-        byte2 = steer2 + chksm_engage
+      self.apply_steer_last = apply_steer
 
-        checksum = ((idx + 16 + steer1 + byte2 + 35) % 256)
+    # generate 1Hz op_active msg for global to enable panda es filtering
+    if (frame % 100) == 0:
+      can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
 
-        # generate op_active can msg for global to trigger panda es_lkas filtering
-        can_sends.append(subarucan.create_openpilot_active(self.packer_pt))
+    if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
+      can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, pcm_cancel_cmd))
+      self.es_distance_cnt = CS.es_distance_msg["Counter"]
 
-      # generate es_lkas steering command at 100Hz
-      can_sends.append(subarucan.create_steering_control(self.packer_pt, CS.CP.carFingerprint, idx, apply_steer, checksum))
-      # record values for tuning dashboard
-      self.apply_steer = apply_steer
-      self.actuators_steer = actuators.steer
+    if self.es_lkas_cnt != CS.es_lkas_msg["Counter"]:
+      can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert))
+      self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
-    # send generated can messages
     sendcan.send(can_list_to_can_capnp(can_sends, msgtype='sendcan').to_bytes())

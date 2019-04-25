@@ -2497,7 +2497,7 @@ int is_leon() {
   FILE *fp;
   char str[MAXCHAR];
   char* filename = "/proc/cmdline";
-  fp = fopen(filename, "r");
+   fp = fopen(filename, "r");
   if (fp == NULL){
     printf("Could not open file %s",filename);
     return 0;
