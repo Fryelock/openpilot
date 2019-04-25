@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-from common.numpy_fast import clip, interp
-from common.realtime import sec_since_boot
-from selfdrive.config import Conversions as CV
-from selfdrive.boardd.boardd import can_list_to_can_capnp
-from selfdrive.car.subaru.carstate import CarState, get_powertrain_can_parser
-=======
 #from common.numpy_fast import clip
 from common.realtime import sec_since_boot
 from selfdrive.boardd.boardd import can_list_to_can_capnp
 from selfdrive.car import apply_std_steer_torque_limits
->>>>>>> devel
 from selfdrive.car.subaru import subarucan
 from selfdrive.car.subaru.values import CAR, DBC
 from selfdrive.can.packer import CANPacker
@@ -17,16 +9,6 @@ from selfdrive.can.packer import CANPacker
 
 class CarControllerParams():
   def __init__(self, car_fingerprint):
-<<<<<<< HEAD
-    self.STEER_MAX = 2047              # max_steer 4095 
-    self.STEER_STEP = 1                # how often we update the steer cmd
-    self.STEER_DELTA_UP = 25           # torque increase per refresh
-    self.STEER_DELTA_DOWN = 25         # torque decrease per refresh
-    self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
-    self.STEER_DRIVER_MULTIPLIER = 5   # weight driver torque heavily
-    self.STEER_DRIVER_FACTOR = 10      # from subaru_safety
-    
-=======
     self.STEER_MAX = 2047              # max_steer 4095
     self.STEER_STEP = 2                # how often we update the steer cmd
     self.STEER_DELTA_UP = 50           # torque increase per refresh, 0.8s to max
@@ -36,7 +18,6 @@ class CarControllerParams():
       self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
       self.STEER_DRIVER_FACTOR = 1     # from dbc
 
->>>>>>> devel
 
 
 class CarController(object):
@@ -69,7 +50,6 @@ class CarController(object):
 
     if (frame % P.STEER_STEP) == 0:
 
-
       final_steer = actuators.steer if enabled else 0.
       apply_steer = int(round(final_steer * P.STEER_MAX))
 
@@ -86,6 +66,9 @@ class CarController(object):
       can_sends.append(subarucan.create_steering_control(self.packer, CS.CP.carFingerprint, apply_steer, frame, P.STEER_STEP))
 
       self.apply_steer_last = apply_steer
+      # for dashboard
+      self.apply_steer = apply_steer
+      self.actuators_steer = actuators.steer
 
     # generate 1Hz op_active msg for global to enable panda es filtering
     if (frame % 100) == 0:
