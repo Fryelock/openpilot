@@ -51,12 +51,12 @@ def create_es_lkas_state(packer, es_lkas_msg, visual_alert, left_line, right_lin
 
   if left_line:
     values["LKAS_Left_Line_Visible"] = 1
-  else
+  else:
     values["LKAS_Left_Line_Visible"] = 0
 
   if right_line:
     values["LKAS_Right_Line_Visible"] = 1
-  else
+  else:
     values["LKAS_Right_Line_Visible"] = 0
 
   values["Checksum"] = subaru_checksum(packer, values, 802)
