@@ -143,10 +143,7 @@ BO_ 545 ES_Distance: 8 XXX
  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
  SG_ Signal1 : 12|20@1+ (1,0) [0|15] "" XXX
- SG_ Car_Follow : 32|1@1+ (1,0) [0|1] "" XXX
- SG_ Brake_Pedal : 33|1@1+ (1,0) [0|1] "" XXX
- SG_ LKAS_ENABLE_BTN : 34|1@1+ (1,0) [0|1] "" XXX
- SG_ Signal2 : 35|21@1+ (1,0) [0|15] "" XXX
+ SG_ Signal2 : 32|24@1+ (1,0) [0|15] "" XXX
  SG_ Main : 56|1@1+ (1,0) [0|1] "" XXX
  SG_ Signal3 : 57|7@1+ (1,0) [0|1] "" XXX
 
