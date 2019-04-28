@@ -144,7 +144,7 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
 }
 
 const safety_hooks subaru_hooks = {
-  .init = subaru_init,
+  .init = nooutput_init,
   .rx = subaru_rx_hook,
   .tx = subaru_tx_hook,
   .tx_lin = nooutput_tx_lin_hook,
