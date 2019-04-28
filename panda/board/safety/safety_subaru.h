@@ -120,13 +120,19 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
     if (addr == 0x164) {
       return -1;
     }
+
     // global platform
     if (subaru_op_active) {
+      // ES_LKAS
       if (addr == 0x122) {
         return -1;
       }
-       // ES Distance
+       // ES_Distance
       if (addr == 545) {
+        return -1;
+      }
+      // ES_LKAS_State
+      if (addr == 802) {
         return -1;
       }
     }
