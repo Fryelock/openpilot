@@ -101,7 +101,7 @@ class CarState(object):
     self.v_ego = 0.
 
     params = Params()
-    self.is_metric = params.get("IsMetric") == 1
+    self.is_metric = params.get("IsMetric") == "1"
 
   def update(self, cp, cp_cam):
 
