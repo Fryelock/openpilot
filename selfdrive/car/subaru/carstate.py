@@ -101,7 +101,7 @@ class CarState(object):
     self.v_ego = 0.
 
     params = Params()
-    is_metric = params.get("IsMetric") == 1
+    self.is_metric = params.get("IsMetric") == 1
 
   def update(self, cp, cp_cam):
 
@@ -119,7 +119,7 @@ class CarState(object):
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
     self.v_wheel_rr = cp.vl["Wheel_Speeds"]['RR'] * CV.KPH_TO_MS
 
-    if is_metric:
+    if self.is_metric:
       self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]["Cruise_Set_Speed"]
     else:
       self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]["Cruise_Set_Speed"] * CV.MPH_TO_KPH
