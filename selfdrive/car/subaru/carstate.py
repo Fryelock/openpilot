@@ -4,7 +4,6 @@ from common.kalman.simple_kalman import KF1D
 from selfdrive.config import Conversions as CV
 from selfdrive.can.parser import CANParser
 from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD
-from common.params import Params
 
 def get_powertrain_can_parser(CP):
   # this function generates lists for signal, messages and initial values
@@ -14,6 +13,7 @@ def get_powertrain_can_parser(CP):
     ("Steering_Angle", "Steering_Torque", 0),
     ("Cruise_On", "CruiseControl", 0),
     ("Cruise_Activated", "CruiseControl", 0),
+    ("Metric_Units", "CruiseControl", 0),
     ("ES_Fault", "ES_DashStatus", 0),
     ("Brake_Pedal", "Brake_Pedal", 0),
     ("Throttle_Pedal", "Throttle", 0),
@@ -100,8 +100,7 @@ class CarState(object):
                          K=np.matrix([[0.12287673], [0.29666309]]))
     self.v_ego = 0.
 
-    params = Params()
-    self.is_metric = params.get("IsMetric") == "1"
+    self.is_metric = 0
 
   def update(self, cp, cp_cam):
 
@@ -143,6 +142,7 @@ class CarState(object):
     self.seatbelt_unlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
     self.steer_torque_driver = cp.vl["Steering_Torque"]['Steer_Torque_Sensor']
     self.acc_active = cp.vl["CruiseControl"]['Cruise_Activated']
+    self.is_metric = cp.vl["CruiseControl"]['Metric_Units']
     self.main_on = cp.vl["CruiseControl"]['Cruise_On']
     self.steer_override = abs(self.steer_torque_driver) > STEER_THRESHOLD[self.car_fingerprint]
     self.steer_error = cp.vl["ES_DashStatus"]["ES_Fault"] == 1
