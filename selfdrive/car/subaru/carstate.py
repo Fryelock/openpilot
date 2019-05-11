@@ -28,6 +28,7 @@ def get_powertrain_can_parser(CP):
     ("DOOR_OPEN_FL", "BodyInfo", 1),
     ("DOOR_OPEN_RR", "BodyInfo", 1),
     ("DOOR_OPEN_RL", "BodyInfo", 1),
+    ("Units", "Dash_status", 5),
   ]
 
   checks = [
@@ -91,6 +92,7 @@ class CarState(object):
     self.steer_torque_driver = 0
     self.steer_not_allowed = False
     self.main_on = False
+    self.is_metric = False
 
     # vEgo kalman filter
     dt = 0.01
@@ -100,8 +102,8 @@ class CarState(object):
                          K=np.matrix([[0.12287673], [0.29666309]]))
     self.v_ego = 0.
 
-    params = Params()
-    self.is_metric = params.get("IsMetric") == "1"
+    #params = Params()
+    #self.is_metric = params.get("IsMetric") == "1"
 
   def update(self, cp, cp_cam):
 
@@ -119,10 +121,13 @@ class CarState(object):
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
     self.v_wheel_rr = cp.vl["Wheel_Speeds"]['RR'] * CV.KPH_TO_MS
 
+    self.is_metric = cp.vl["Dash_state"]['Units'] == 27
+    print("Units: %d" % cp.vl["Dash_state"]['Units'])
+
     if self.is_metric:
-      self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]["Cruise_Set_Speed"]
+      self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']
     else:
-      self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]["Cruise_Set_Speed"] * CV.MPH_TO_KPH
+      self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed'] * CV.MPH_TO_KPH
 
     v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
     # Kalman filter, even though Hyundai raw wheel speed is heaviliy filtered by default
@@ -145,12 +150,12 @@ class CarState(object):
     self.acc_active = cp.vl["CruiseControl"]['Cruise_Activated']
     self.main_on = cp.vl["CruiseControl"]['Cruise_On']
     self.steer_override = abs(self.steer_torque_driver) > STEER_THRESHOLD[self.car_fingerprint]
-    self.steer_error = cp.vl["ES_DashStatus"]["ES_Fault"] == 1
     self.angle_steers = cp.vl["Steering_Torque"]['Steering_Angle']
     self.door_open = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
+    self.steer_error = cp.vl["ES_DashStatus"]['ES_Fault'] == 1
 
     self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
     self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
