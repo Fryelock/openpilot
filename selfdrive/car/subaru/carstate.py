@@ -4,7 +4,6 @@ from common.kalman.simple_kalman import KF1D
 from selfdrive.config import Conversions as CV
 from selfdrive.can.parser import CANParser
 from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD
-from common.params import Params
 
 def get_powertrain_can_parser(CP):
   # this function generates lists for signal, messages and initial values
@@ -28,7 +27,7 @@ def get_powertrain_can_parser(CP):
     ("DOOR_OPEN_FL", "BodyInfo", 1),
     ("DOOR_OPEN_RR", "BodyInfo", 1),
     ("DOOR_OPEN_RL", "BodyInfo", 1),
-    ("Units", "Dash_status", 5),
+    ("Units", "Dash_State", 5),
   ]
 
   checks = [
@@ -102,8 +101,6 @@ class CarState(object):
                          K=np.matrix([[0.12287673], [0.29666309]]))
     self.v_ego = 0.
 
-    #params = Params()
-    #self.is_metric = params.get("IsMetric") == "1"
 
   def update(self, cp, cp_cam):
 
@@ -121,8 +118,8 @@ class CarState(object):
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
     self.v_wheel_rr = cp.vl["Wheel_Speeds"]['RR'] * CV.KPH_TO_MS
 
-    self.is_metric = cp.vl["Dash_state"]['Units'] == 27
-    print("Units: %d" % cp.vl["Dash_state"]['Units'])
+    # 5 = imperial, 27 = metric
+    self.is_metric = cp.vl["Dash_State"]['Units'] == 27
 
     if self.is_metric:
       self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']
