@@ -27,7 +27,7 @@ def get_powertrain_can_parser(CP):
     ("DOOR_OPEN_FL", "BodyInfo", 1),
     ("DOOR_OPEN_RR", "BodyInfo", 1),
     ("DOOR_OPEN_RL", "BodyInfo", 1),
-    ("Units", "Dash_State", 5),
+    ("Units", "Dash_State", 0),
   ]
 
   checks = [
@@ -119,7 +119,7 @@ class CarState(object):
     self.v_wheel_rr = cp.vl["Wheel_Speeds"]['RR'] * CV.KPH_TO_MS
 
     # 1 = imperial, 6 = metric
-    self.is_metric = cp.vl["Dash_State"]['Units'] == 6
+    self.is_metric = cp.vl["Dash_State"]['Units'] > 0
 
     if self.is_metric:
       self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']

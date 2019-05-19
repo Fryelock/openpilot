@@ -327,7 +327,7 @@ BO_ 1677 Dash_State: 8 XXX
  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
  SG_ Counter : 8|4@1+ (1,0) [0|15] "" XXX
  SG_ NEW_SIGNAL_3 : 16|4@1+ (1,0) [0|15] "" XXX
- SG_ Units : 29|3@1+ (1,0) [0|7] "" XXX
+ SG_ Units : 30|2@1+ (1,0) [0|7] "" XXX
 
 BO_ 1743 NEW_MSG_41: 8 XXX
  SG_ Checksum : 0|8@1+ (1,0) [0|255] "" XXX
@@ -361,4 +361,4 @@ CM_ SG_ 940 FOG_LIGHTS2 "yellow fog light in the dash";
 CM_ SG_ 940 Highbeam "01 = low beam, 11 = high beam";
 CM_ SG_ 805 NEW_SIGNAL_3 "always 3";
 CM_ SG_ 805 NEW_SIGNAL_4 "always 1";
-CM_ SG_ 1677 Units "1 = Imperial, 6 = Metric";
+CM_ SG_ 1677 Units "0 = Imperial, > 1 = Metric";
