@@ -11,9 +11,9 @@ def subaru_checksum(packer, values, addr):
 
 def create_steering_control(packer, car_fingerprint, apply_steer, frame, steer_step):
 
-  if car_fingerprint in [CAR.IMPREZA, CAR.XV]:
+  if car_fingerprint == CAR.IMPREZA:
     #counts from 0 to 15 then back to 0 + 16 for enable bit
-    idx = ((frame / steer_step) % 16)
+    idx = ((frame // steer_step) % 16)
 
     values = {
       "Counter": idx,
@@ -27,7 +27,7 @@ def create_steering_control(packer, car_fingerprint, apply_steer, frame, steer_s
 
 def create_steering_status(packer, car_fingerprint, apply_steer, frame, steer_step):
 
-  if car_fingerprint in [CAR.IMPREZA, CAR.XV]:
+  if car_fingerprint == CAR.IMPREZA:
     values = {}
     values["Checksum"] = subaru_checksum(packer, {}, 0x322)
 
@@ -49,16 +49,8 @@ def create_es_lkas_state(packer, es_lkas_msg, visual_alert, left_line, right_lin
   if visual_alert == VisualAlert.steerRequired:
     values["Keep_Hands_On_Wheel"] = 1
 
-  if left_line:
-    values["LKAS_Left_Line_Visible"] = 1
-  else:
-    values["LKAS_Left_Line_Visible"] = 0
-
-  if right_line:
-    values["LKAS_Right_Line_Visible"] = 1
-  else:
-    values["LKAS_Right_Line_Visible"] = 0
-
+  values["LKAS_Left_Line_Visible"] = (int)left_line
+  values["LKAS_Right_Line_Visible"] = (int)right_line
   values["Checksum"] = subaru_checksum(packer, values, 802)
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)

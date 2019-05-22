@@ -1,21 +1,14 @@
-#!/usr/bin/env python
-
-# This file is not used by OpenPilot. Only boardd.cc is used.
-# The python version is slower, but has more options for development.
-
-# TODO: merge the extra functionalities of this file (like MOCK) in boardd.c and
-# delete this python version of boardd
-
+# pylint: skip-file
 import os
-import struct
-import zmq
-import time
+import subprocess
 
-import selfdrive.messaging as messaging
-from common.realtime import Ratekeeper
-from selfdrive.services import service_list
-from selfdrive.swaglog import cloudlog
+# Cython
+boardd_api_dir = os.path.dirname(os.path.abspath(__file__))
+subprocess.check_call(["make", "boardd_api_impl.so"], cwd=boardd_api_dir)
+from selfdrive.boardd.boardd_api_impl import can_list_to_can_capnp
+assert can_list_to_can_capnp
 
+<<<<<<< HEAD
 # USB is optional
 try:
   import usb1
@@ -45,6 +38,8 @@ def can_list_to_can_capnp(can_msgs, msgtype='can'):
     cc.dat = str(can_msg[2])
     cc.src = can_msg[3]
   return dat
+=======
+>>>>>>> devel
 
 def can_capnp_to_can_list(can, src_filter=None):
   ret = []
@@ -52,6 +47,7 @@ def can_capnp_to_can_list(can, src_filter=None):
     if src_filter is None or msg.src in src_filter:
       ret.append((msg.address, msg.busTime, msg.dat, msg.src))
   return ret
+<<<<<<< HEAD
 
 # *** can driver ***
 def can_health():
@@ -258,3 +254,5 @@ def main(gctx=None):
 
 if __name__ == "__main__":
   main()
+=======
+>>>>>>> devel
