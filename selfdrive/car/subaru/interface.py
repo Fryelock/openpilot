@@ -146,10 +146,6 @@ class CarInterface(object):
     ret.steeringPressed = self.CS.steer_override
     ret.steeringTorque = self.CS.steer_torque_driver
 
-    # steering values for tuning dashboard
-    ret.steeringRequested = self.CC.apply_steer
-    ret.steeringActuators = self.CC.actuators_steer
-
     ret.gas = self.CS.pedal_gas / 255.
     ret.gasPressed = self.CS.user_gas_pressed
 
