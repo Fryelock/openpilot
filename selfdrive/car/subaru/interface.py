@@ -149,6 +149,9 @@ class CarInterface(object):
     ret.gas = self.CS.pedal_gas / 255.
     ret.gasPressed = self.CS.user_gas_pressed
 
+    # brake lights
+    ret.brakeLights = self.CS.brake_lights
+
     # cruise state
     ret.cruiseState.enabled = bool(self.CS.acc_active)
     ret.cruiseState.speed = self.CS.v_cruise_pcm * CV.KPH_TO_MS
