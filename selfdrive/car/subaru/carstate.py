@@ -1,8 +1,19 @@
 import copy
 from common.kalman.simple_kalman import KF1D
 from selfdrive.config import Conversions as CV
-from selfdrive.can.parser import CANParser
+from selfdrive.can.parser import CANParser, CANDefine
 from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD
+
+def parse_gear_shifter(gear, vals):
+
+  val_to_capnp = {'P': 'park', 'R': 'reverse', 'N': 'neutral',
+                  'D': 'drive', 'B': 'brake'}
+  try:
+    return val_to_capnp[vals[gear]]
+  except KeyError:
+    return "unknown"
+
+
 
 def get_powertrain_can_parser(CP):
   # this function generates lists for signal, messages and initial values
@@ -27,6 +38,7 @@ def get_powertrain_can_parser(CP):
     ("DOOR_OPEN_RR", "BodyInfo", 1),
     ("DOOR_OPEN_RL", "BodyInfo", 1),
     ("Units", "Dash_State", 1),
+    ("Gear", "Transmission", 0),
   ]
 
   checks = [
@@ -85,6 +97,8 @@ class CarState(object):
   def __init__(self, CP):
     # initialize can parser
     self.CP = CP
+    self.can_define = CANDefine(DBC[CP.carFingerprint]['pt'])
+    self.shifter_values = self.can_define.dv["Transmission"]['Gear']
 
     self.car_fingerprint = CP.carFingerprint
     self.left_blinker_on = False
@@ -147,6 +161,8 @@ class CarState(object):
     self.main_on = cp.vl["CruiseControl"]['Cruise_On']
     self.steer_override = abs(self.steer_torque_driver) > STEER_THRESHOLD[self.car_fingerprint]
     self.angle_steers = cp.vl["Steering_Torque"]['Steering_Angle']
+    can_gear = int(cp.vl["Transmission"]['Gear'])
+    self.gear_shifter = parse_gear_shifter(can_gear, self.shifter_values)
     self.door_open = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],

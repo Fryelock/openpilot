@@ -146,6 +146,10 @@ class CarInterface(object):
     ret.steeringPressed = self.CS.steer_override
     ret.steeringTorque = self.CS.steer_torque_driver
 
+    # gear shifter
+    ret.gearShifter = self.CS.gear_shifter
+
+    # gas pedal
     ret.gas = self.CS.pedal_gas / 255.
     ret.gasPressed = self.CS.user_gas_pressed
 
@@ -211,6 +215,12 @@ class CarInterface(object):
 
     if ret.gasPressed:
       events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+
+    if not ret.gearShifter == 'drive':
+      events.append(create_event('wrongGear', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+
+    if ret.gearShifter == 'reverse':
+      events.append(create_event('reverseGear', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
 
     ret.events = events
 
