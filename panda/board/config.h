@@ -7,6 +7,8 @@
 //#define DEBUG_SPI
 //#define DEBUG_FAULTS
 
+#define SUBARU_GIRAFFE
+
 #ifdef STM32F4
   #define PANDA
   #include "stm32f4xx.h"
