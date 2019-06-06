@@ -44,6 +44,10 @@ uint32_t ignition_can_cnt = 0U;
 #define ALL_CAN_SILENT 0xFF
 #define ALL_CAN_LIVE 0
 
+#ifdef SUBARU_GIRAFFE
+#include "lline_relay.h"
+#endif
+
 int can_live = 0, pending_can_live = 0, can_loopback = 0, can_silent = ALL_CAN_SILENT;
 
 // ********************* instantiate queues *********************
