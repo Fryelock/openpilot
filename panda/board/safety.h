@@ -1,6 +1,12 @@
 // include first, needed by safety policies
 #include "safety_declarations.h"
 
+#ifdef SUBARU_GIRAFFE
+void lline_relay_init (void);
+void lline_relay_release (void);
+void set_lline_output(int to_set);
+#endif
+
 // Include the actual safety policies.
 #include "safety/safety_defaults.h"
 #include "safety/safety_honda.h"
