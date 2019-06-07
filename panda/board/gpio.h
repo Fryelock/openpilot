@@ -365,13 +365,13 @@ void gpio_init(void) {
     set_gpio_alternate(GPIOD, 2, GPIO_AF8_UART5);
     set_gpio_pullup(GPIOD, 2, PULL_UP);
 
+    // L-line enable
+    set_gpio_output(GPIOA, 14, 1);
+
     // use L-line for relay output on Subaru giraffe
     #ifdef SUBARU_GIRAFFE
     set_gpio_output(GPIOC, 10, 1);
     #else
-    // L-line enable
-    set_gpio_output(GPIOA, 14, 1);
-
     // C10,C11: L-Line setup on USART 3
     set_gpio_alternate(GPIOC, 10, GPIO_AF7_USART3);
     set_gpio_alternate(GPIOC, 11, GPIO_AF7_USART3);
