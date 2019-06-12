@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # simple boardd wrapper that updates the panda first
 import os
-<<<<<<< HEAD
 import time
 
 from selfdrive.swaglog import cloudlog
