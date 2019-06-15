@@ -127,6 +127,8 @@ class CarState():
     self.brake_pressed = self.brake_pressure > 0
     self.brake_lights = bool(self.brake_pressed)
 
+    self.far_distance = cp_cam.vl["ES_DashStatus"]['Far_Distance']
+
     self.v_wheel_fl = cp.vl["Wheel_Speeds"]['FL'] * CV.KPH_TO_MS
     self.v_wheel_fr = cp.vl["Wheel_Speeds"]['FR'] * CV.KPH_TO_MS
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
