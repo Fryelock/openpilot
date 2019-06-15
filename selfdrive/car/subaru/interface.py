@@ -187,9 +187,9 @@ class CarInterface(CarInterfaceBase):
     self.acc_active_prev = self.CS.acc_active
 
     # send throttle to reengage eyesight stop and go when car in front has moved
-    if (self.standstill && self.CS.far_distance > 1 && self.far_distance_prev == 1):
+    if (self.standstill and self.CS.far_distance > 1 and self.far_distance_prev == 1):
       self.car_in_front_moved = True
-    else
+    else:
       self.car_in_front_moved = False
 
     # update previous far_distance
