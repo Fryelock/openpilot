@@ -18,7 +18,6 @@ class CarInterface(CarInterfaceBase):
     self.acc_active_prev = 0
     self.far_distance_prev = 0
     self.gas_pressed_prev = False
-    self.car_in_front_moved = False
 
     # *** init the major players ***
     self.CS = CarState(CP)
@@ -216,21 +215,12 @@ class CarInterface(CarInterfaceBase):
     self.gas_pressed_prev = ret.gasPressed
     self.acc_active_prev = self.CS.acc_active
 
-    # send throttle to reengage eyesight stop and go when car in front has moved
-    if (self.standstill and self.CS.far_distance > 1 and self.far_distance_prev == 1):
-      self.car_in_front_moved = True
-    else:
-      self.car_in_front_moved = False
-
-    # update previous far_distance
-    self.far_distance_prev = self.CS.far_distance
-
     # cast to reader so it can't be modified
     return ret.as_reader()
 
   def apply(self, c):
     can_sends = self.CC.update(c.enabled, self.CS, self.frame, c.actuators,
                                c.cruiseControl.cancel, c.hudControl.visualAlert,
-                               c.hudControl.leftLaneVisible, c.hudControl.rightLaneVisible, self.car_in_front_moved)
+                               c.hudControl.leftLaneVisible, c.hudControl.rightLaneVisible)
     self.frame += 1
     return can_sends
