@@ -32,7 +32,7 @@ class CarController():
     self.params = CarControllerParams(car_fingerprint)
     self.packer = CANPacker(DBC[car_fingerprint]['pt'])
 
-  def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert, left_line, right_line, car_in_front_moved):
+  def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert, left_line, right_line):
     """ Controls thread """
 
     P = self.params
@@ -69,8 +69,5 @@ class CarController():
     if self.es_lkas_cnt != CS.es_lkas_msg["Counter"]:
       can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert, left_line, right_line))
       self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
-
-    if lkas_enabled and car_in_front_moved:
-      can_sends.append(subarucan.create_throttle(self.packer, CS.throttle_msg))
 
     return can_sends
