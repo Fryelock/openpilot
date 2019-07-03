@@ -16,7 +16,6 @@ class CarInterface(CarInterfaceBase):
 
     self.frame = 0
     self.acc_active_prev = 0
-    self.far_distance_prev = 0
     self.gas_pressed_prev = False
 
     # *** init the major players ***
