@@ -127,8 +127,6 @@ class CarState():
     self.brake_pressed = self.brake_pressure > 0
     self.brake_lights = bool(self.brake_pressed)
 
-    self.far_distance = cp_cam.vl["ES_DashStatus"]['Far_Distance']
-
     self.v_wheel_fl = cp.vl["Wheel_Speeds"]['FL'] * CV.KPH_TO_MS
     self.v_wheel_fr = cp.vl["Wheel_Speeds"]['FR'] * CV.KPH_TO_MS
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
@@ -136,8 +134,8 @@ class CarState():
 
     self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']
     if self.car_fingerprint == CAR.IMPREZA:
-      # FIXME: ever changing, imperial = 1/2
-      if cp.vl["Dash_State"]['Units'] == 1:
+      # FIXME: ever changing, currently imperial = 2, metric != 2
+      if cp.vl["Dash_State"]['Units'] == 2:
         self.v_cruise_pcm *= CV.MPH_TO_KPH
 
     v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
