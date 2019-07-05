@@ -88,6 +88,7 @@ def update_panda():
 
 
 def main(gctx=None):
+# FIXME: disable panda fw update until subaru preglobal safety is upstreamed
 #  update_panda()
 
   os.chdir("boardd")
