@@ -25,56 +25,70 @@ def get_powertrain_can_parser(CP):
     ("DOOR_OPEN_FL", "BodyInfo", 1),
     ("DOOR_OPEN_RR", "BodyInfo", 1),
     ("DOOR_OPEN_RL", "BodyInfo", 1),
-    ("Units", "Dash_State", 1),
   ]
 
   checks = [
     # sig_address, frequency
     ("Dashlights", 10),
-    ("CruiseControl", 20),
     ("Wheel_Speeds", 50),
     ("Steering_Torque", 50),
-    ("BodyInfo", 10),
   ]
 
-  return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 0)
+  if CP.carFingerprint == CAR.IMPREZA:
+    checks += [
+      ("BodyInfo", 10),
+      ("CruiseControl", 20),
+    ]
+    signals += [
+      ("Units", "Dash_State", 1),
+    ]
+  elif CP.carFingerprint in (CAR.OUTBACK, CAR.LEGACY):
+    signals += [
+      ("LKA_Lockout", "Steering_Torque", 0),
+    ]
+    checks += [
+      ("CruiseControl", 50),
+    ]
+
+  return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 0, timeout=100)
 
 
 def get_camera_can_parser(CP):
   signals = [
     ("Cruise_Set_Speed", "ES_DashStatus", 0),
-
-    ("Counter", "ES_Distance", 0),
-    ("Signal1", "ES_Distance", 0),
-    ("Signal2", "ES_Distance", 0),
-    ("Main", "ES_Distance", 0),
-    ("Signal3", "ES_Distance", 0),
-
-    ("Checksum", "ES_LKAS_State", 0),
-    ("Counter", "ES_LKAS_State", 0),
-    ("Keep_Hands_On_Wheel", "ES_LKAS_State", 0),
-    ("Empty_Box", "ES_LKAS_State", 0),
-    ("Signal1", "ES_LKAS_State", 0),
-    ("LKAS_ACTIVE", "ES_LKAS_State", 0),
-    ("Signal2", "ES_LKAS_State", 0),
-    ("Backward_Speed_Limit_Menu", "ES_LKAS_State", 0),
-    ("LKAS_ENABLE_3", "ES_LKAS_State", 0),
-    ("Signal3", "ES_LKAS_State", 0),
-    ("LKAS_ENABLE_2", "ES_LKAS_State", 0),
-    ("Signal4", "ES_LKAS_State", 0),
-    ("LKAS_Left_Line_Visible", "ES_LKAS_State", 0),
-    ("Signal6", "ES_LKAS_State", 0),
-    ("LKAS_Right_Line_Visible", "ES_LKAS_State", 0),
-    ("Signal7", "ES_LKAS_State", 0),
-    ("FCW_Cont_Beep", "ES_LKAS_State", 0),
-    ("FCW_Repeated_Beep", "ES_LKAS_State", 0),
-    ("Throttle_Management_Activated", "ES_LKAS_State", 0),
-    ("Traffic_light_Ahead", "ES_LKAS_State", 0),
-    ("Right_Depart", "ES_LKAS_State", 0),
-    ("Signal5", "ES_LKAS_State", 0),
-    ("Far_Distance", "ES_DashStatus", 0),
-
   ]
+
+  if CP.carFingerprint == CAR.IMPREZA:
+    signals += [
+      ("Counter", "ES_Distance", 0),
+      ("Signal1", "ES_Distance", 0),
+      ("Signal2", "ES_Distance", 0),
+      ("Main", "ES_Distance", 0),
+      ("Signal3", "ES_Distance", 0),
+
+      ("Checksum", "ES_LKAS_State", 0),
+      ("Counter", "ES_LKAS_State", 0),
+      ("Keep_Hands_On_Wheel", "ES_LKAS_State", 0),
+      ("Empty_Box", "ES_LKAS_State", 0),
+      ("Signal1", "ES_LKAS_State", 0),
+      ("LKAS_ACTIVE", "ES_LKAS_State", 0),
+      ("Signal2", "ES_LKAS_State", 0),
+      ("Backward_Speed_Limit_Menu", "ES_LKAS_State", 0),
+      ("LKAS_ENABLE_3", "ES_LKAS_State", 0),
+      ("Signal3", "ES_LKAS_State", 0),
+      ("LKAS_ENABLE_2", "ES_LKAS_State", 0),
+      ("Signal4", "ES_LKAS_State", 0),
+      ("LKAS_Left_Line_Visible", "ES_LKAS_State", 0),
+      ("Signal6", "ES_LKAS_State", 0),
+      ("LKAS_Right_Line_Visible", "ES_LKAS_State", 0),
+      ("Signal7", "ES_LKAS_State", 0),
+      ("FCW_Cont_Beep", "ES_LKAS_State", 0),
+      ("FCW_Repeated_Beep", "ES_LKAS_State", 0),
+      ("Throttle_Management_Activated", "ES_LKAS_State", 0),
+      ("Traffic_light_Ahead", "ES_LKAS_State", 0),
+      ("Right_Depart", "ES_LKAS_State", 0),
+      ("Signal5", "ES_LKAS_State", 0),
+    ]
 
   checks = [
     ("ES_DashStatus", 10),
@@ -113,17 +127,16 @@ class CarState():
     self.brake_pressed = self.brake_pressure > 0
     self.brake_lights = bool(self.brake_pressed)
 
-    self.far_distance = cp_cam.vl["ES_DashStatus"]['Far_Distance']
-
     self.v_wheel_fl = cp.vl["Wheel_Speeds"]['FL'] * CV.KPH_TO_MS
     self.v_wheel_fr = cp.vl["Wheel_Speeds"]['FR'] * CV.KPH_TO_MS
     self.v_wheel_rl = cp.vl["Wheel_Speeds"]['RL'] * CV.KPH_TO_MS
     self.v_wheel_rr = cp.vl["Wheel_Speeds"]['RR'] * CV.KPH_TO_MS
 
     self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']
-    # FIXME: ever changing, currently imperial = 2, metric != 2
-    if cp.vl["Dash_State"]['Units'] == 2:
-      self.v_cruise_pcm *= CV.MPH_TO_KPH
+    if self.car_fingerprint == CAR.IMPREZA:
+      # FIXME: ever changing, currently imperial = 2, metric != 2
+      if cp.vl["Dash_State"]['Units'] == 2:
+        self.v_cruise_pcm *= CV.MPH_TO_KPH
 
     v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
     # Kalman filter, even though Subaru raw wheel speed is heaviliy filtered by default
@@ -152,6 +165,9 @@ class CarState():
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
-    self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
-    self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
-    self.throttle_msg = copy.copy(cp.vl["Throttle"])
+    if self.car_fingerprint == CAR.IMPREZA:
+      self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
+      self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
+    elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+      self.steer_not_allowed = cp.vl["Steering_Torque"]["LKA_Lockout"]
+      self.body_info_msg = copy.copy(cp_cam.vl["BodyInfo"])

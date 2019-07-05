@@ -53,7 +53,7 @@ class CarInterface(CarInterfaceBase):
     ret.steerRateCost = 0.7
     ret.steerLimitTimer = 0.4
 
-    if candidate in [CAR.IMPREZA]:
+    if candidate == CAR.IMPREZA:
       ret.mass = 1568. + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
@@ -67,6 +67,35 @@ class CarInterface(CarInterfaceBase):
 
     ret.steerControlType = car.CarParams.SteerControlType.torque
     ret.steerRatioRear = 0.
+
+    if candidate == CAR.OUTBACK:
+      ret.mass = 1568 + STD_CARGO_KG
+      ret.wheelbase = 2.67
+      ret.centerToFront = ret.wheelbase * 0.5
+      ret.steerRatio = 20            # learned, 14 stock
+      tire_stiffness_factor = 1.9
+      ret.steerActuatorDelay = 0.4
+      ret.lateralTuning.pid.kf = 0.000028
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.,10.], [0.,10.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.07,0.15], [0.02,0.02]]
+      ret.steerMaxBP = [0.] # m/s
+      ret.steerMaxV = [1.]
+
+    if candidate == CAR.LEGACY:
+      ret.mass = 1568 + STD_CARGO_KG
+      ret.wheelbase = 2.67
+      ret.centerToFront = ret.wheelbase * 0.5
+      # Hassan Legacy 2018
+      ret.steerRatio = 12.5
+      tire_stiffness_factor = 1.0
+      # Hassan Legacy 2018
+      ret.steerActuatorDelay = 0.11
+      ret.lateralTuning.pid.kf = 0.00005
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.1, 0.2], [0.01, 0.02]]
+      ret.steerMaxBP = [0.] # m/s
+      ret.steerMaxV = [1.]
+
     # testing tuning
 
     # No long control in subaru

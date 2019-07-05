@@ -22,6 +22,28 @@ def create_steering_control(packer, car_fingerprint, apply_steer, frame, steer_s
     }
     values["Checksum"] = subaru_checksum(packer, values, 0x122)
 
+  elif car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+
+    if apply_steer != 0:
+      chksm_steer = apply_steer * -1
+      chksm_engage = 1
+    else:
+      chksm_steer = 0
+      chksm_engage = 0
+
+    #counts from 0 to 7 then back to 0
+    idx = (frame / steer_step) % 8
+    steer2 = (chksm_steer >> 8) & 0x1F
+    steer1 =  chksm_steer - (steer2 << 8)
+    checksum = (idx + steer2 + steer1 + chksm_engage) % 256
+
+    values = {
+      "Counter": idx,
+      "LKAS_Output": apply_steer,
+      "LKAS_Request": 1 if apply_steer != 0 else 0,
+      "Checksum": checksum
+    }
+
   return packer.make_can_msg("ES_LKAS", 0, values)
 
 def create_steering_status(packer, car_fingerprint, apply_steer, frame, steer_step):
@@ -55,12 +77,13 @@ def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line):
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)
 
-def create_throttle(packer, throttle_msg):
+#FIXME: use subaru preglobal checksum
+def create_door_control(packer, body_info_msg):
+  values = copy.copy(body_info_msg)
 
-  values = copy.copy(throttle_msg)
-  values["Throttle_Pedal"] = 10
-  values["Checksum"] = subaru_checksum(packer, values, 40)
+  values["DOOR_OPEN_FR"] = 1
+  values["_UNKNOWN"] = 5
+  values["Checksum"] = subaru_checksum(packer, values, 884)
 
-  return packer.make_can_msg("Throttle", 2, values)
-
+  return packer.make_can_msg("BodyInfo", 1, values)
 
