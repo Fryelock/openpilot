@@ -134,8 +134,8 @@ class CarState():
 
     self.v_cruise_pcm = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed']
     if self.car_fingerprint == CAR.IMPREZA:
-      # FIXME: ever changing, currently imperial = 2, metric != 2
-      if cp.vl["Dash_State"]['Units'] == 2:
+      # FIXME: ever changing, imperial = 1/2
+      if cp.vl["Dash_State"]['Units'] == 1:
         self.v_cruise_pcm *= CV.MPH_TO_KPH
 
     v_wheel = (self.v_wheel_fl + self.v_wheel_fr + self.v_wheel_rl + self.v_wheel_rr) / 4.
