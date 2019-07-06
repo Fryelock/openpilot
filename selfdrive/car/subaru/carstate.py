@@ -2,7 +2,7 @@ import copy
 from common.kalman.simple_kalman import KF1D
 from selfdrive.config import Conversions as CV
 from opendbc.can.parser import CANParser
-from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD
+from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD, CAR
 
 def get_powertrain_can_parser(CP):
   # this function generates lists for signal, messages and initial values
