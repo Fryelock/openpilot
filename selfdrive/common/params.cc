@@ -111,7 +111,7 @@ int write_db_value(const char* params_path, const char* key, const char* value,
   }
 
   // change permissions to 0666 for apks
-  result = fchmod(tmp_fd, 0666);
+  result = fchmod(tmp_fd, 0644);
   if (result < 0) {
     goto cleanup;
   }
