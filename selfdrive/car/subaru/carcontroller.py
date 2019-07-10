@@ -90,7 +90,6 @@ class CarController():
         can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert, left_line, right_line))
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
-    #FIXME: use subaru preglobal checksum
-    #elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY) and pcm_cancel_cmd:
-    #  can_sends.append(subarucan.create_door_control(self.packer, CS.body_info_msg))
+    elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY) and pcm_cancel_cmd:
+      can_sends.append(subarucan.create_door_control(self.packer))
     return can_sends
