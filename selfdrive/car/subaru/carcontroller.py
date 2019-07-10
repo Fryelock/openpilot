@@ -92,6 +92,7 @@ class CarController():
 
     # FIXME: ES fault on accel pedal press (Legacy 2018)
     elif self.car_fingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
-      can_sends.append(subarucan.create_door_control(self.packer, CS.body_info_msg))
+      can_sends.append(subarucan.create_door_control(self.packer))
+
     return can_sends
 
