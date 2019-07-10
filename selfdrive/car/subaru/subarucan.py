@@ -77,10 +77,8 @@ def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line):
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)
 
-#FIXME: use subaru preglobal checksum
-def create_door_control(packer, body_info_msg):
-  values = copy.copy(body_info_msg)
-
+def create_door_control(packer):
+  values = {}
   values["DOOR_OPEN_FR"] = 1
   values["_UNKNOWN"] = 5
   values["Checksum"] = subaru_checksum(packer, values, 884)
