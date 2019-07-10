@@ -78,6 +78,7 @@ def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line):
   return packer.make_can_msg("ES_LKAS_State", 0, values)
 
 def create_door_control(packer):
+  values = {}
   values["DOOR_OPEN_FR"] = 1
   values["_UNKNOWN"] = 5
 
