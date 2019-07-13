@@ -91,7 +91,7 @@ class CarController():
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
     # FIXME: ES fault on accel pedal press (Legacy 2018)
-    elif self.car_fingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
-      can_sends.append(subarucan.create_door_control(self.packer))
+    elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY) and pcm_cancel_cmd:
+      can_sends.append(subarucan.create_door_control(self.packer, CS.body_info_msg))
     return can_sends
 
