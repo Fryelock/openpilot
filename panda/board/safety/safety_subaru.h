@@ -24,6 +24,7 @@ uint32_t subaru_ts_last = 0;
 struct sample_t subaru_torque_driver;         // last few driver torques measured
 
 static void subaru_init(int16_t param) {
+  UNUSED(param);
 #ifdef SUBARU_GIRAFFE
   lline_relay_init();
 #endif
