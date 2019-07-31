@@ -286,10 +286,15 @@ void white_grey_common_init(void) {
   // L-line enable
   set_gpio_output(GPIOA, 14, 1);
 
+  // use L-line for relay output on Subaru giraffe
+  #ifdef SUBARU_GIRAFFE
+  set_gpio_output(GPIOC, 10, 1);
+  #else
   // C10, C11: L-Line setup (USART3)
   set_gpio_alternate(GPIOC, 10, GPIO_AF7_USART3);
   set_gpio_alternate(GPIOC, 11, GPIO_AF7_USART3);
   set_gpio_pullup(GPIOC, 11, PULL_UP);
+  #endif
 
   // Enable CAN transcievers
   white_enable_can_transcievers(true);
