@@ -90,10 +90,10 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatio = 12.5
       tire_stiffness_factor = 1.0
       # Hassan Legacy 2018
-      ret.steerActuatorDelay = 0.11
+      ret.steerActuatorDelay = 0.155
       ret.lateralTuning.pid.kf = 0.00005
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.1, 0.2], [0.01, 0.02]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.1, 0.2], [0.0078, 0.019]]
       ret.steerMaxBP = [0.] # m/s
       ret.steerMaxV = [1.]
 
