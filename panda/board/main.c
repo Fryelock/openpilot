@@ -710,8 +710,8 @@ void TIM1_BRK_TIM9_IRQ_Handler(void) {
       puts("EON hasn't sent a heartbeat for 0x");
       puth(heartbeat_counter);
       puts(" seconds. Safety is set to SILENT mode.\n");
-      if (current_safety_mode != SAFETY_SILENT) {
-        set_safety_mode(SAFETY_SILENT, 0U);
+      if (current_safety_mode != SAFETY_SUBARU) {
+        set_safety_mode(SAFETY_SUBARU, 0U);
       }
       if (power_save_status != POWER_SAVE_STATUS_ENABLED) {
         set_power_save_state(POWER_SAVE_STATUS_ENABLED);
@@ -810,11 +810,13 @@ int main(void) {
   TIM2->EGR = TIM_EGR_UG;
   // use TIM2->CNT to read
 
-  // init to SILENT and can silent
-  set_safety_mode(SAFETY_SILENT, 0);
+  // init to SUBARU
+  set_safety_mode(SAFETY_SUBARU, 0);
 
   // enable CAN TXs
   current_board->enable_can_transcievers(true);
+  can_silent = ALL_CAN_LIVE;
+  can_init_all();
 
 #ifndef EON
   spi_init();
