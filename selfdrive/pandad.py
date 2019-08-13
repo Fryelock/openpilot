@@ -87,7 +87,7 @@ def update_panda():
     raise AssertionError
 
 def main(gctx=None):
-#  update_panda()
+  update_panda()
 
   try:
     p = Panda()
