@@ -68,7 +68,7 @@ void lline_relay_init (void) {
 #endif
 }
 
-void lline_relay_release (void) {
+void lline_relay_release(void) {
   set_lline_output(0);
   relay_control = 0;
   puts("RELEASE LLINE\n");
@@ -81,7 +81,7 @@ void set_lline_output(int to_set) {
   turn_on_relay = to_set;
 }
 
-int get_lline_status() {
+int get_lline_status(void) {
   return turn_on_relay;
 }
 
