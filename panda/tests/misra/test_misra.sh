@@ -17,7 +17,7 @@ tests/misra/cppcheck/cppcheck -DPANDA -UPEDAL -DCAN3 -DUID_BASE -DEON \
                               --dump --enable=all --inline-suppr --force \
                               board/main.c 2>/tmp/misra/cppcheck_output.txt
 
-python tests/misra/cppcheck/addons/misra.py board/main.c.dump 2> /tmp/misra/misra_output.txt || true
+python tests/misra/cppcheck/addons/misra.py board/main.c.dump --rule-texts=tests/misra/MISRA_C_2012_Rules.txt 2> /tmp/misra/misra_output.txt || true
 
 # strip (information) lines
 cppcheck_output=$( cat /tmp/misra/cppcheck_output.txt | grep -v ": information: " ) || true
@@ -30,7 +30,7 @@ tests/misra/cppcheck/cppcheck -UPANDA -DPEDAL -UCAN3 \
                               -I board/ --dump --enable=all --inline-suppr --force \
                               board/pedal/main.c 2>/tmp/misra/cppcheck_pedal_output.txt
 
-python tests/misra/cppcheck/addons/misra.py board/pedal/main.c.dump 2> /tmp/misra/misra_pedal_output.txt || true
+python tests/misra/cppcheck/addons/misra.py board/pedal/main.c.dump --rule-texts=tests/misra/MISRA_C_2012_Rules.txt 2> /tmp/misra/misra_pedal_output.txt || true
 
 # strip (information) lines
 cppcheck_pedal_output=$( cat /tmp/misra/cppcheck_pedal_output.txt | grep -v ": information: " ) || true
