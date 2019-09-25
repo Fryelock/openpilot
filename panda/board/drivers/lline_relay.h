@@ -14,14 +14,14 @@ volatile int on_cycles = 25;
 volatile int timeout_cycles = LLINE_TIMEOUT_CYCLES;
 
 void TIM5_IRQHandler(void) {
-  if (TIM5->SR & TIM_SR_UIF) {
+  if ((TIM5->SR & TIM_SR_UIF) != 0) {
     on_cycles--;
     timeout_cycles--;
     if (timeout_cycles == 0) {
       turn_on_relay = 0;
     }
     if (on_cycles > 0) {
-      if (turn_on_relay) {
+      if (turn_on_relay != 0) {
         set_gpio_output(GPIOC, 10, 0);
       }
     }
