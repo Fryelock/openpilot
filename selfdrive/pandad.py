@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # simple boardd wrapper that updates the panda first
 import os
-<<<<<<< HEAD
 import time
 
 from selfdrive.swaglog import cloudlog
@@ -85,6 +84,7 @@ def update_panda():
   if panda_signature != fw_signature:
     cloudlog.info("Version mismatch after flashing, exiting")
     raise AssertionError
+
 
 def main(gctx=None):
   update_panda()
