@@ -2,10 +2,6 @@
 //       CAN2_TX, CAN2_RX0, CAN2_SCE
 //       CAN3_TX, CAN3_RX0, CAN3_SCE
 
-#ifdef SUBARU_GIRAFFE
-#include "lline_relay.h"
-#endif
-
 typedef struct {
   volatile uint32_t w_ptr;
   volatile uint32_t r_ptr;
@@ -375,18 +371,15 @@ void can_rx(uint8_t can_number) {
     // modify RDTR for our API
     to_push.RDTR = (to_push.RDTR & 0xFFFF000F) | (bus_number << 4);
 
-    //Relay engaged or relay isn't controlled, allow fwd
-    if ((get_lline_status() != 0) || !relay_control) {
-      // forwarding (panda only)
-      int bus_fwd_num = (can_forwarding[bus_number] != -1) ? can_forwarding[bus_number] : safety_fwd_hook(bus_number, &to_push);
-      if (bus_fwd_num != -1) {
-        CAN_FIFOMailBox_TypeDef to_send;
-        to_send.RIR = to_push.RIR | 1; // TXRQ
-        to_send.RDTR = to_push.RDTR;
-        to_send.RDLR = to_push.RDLR;
-        to_send.RDHR = to_push.RDHR;
-        can_send(&to_send, bus_fwd_num, true);
-      }
+    // forwarding (panda only)
+    int bus_fwd_num = (can_forwarding[bus_number] != -1) ? can_forwarding[bus_number] : safety_fwd_hook(bus_number, &to_push);
+    if (bus_fwd_num != -1) {
+      CAN_FIFOMailBox_TypeDef to_send;
+      to_send.RIR = to_push.RIR | 1; // TXRQ
+      to_send.RDTR = to_push.RDTR;
+      to_send.RDLR = to_push.RDLR;
+      to_send.RDHR = to_push.RDHR;
+      can_send(&to_send, bus_fwd_num, true);
     }
 
     can_rx_errs += safety_rx_hook(&to_push) ? 0U : 1U;

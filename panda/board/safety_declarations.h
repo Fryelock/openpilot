@@ -93,10 +93,3 @@ const uint32_t RELAY_TRNS_TIMEOUT = 1U;
 // avg between 2 tracks
 #define GET_INTERCEPTOR(msg) (((GET_BYTE((msg), 0) << 8) + GET_BYTE((msg), 1) + ((GET_BYTE((msg), 2) << 8) + GET_BYTE((msg), 3)) / 2 ) / 2)
 
-// subaru giraffe relay
-#ifdef SUBARU_GIRAFFE
-void lline_relay_init (void);
-void lline_relay_release (void);
-void set_lline_output(int to_set);
-#endif
-
