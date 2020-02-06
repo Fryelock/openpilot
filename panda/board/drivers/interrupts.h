@@ -115,7 +115,6 @@ void TIM8_CC_IRQHandler(void) {handle_interrupt(TIM8_CC_IRQn);}
 void DMA1_Stream7_IRQHandler(void) {handle_interrupt(DMA1_Stream7_IRQn);}
 void FSMC_IRQHandler(void) {handle_interrupt(FSMC_IRQn);}
 void SDIO_IRQHandler(void) {handle_interrupt(SDIO_IRQn);}
-void TIM5_IRQHandler(void) {handle_interrupt(TIM5_IRQn);}
 void SPI3_IRQHandler(void) {handle_interrupt(SPI3_IRQn);}
 void UART4_IRQHandler(void) {handle_interrupt(UART4_IRQn);}
 void UART5_IRQHandler(void) {handle_interrupt(UART5_IRQn);}

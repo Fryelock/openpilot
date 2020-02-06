@@ -50,7 +50,7 @@ def get_powertrain_can_parser(CP):
       ("CruiseControl", 50),
     ]
 
-  return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 0, timeout=100)
+  return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 0)
 
 
 def get_camera_can_parser(CP):
@@ -104,8 +104,10 @@ class CarState():
 
     self.car_fingerprint = CP.carFingerprint
     self.left_blinker_on = False
+    self.left_blinker_cnt = 0
     self.prev_left_blinker_on = False
     self.right_blinker_on = False
+    self.right_blinker_cnt = 0
     self.prev_right_blinker_on = False
     self.steer_torque_driver = 0
     self.steer_not_allowed = False
@@ -152,8 +154,14 @@ class CarState():
 
     self.prev_left_blinker_on = self.left_blinker_on
     self.prev_right_blinker_on = self.right_blinker_on
-    self.left_blinker_on = cp.vl["Dashlights"]['LEFT_BLINKER'] == 1
-    self.right_blinker_on = cp.vl["Dashlights"]['RIGHT_BLINKER'] == 1
+
+    # continuous blinker signals for assisted lane change
+    self.left_blinker_cnt = 50 if cp.vl["Dashlights"]['LEFT_BLINKER'] else max(self.left_blinker_cnt - 1, 0)
+    self.left_blinker_on = self.left_blinker_cnt > 0
+
+    self.right_blinker_cnt = 50 if cp.vl["Dashlights"]['RIGHT_BLINKER'] else max(self.right_blinker_cnt - 1, 0)
+    self.right_blinker_on = self.right_blinker_cnt > 0
+
     self.seatbelt_unlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
     self.steer_torque_driver = cp.vl["Steering_Torque"]['Steer_Torque_Sensor']
     self.acc_active = cp.vl["CruiseControl"]['Cruise_Activated']

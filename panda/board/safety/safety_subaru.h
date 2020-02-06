@@ -31,6 +31,7 @@ static void subaru_init(int16_t param) {
 }
 
 static int subaru_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
+
   bool valid = addr_safety_check(to_push, subaru_rx_checks, SUBARU_RX_CHECK_LEN,
                                  NULL, NULL, NULL);
 
