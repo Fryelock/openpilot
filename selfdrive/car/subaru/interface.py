@@ -72,21 +72,6 @@ class CarInterface(CarInterfaceBase):
       ret.steerMaxBP = [0.] # m/s
       ret.steerMaxV = [1.]
 
-    # testing tuning
-
-    # No long control in subaru
-    ret.gasMaxBP = [0.]
-    ret.gasMaxV = [0.]
-    ret.brakeMaxBP = [0.]
-    ret.brakeMaxV = [0.]
-    ret.longitudinalTuning.deadzoneBP = [0.]
-    ret.longitudinalTuning.deadzoneV = [0.]
-    ret.longitudinalTuning.kpBP = [0.]
-    ret.longitudinalTuning.kpV = [0.]
-    ret.longitudinalTuning.kiBP = [0.]
-    ret.longitudinalTuning.kiV = [0.]
-
-    # end from gm
 
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
