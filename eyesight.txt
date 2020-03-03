@@ -1,0 +1,161 @@
+Eyesight
+
+TODO
+  - Test enabling stop and go:
+    - when in Hold and Car in front moved:
+      - send ACC_Cancel to cancel ACC to get out of Hold (Engaged > Enabled)
+      - send ACC_Resume to reengage ACC (Enabled > Engaged)?
+        - DONE, does not work, cruise_cancel from hold sets handbrake
+
+      - when in Hold and Car in front moved:
+        - send Brake or Throttle to cancel ACC / standstill (Engaged > Enabled)
+        - send ACC Resume to engage ACC (Enabled > Engaged)
+          - partially done, sending Throttle did nothing, test Brake
+
+      - send ACC Resume and Set when ES is not engaged (using blinkers/joystick?)
+
+  - Test and log what happens on canbus when ES has faulted:
+    - are button can messages still sent?
+    - does EPS accept ES_LKAS messages?
+
+  - Document the ES can messages frequency - DONE
+  - Document the signals ES requires/checks from car
+    - filter messages using panda and document which missing msgs create ES fault
+
+Filter stock LKAS off message and chime
+
+  - visual notification (10sec):
+    [ES_LKAS_State][LKAS_STATE] = 2
+
+  - sounds after visual (1sec):
+    [ES_LKAS_State][FCW_Cont_Beep] = 1
+    [ES_LKAS_State][FCW_Repeated_Beep] = 1
+
+Solution: 
+  - rewrite lkas_state = 0 when incoming lkas_state = 2 
+  - record last frame when lkas_state changes to 2 > 0 and rewrite beeps = 0 for 100 frames (1 sec)
+
+
+Eyesight Features
+ACC
+  - ES_Distance contains acceleration and button status
+    - ES_Throttle_Cruise
+    - Cruise_Cancel
+    - Cruise_Set
+    - Cruise_Resume
+
+  - ES_Brake
+
+  - ES_Status
+
+LKAS
+  - ES_LKAS controls steering
+    LKAS_Output - steering torque
+
+  - ES_LKAS_State controls dash display and notifications
+    - Keep_Hands_On_Wheel
+    - LKAS_ACTIVE (0..3)
+    - Backward_Speed_Limit_Menu?
+    - LKAS_Left_Line_Visible
+    - LKAS_Right_Line_Visible
+    - FCW_Cont_Beep
+    - FCW_Repeated_Beep
+    - Vehicle_In_Front_Has_Moved
+    - Throttle_Management_Activated (object in front detected)
+
+ES CAN messages
+  50Hz ES_LKAS - LKAS steering control
+  20Hz ES_Brake - ACC brake pressure and status
+  20Hz ES_Distance - ACC state (Throttle and buttons)
+  20Hz ES_Status
+  20Hz ES_Blank
+  10Hz ES_DashStatus
+  10Hz ES_LKAS_State - LKAS and FCW dash status and notifications
+  10Hz ES_NEW_MSG_22
+
+States:
+  Enabled
+  Engaged
+  Hold
+
+Buttons:
+  Cancel
+  Resume
+  Set
+
+18000 CarState = 100Hz
+  360 thermal  = 2Hz
+
+CAR CAN messages frequencies
+  100Hz Steering
+  100Hz Throttle
+  100Hz NEW_MSG_1
+  100Hz Transmission
+  100Hz NEW_MSG_5
+   50Hz NEW_MSG_6
+   50Hz Steering_Torque
+   50Hz Brake_Pressure_L_R
+   50Hz Brake_Pedal
+   50Hz Wheel_Speeds
+   50Hz G_Sensor
+   50Hz NEW_MSG_3
+   50Hz Cruise_Buttons
+   50Hz NEW_MSG_4
+   33Hz NEW_MSG_10
+   20Hz CruiseControl
+   20Hz NEW_MSG_16
+   11Hz BodyInfo
+   10Hz NEW_MSG_23
+   10Hz NEW_MSG_2 (0:32b) 
+   10Hz NEW_MSG_24
+   10Hz NEW_MSG_25
+   10Hz NEW_MSG_26
+   10Hz Dashlights
+   10Hz NEW_MSG_27
+   10Hz NEW_MSG_28
+    8Hz NEW_MSG_30
+    8Hz NEW_MSG_31
+    2Hz NEW_MSG_36
+    1Hz NEW_MSG_38
+    1Hz NEW_MSG_39
+    1Hz NEW_MSG_7
+    1Hz NEW_MSG_44
+    1Hz NEW_MSG_45
+  0.8Hz NEW_MSG_34
+  0.8Hz NEW_MSG_35
+  0.8Hz NEW_MSG_37
+  0.8Hz Dash_State
+  0.8Hz NEW_MSG_43
+  
+Enable openpilot long control / slow down before curves:
+
+Openpilot:
+
+- actuators.gas
+- actuators.brake
+
+- replace eyesight with ACC buttons intercept board and static can messages
+
+toyota: apply_accel = actuators.gas - actuators.brake
+
+Related brake signals:
+  [Brake_Pedal][Brake_Pedal_On] (0/1) - 1 when brake pedal is pressed
+  [Brake_Pedal][Brake_Pedal]  (0..500)  - brake pedal pressure
+
+  [ES_Brake][Brake_Pressure] - (0..400) Hold: 394 - electric brake pressure
+  [ES_Brake][__Status] - 0 no brake, 8 & 13 brake active
+
+  [ES_Status][Cruise_Brake] (0/1) - 1 when brake pedal or electronic brake on
+  [ES_DashStatus][Brake_Pedal] (0/1) - 1 when brake pedal or electronic brake on
+
+Related gas signals:
+  [Throttle][Throttle_Cruise] (0..140)
+  [Throttle][Throttle_Pedal]
+  [Throttle][Throttle_Combo]
+
+  [ES_Distance][ES_Throttle_Cruise] (0..4000) LSB: 20 Size: 12
+
+[ES_DashStatus][Cruise_Status] (0 = normal, 3 = hold)
+
+[ES_LKAS_State][Traffic_light_Ahead] - Vehicle in front has moved (Crosstrek 2018)
+
