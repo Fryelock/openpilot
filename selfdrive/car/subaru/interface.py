@@ -74,7 +74,6 @@ class CarInterface(CarInterfaceBase):
       ret.steerMaxBP = [0.] # m/s
       ret.steerMaxV = [1.]
 
-
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
     ret.rotationalInertia = scale_rot_inertia(ret.mass, ret.wheelbase)
