@@ -10,9 +10,13 @@ TODO
       - when in Hold and Car in front moved:
         - send Brake or Throttle to cancel ACC / standstill (Engaged > Enabled)
         - send ACC Resume to engage ACC (Enabled > Engaged)
-          - partially done, sending Throttle did nothing, test Brake
+      - DONE, sending Brake_Pedal cancels and ACC Resume engages
+        - Fix msg sending logic
+        - test SNG on level ground 
+        - test hill start
 
       - send ACC Resume and Set when ES is not engaged (using blinkers/joystick?)
+        - DONE, Set and Resume works for enabled > engaged and changing ACC max speed, button press signal needs to be min 10ms (10 cycles in carcontroller 100Hz loop)
 
   - Test and log what happens on canbus when ES has faulted:
     - are button can messages still sent?
