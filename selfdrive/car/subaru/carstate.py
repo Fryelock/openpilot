@@ -119,7 +119,7 @@ class CarState(CarStateBase):
     if CP.carFingerprint == CAR.IMPREZA:
       signals += [
         ("Counter", "ES_Distance", 0),
-        ("Signal1", "ES_Distance", 0),
+        ("ES_Cruise_Throttle", "ES_Distance", 0),
         ("Signal2", "ES_Distance", 0),
         ("Main", "ES_Distance", 0),
         ("Signal3", "ES_Distance", 0),
