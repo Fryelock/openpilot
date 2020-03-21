@@ -55,6 +55,12 @@ class CarState(CarStateBase):
     if self.car_fingerprint == CAR.IMPREZA:
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
+      self.brake_msg = copy.copy(cp.vl["Brake_Pedal"])
+
+      self.lead_start = cp_cam.vl["ES_LKAS_State"]['Lead_Vehicle_Start_Alert']
+      self.cruise_state = cp_cam.vl["ES_DashStatus"]['Cruise_State']
+      self.brake_pedal = cp.vl["Brake_Pedal"]['Brake_Pedal']
+      self.wipers = cp.vl["BodyInfo"]['WIPERS']
     elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.steer_not_allowed = cp.vl["Steering_Torque"]["LKA_Lockout"]
       self.body_info_msg = copy.copy(cp_cam.vl["BodyInfo"])

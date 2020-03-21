@@ -30,7 +30,12 @@ class CarController():
     self.es_distance_cnt = -1
     self.es_lkas_cnt = -1
     self.steer_rate_limited = False
+    self.sng_cancel_acc = False
+    self.sng_cancel_cnt = -1
+    self.sng_resume_acc = False
+    self.sng_resume_cnt = -1
     self.car_fingerprint = CP.carFingerprint
+    self.prev_lead_start = 0
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
@@ -76,13 +81,54 @@ class CarController():
       self.apply_steer_last = apply_steer
 
     if self.car_fingerprint == CAR.IMPREZA:
+      # send cancel and resume ACC to get out of standstill for stop and go
+      if (frame % 10) == 0:
+        print("brake_pedal: %s cruise_state: %s lead_start: %s prev_lead_start: %s" % (CS.brake_pedal, CS.cruise_state, CS.lead_start, self.prev_lead_start))
+
+      # Trigger sng_cancel_acc when when in standstill and car in front moved
+      if (enabled and CS.cruise_state == 3 and CS.lead_start and not self.prev_lead_start):
+        self.sng_cancel_acc = True
+        self.sng_resume_acc = False
+        print("set sng_cancel_acc")
+
+      self.prev_lead_start = CS.lead_start
+
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
-        can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, pcm_cancel_cmd))
+
+        # send pcm_resume_cmd to resume acc
+        if not enabled and self.sng_resume_acc:
+          if self.sng_resume_cnt < 5:
+              pcm_resume_cmd = True
+              self.sng_resume_cnt += 1
+              print("send pcm_resume_cmd")
+          else:
+              self.sng_resume_acc = False
+              self.sng_resume_cnt = -1
+              print("unset sng_resume_acc")
+
+        can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, pcm_cancel_cmd, pcm_resume_cmd))
         self.es_distance_cnt = CS.es_distance_msg["Counter"]
 
       if self.es_lkas_cnt != CS.es_lkas_msg["Counter"]:
         can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert, left_line, right_line))
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
+
+      if self.brake_cnt != CS.brake_msg["Counter"]:
+        # send brake_cmd to cancel acc
+        if self.sng_cancel_acc:
+          if self.sng_cancel_cnt < 5:
+              brake_cmd = True
+              self.sng_cancel_cnt += 1
+              print("send brake_cmd")
+          else:
+              self.sng_cancel_acc = False
+              self.sng_resume_acc = True
+              self.sng_cancel_cnt = -1
+              print("set sng_resume_acc")
+              print("unset sng_cancel_acc")
+
+        can_sends.append(subarucan.create_brake(self.packer, CS.brake_msg, brake_cmd))
+        self.brake_cnt = CS.brake_msg["Counter"]
 
     # FIXME: ES fault on accel pedal press (Legacy 2018)
     elif self.car_fingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
