@@ -101,7 +101,7 @@ def report_tombstone(fn, client):
   cloudlog.error({'tombstone': message})
 
 
-def main(gctx=None):
+def main():
   initial_tombstones = set(get_tombstones())
 
   client = Client('https://a089a347427741b19eb295d3f7c96f2f:e35d8e45e45d4474a3f8d1a0af069b73@sentry.io/1466272',

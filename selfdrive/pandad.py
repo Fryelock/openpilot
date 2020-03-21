@@ -85,7 +85,7 @@ def update_panda():
     cloudlog.info("Version mismatch after flashing, exiting")
     raise AssertionError
 
-def main(gctx=None):
+def main():
   update_panda()
 
   os.chdir("boardd")
