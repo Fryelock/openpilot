@@ -64,7 +64,7 @@ class CarState(CarStateBase):
     elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.steer_not_allowed = cp.vl["Steering_Torque"]["LKA_Lockout"]
 
-    self.body_info_msg = copy.copy(cp_cam.vl["BodyInfo"])
+    self.body_info_msg = copy.copy(cp.vl["BodyInfo"])
 
     return ret
 
