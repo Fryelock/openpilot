@@ -1,4 +1,6 @@
 from selfdrive.car import dbc_dict
+from cereal import car
+Ecu = car.CarParams.Ecu
 
 class CAR:
   IMPREZA = "SUBARU IMPREZA LIMITED 2019"
@@ -71,11 +73,8 @@ STEER_THRESHOLD = {
   CAR.LEGACY: 400,
 }
 
-class ECU:
-  CAM = 0
-
 ECU_FINGERPRINT = {
-  ECU.CAM: [290, 356],   # steer torque cmd
+  Ecu.fwdCamera: [290, 356],   # steer torque cmd
 }
 
 DBC = {
