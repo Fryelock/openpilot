@@ -47,6 +47,11 @@ class CarState(CarStateBase):
     ret.cruiseState.enabled = cp.vl["CruiseControl"]['Cruise_Activated'] != 0
     ret.cruiseState.available = cp.vl["CruiseControl"]['Cruise_On'] != 0
     ret.cruiseState.speed = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed'] * CV.KPH_TO_MS
+    if self.car_fingerprint == CAR.IMPREZA:
+      # 1 = imperial, 6 = metric
+      if cp.vl["Dash_State"]['Units'] == 1:
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
+ 
     ret.seatbeltUnlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
     ret.doorOpen = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
@@ -54,9 +59,6 @@ class CarState(CarStateBase):
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
     if self.car_fingerprint == CAR.IMPREZA:
-      # 1 = imperial, 6 = metric
-      if cp.vl["Dash_State"]['Units'] == 1:
-        ret.cruiseState.speed *= CV.MPH_TO_KPH
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
     elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
