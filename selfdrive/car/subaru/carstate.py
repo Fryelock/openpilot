@@ -45,7 +45,7 @@ class CarState(CarStateBase):
       # 1 = imperial, 6 = metric
       if cp.vl["Dash_State"]['Units'] == 1:
         ret.cruiseState.speed *= CV.MPH_TO_KPH
- 
+
     ret.seatbeltUnlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
     ret.doorOpen = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
