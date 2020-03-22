@@ -36,6 +36,7 @@ class CarController():
     self.sng_resume_cnt = -1
     self.car_fingerprint = CP.carFingerprint
     self.prev_lead_start = 0
+    self.prev_close_distance = 0
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
@@ -46,6 +47,9 @@ class CarController():
     """ Controls thread """
 
     P = self.params
+
+    pcm_resume_cmd = False
+    brake_cmd = False
 
     # Send CAN commands.
     can_sends = []
@@ -83,10 +87,17 @@ class CarController():
     if self.car_fingerprint == CAR.IMPREZA:
       # send cancel and resume ACC to get out of standstill for stop and go
       if (frame % 10) == 0:
-        print("brake_pedal: %s cruise_state: %s lead_start: %s prev_lead_start: %s" % (CS.brake_pedal, CS.cruise_state, CS.lead_start, self.prev_lead_start))
+        #print("brake_pedal: %s cruise_state: %s lead_start: %s prev_lead_start: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.lead_start, self.prev_lead_start, self.sng_resume_acc, self.sng_cancel_acc))
+        print("brake_pedal: %s cruise_state: %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
 
-      # Trigger sng_cancel_acc when when in standstill and car in front moved
-      if (enabled and CS.cruise_state == 3 and CS.lead_start and not self.prev_lead_start):
+      # Trigger sng_cancel_acc when when in hold and car in front moved
+      #if (enabled and CS.cruise_state == 3 and CS.lead_start and not self.prev_lead_start):
+      # Trigger sng_cancel_acc when in hold and close_distance increases > 100
+      if (enabled 
+          and CS.cruise_state == 3 
+          and CS.close_distance > 100 
+          and self.prev_close_distance < CS.close_distance 
+          and not self.sng_cancel_acc):
         self.sng_cancel_acc = True
         self.sng_resume_acc = False
         print("set sng_cancel_acc")
@@ -95,8 +106,8 @@ class CarController():
 
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
 
-        # send pcm_resume_cmd to resume acc
-        if not enabled and self.sng_resume_acc:
+        # send pcm_resume_cmd to resume acc after canceling
+        if CS.cruise_state == 0 and self.sng_resume_acc:
           if self.sng_resume_cnt < 5:
               pcm_resume_cmd = True
               self.sng_resume_cnt += 1
@@ -114,7 +125,7 @@ class CarController():
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
       if self.brake_cnt != CS.brake_msg["Counter"]:
-        # send brake_cmd to cancel acc
+        # send brake_cmd to cancel acc in hold
         if self.sng_cancel_acc:
           if self.sng_cancel_cnt < 5:
               brake_cmd = True
