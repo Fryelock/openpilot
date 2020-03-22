@@ -30,6 +30,7 @@ class CarController():
     self.es_distance_cnt = -1
     self.es_lkas_cnt = -1
     self.steer_rate_limited = False
+    self.car_fingerprint = CP.carFingerprint
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
