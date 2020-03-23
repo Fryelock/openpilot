@@ -91,14 +91,16 @@ class CarController():
         #print("brake_pedal: %s cruise_state: %s lead_start: %s prev_lead_start: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.lead_start, self.prev_lead_start, self.sng_resume_acc, self.sng_cancel_acc))
         print("brake_pedal: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
 
+      # Manual trigger with wipers
       if CS.wipers and not self.prev_wipers:
         self.sng_cancel_acc = True
-        #self.sng_resume_acc = True
+        self.sng_resume_acc = False
         print("wipers cancel acc")
       self.prev_wipers = CS.wipers
 
       # Trigger sng_cancel_acc when when in hold and car in front moved
       #if (enabled and CS.cruise_state == 3 and CS.lead_start and not self.prev_lead_start):
+
       # Trigger sng_cancel_acc when in hold and close_distance increases > 100
       if (enabled 
           and CS.cruise_state == 3 
@@ -108,7 +110,7 @@ class CarController():
           and CS.car_follow == 1
           and not self.sng_cancel_acc):
         self.sng_cancel_acc = True
-        self.sng_resume_acc = True
+        self.sng_resume_acc = False
         print("set sng_cancel_acc")
 
       self.prev_lead_start = CS.lead_start
