@@ -84,3 +84,14 @@ def create_door_control(packer, body_info_msg):
 
   return packer.make_can_msg("BodyInfo", 2, values)
 
+def create_brake(packer, brake_msg, brake_cmd):
+
+  values = copy.copy(brake_msg)
+ 
+  if brake_cmd:
+    values["Brake_Pedal"] = 5
+    values["Brake_Pedal_On"] = 1
+
+  values["Checksum"] = subaru_checksum(packer, values, 313)
+
+  return packer.make_can_msg("Brake_Pedal", 2, values)

@@ -58,6 +58,8 @@ class CarState(CarStateBase):
       self.brake_msg = copy.copy(cp.vl["Brake_Pedal"])
 
       self.lead_start = cp_cam.vl["ES_LKAS_State"]['Lead_Vehicle_Start_Alert']
+      self.close_distance = cp_cam.vl["ES_Distance"]['Close_Distance']
+      self.car_follow = cp_cam.vl["ES_Distance"]['Car_Follow']
       self.cruise_state = cp_cam.vl["ES_DashStatus"]['Cruise_State']
       self.brake_pedal = cp.vl["Brake_Pedal"]['Brake_Pedal']
       self.wipers = cp.vl["BodyInfo"]['WIPERS']
