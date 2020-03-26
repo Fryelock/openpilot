@@ -15,6 +15,7 @@ class CarControllerParams():
       self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
       self.STEER_DRIVER_FACTOR = 1     # from dbc
+      self.SNG_DISTANCE = 150               # close_distance
     if car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.STEER_DRIVER_ALLOWANCE = 300   # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 1   # weight driver torque heavily
@@ -35,7 +36,6 @@ class CarController():
     self.sng_resume_acc = False
     self.sng_resume_cnt = -1
     self.car_fingerprint = CP.carFingerprint
-    self.prev_lead_start = 0
     self.prev_close_distance = 0
     self.prev_wipers = 0
 
@@ -86,9 +86,8 @@ class CarController():
       self.apply_steer_last = apply_steer
 
     if self.car_fingerprint == CAR.IMPREZA:
-      # send cancel and resume ACC to get out of standstill for stop and go
+      '''
       if (frame % 10) == 0:
-        #print("brake_pedal: %s cruise_state: %s lead_start: %s prev_lead_start: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.lead_start, self.prev_lead_start, self.sng_resume_acc, self.sng_cancel_acc))
         print("brake_pedal: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
 
       # Manual trigger with wipers
@@ -97,23 +96,20 @@ class CarController():
         self.sng_resume_acc = False
         print("wipers cancel acc")
       self.prev_wipers = CS.wipers
+      '''
 
-      # Trigger sng_cancel_acc when when in hold and car in front moved
-      #if (enabled and CS.cruise_state == 3 and CS.lead_start and not self.prev_lead_start):
-
-      # Trigger sng_cancel_acc when in hold and close_distance increases > 100
+      # Trigger sng_cancel_acc when in hold and close_distance increases > SNG_DISTANCE
       if (enabled 
-          and CS.cruise_state == 3 
-          and CS.close_distance > 100 
-          and CS.close_distance < 255 
-          and self.prev_close_distance < CS.close_distance 
+          and CS.cruise_state == 3
+          and CS.close_distance > self.SNG_DISTANCE
+          and CS.close_distance < 255
+          and self.prev_close_distance < CS.close_distance
           and CS.car_follow == 1
           and not self.sng_cancel_acc):
         self.sng_cancel_acc = True
         self.sng_resume_acc = False
         print("set sng_cancel_acc")
 
-      self.prev_lead_start = CS.lead_start
       self.prev_close_distance = CS.close_distance
 
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
