@@ -101,7 +101,7 @@ class CarController():
       # Trigger sng_cancel_acc when in hold and close_distance increases > SNG_DISTANCE
       if (enabled 
           and CS.cruise_state == 3
-          and CS.close_distance > self.SNG_DISTANCE
+          and CS.close_distance > P.SNG_DISTANCE
           and CS.close_distance < 255
           and self.prev_close_distance < CS.close_distance
           and CS.car_follow == 1
