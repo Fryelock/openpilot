@@ -117,8 +117,8 @@ class CarController():
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
 
         # send pcm_resume_cmd to resume acc after canceling when cruise_state is ready
-        if self.sng_resume_acc and CS.cruise_state == 2:
-          if self.sng_resume_cnt < 10:
+        if self.sng_resume_acc:
+          if CS.cruise_state == 2 and self.sng_resume_cnt < 10:
               pcm_resume_cmd = True
               self.sng_resume_cnt += 1
               print("send pcm_resume_cmd")
