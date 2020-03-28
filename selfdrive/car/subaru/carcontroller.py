@@ -13,13 +13,13 @@ class CarControllerParams():
     self.STEER_DELTA_DOWN = 70         # torque decrease per refresh
     if car_fingerprint == CAR.IMPREZA:
       self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
-      self.STEER_DRIVER_MULTIPLIER = 10   # weight driver torque heavily
-      self.STEER_DRIVER_FACTOR = 1     # from dbc
-      self.SNG_DISTANCE = 150               # close_distance
+      self.STEER_DRIVER_MULTIPLIER = 10  # weight driver torque heavily
+      self.STEER_DRIVER_FACTOR = 1       # from dbc
+      self.SNG_DISTANCE = 170            # Trigger value for Close_Distance (0-255)
     if car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
-      self.STEER_DRIVER_ALLOWANCE = 300   # allowed driver torque before start limiting
+      self.STEER_DRIVER_ALLOWANCE = 300  # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 1   # weight driver torque heavily
-      self.STEER_DRIVER_FACTOR = 1     # from dbc
+      self.STEER_DRIVER_FACTOR = 1       # from dbc
       self.STEER_DELTA_DOWN = 60         # torque decrease per refresh
 
 
@@ -30,12 +30,12 @@ class CarController():
     self.apply_steer_last = 0
     self.es_distance_cnt = -1
     self.es_lkas_cnt = -1
+    self.brake_cnt = -1
     self.steer_rate_limited = False
-    self.sng_cancel_acc = False
-    self.sng_cancel_cnt = -1
     self.sng_resume_acc = False
+    self.sng_cancel_acc = False
     self.sng_resume_cnt = -1
-    self.car_fingerprint = CP.carFingerprint
+    self.sng_cancel_cnt = -1
     self.prev_close_distance = 0
     self.prev_wipers = 0
 
@@ -71,7 +71,7 @@ class CarController():
       if not enabled:
         apply_steer = 0
 
-      if self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+      if CP.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
 
         # add noise to prevent lkas fault from constant torque value for over 1s
         if enabled and apply_steer == self.apply_steer_last:
@@ -85,12 +85,12 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    if self.car_fingerprint == CAR.IMPREZA:
+    if CP.car_fingerprint == CAR.IMPREZA:
       '''
       if (frame % 10) == 0:
         print("brake_pedal: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
 
-      # Manual trigger with wipers
+      # Manual trigger using wipers signal
       if CS.wipers and not self.prev_wipers:
         self.sng_cancel_acc = True
         self.sng_resume_acc = False
@@ -99,7 +99,9 @@ class CarController():
       '''
 
       # Trigger sng_cancel_acc when in hold and close_distance increases > SNG_DISTANCE
-      if (enabled 
+      # FIXME: scale SNG_DISTANCE according to ES_DashStatus Cruise_Distance bars setting
+      # Cruise_Distance = 2: 90 (level), 160 (hill)
+      if (enabled
           and CS.cruise_state == 3
           and CS.close_distance > P.SNG_DISTANCE
           and CS.close_distance < 255
@@ -114,8 +116,8 @@ class CarController():
 
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
 
-        # send pcm_resume_cmd to resume acc after canceling
-        if self.sng_resume_acc:
+        # send pcm_resume_cmd to resume acc after canceling when cruise_state is ready
+        if self.sng_resume_acc and CS.cruise_state == 2:
           if self.sng_resume_cnt < 10:
               pcm_resume_cmd = True
               self.sng_resume_cnt += 1
