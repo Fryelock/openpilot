@@ -65,6 +65,7 @@ class CarState(CarStateBase):
       self.es_brake_pressure = cp_cam.vl["ES_Brake"]['Brake_Pressure']
       self.brake_pedal = cp.vl["Brake_Pedal"]['Brake_Pedal']
       self.wipers = cp.vl["BodyInfo"]['WIPERS']
+      self.stop_start = cp.vl["STOP_START"]['State']
     elif self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.steer_not_allowed = cp.vl["Steering_Torque"]["LKA_Lockout"]
 
@@ -81,7 +82,6 @@ class CarState(CarStateBase):
       ("Steering_Angle", "Steering_Torque", 0),
       ("Cruise_On", "CruiseControl", 0),
       ("Cruise_Activated", "CruiseControl", 0),
-      ("Brake_Pedal", "Brake_Pedal", 0),
       ("Throttle_Pedal", "Throttle", 0),
       ("LEFT_BLINKER", "Dashlights", 0),
       ("RIGHT_BLINKER", "Dashlights", 0),
@@ -94,6 +94,18 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_FL", "BodyInfo", 1),
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
+      ("WIPERS", "BodyInfo", 0),
+
+      ("Checksum", "Brake_Pedal", 0),
+      ("Counter", "Brake_Pedal", 0),
+      ("Signal1", "Brake_Pedal", 0),
+      ("Brake_Pedal_On", "Brake_Pedal", 0),
+      ("Signal2", "Brake_Pedal", 0),
+      ("Brake_Pedal", "Brake_Pedal", 0),
+      ("Signal3", "Brake_Pedal", 0),
+
+      ("State", "STOP_START", 0),
+
     ]
 
     checks = [

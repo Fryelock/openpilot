@@ -15,7 +15,7 @@ class CarControllerParams():
       self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 10  # weight driver torque heavily
       self.STEER_DRIVER_FACTOR = 1       # from dbc
-      self.SNG_DISTANCE = 170            # Trigger value for Close_Distance (0-255)
+      self.SNG_DISTANCE = 170            # Trigger value for Close_Distance (level ~90, hill ~160)
     if car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.STEER_DRIVER_ALLOWANCE = 300  # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 1   # weight driver torque heavily
@@ -34,6 +34,7 @@ class CarController():
     self.steer_rate_limited = False
     self.sng_resume_acc = False
     self.sng_cancel_acc = False
+    self.sng_cancel_acc_done = False
     self.sng_resume_cnt = -1
     self.sng_cancel_cnt = -1
     self.prev_close_distance = 0
@@ -99,8 +100,7 @@ class CarController():
       '''
 
       # Trigger sng_cancel_acc when in hold and close_distance increases > SNG_DISTANCE
-      # FIXME: scale SNG_DISTANCE according to ES_DashStatus Cruise_Distance bars setting
-      # Cruise_Distance = 2: 90 (level), 160 (hill)
+      # FIXME: better trigger logic, ignore short spikes down from 255 while in hold
       if (enabled
           and CS.cruise_state == 3
           and CS.close_distance > P.SNG_DISTANCE
@@ -114,11 +114,16 @@ class CarController():
 
       self.prev_close_distance = CS.close_distance
 
+      # Trigger ACC resume when cruise state is ready
+      if (self.sng_cancel_acc_done and CS.cruise_state == 2):
+        self.sng_resume_acc = True
+        self.sng_cancel_acc_done = False
+
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
 
         # send pcm_resume_cmd to resume acc after canceling when cruise_state is ready
         if self.sng_resume_acc:
-          if CS.cruise_state == 2 and self.sng_resume_cnt < 10:
+          if self.sng_resume_cnt < 5:
               pcm_resume_cmd = True
               self.sng_resume_cnt += 1
               print("send pcm_resume_cmd")
@@ -135,15 +140,22 @@ class CarController():
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
       if self.brake_cnt != CS.brake_msg["Counter"]:
+
+        # longer brake_cmd press when stop/start is active
+        if CS.stop_start == 1:
+          sng_cancel_max = 80
+        else:
+          sng_cancel_max = 50
+
         # send brake_cmd to cancel acc in hold
         if self.sng_cancel_acc:
-          if self.sng_cancel_cnt < 50:
+          if self.sng_cancel_cnt < sng_cancel_max:
               brake_cmd = True
               self.sng_cancel_cnt += 1
               print("send brake_cmd")
           else:
               self.sng_cancel_acc = False
-              self.sng_resume_acc = True
+              self.sng_cancel_acc_done = True
               self.sng_cancel_cnt = -1
               print("set sng_resume_acc")
               print("unset sng_cancel_acc")
