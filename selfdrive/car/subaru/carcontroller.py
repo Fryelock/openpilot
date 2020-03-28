@@ -71,7 +71,7 @@ class CarController():
       if not enabled:
         apply_steer = 0
 
-      if self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+      if CS.CP.carFingerprint in (CAR.OUTBACK, CAR.LEGACY):
 
         # add noise to prevent lkas fault from constant torque value for over 1s
         if enabled and apply_steer == self.apply_steer_last:
