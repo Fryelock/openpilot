@@ -71,7 +71,7 @@ class CarController():
       if not enabled:
         apply_steer = 0
 
-      if CP.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+      if self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
 
         # add noise to prevent lkas fault from constant torque value for over 1s
         if enabled and apply_steer == self.apply_steer_last:
@@ -85,7 +85,7 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    if CP.car_fingerprint == CAR.IMPREZA:
+    if CS.CP.carFingerprint == CAR.IMPREZA:
       '''
       if (frame % 10) == 0:
         print("brake_pedal: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
@@ -152,7 +152,7 @@ class CarController():
         self.brake_cnt = CS.brake_msg["Counter"]
 
     # FIXME: ES fault on accel pedal press (Legacy 2018)
-    elif self.car_fingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
+    elif CS.CP.carFingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
       can_sends.append(subarucan.create_door_control(self.packer, CS.body_info_msg))
     return can_sends
 
