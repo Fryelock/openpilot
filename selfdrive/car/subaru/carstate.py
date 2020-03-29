@@ -103,9 +103,6 @@ class CarState(CarStateBase):
       ("Signal2", "Brake_Pedal", 0),
       ("Brake_Pedal", "Brake_Pedal", 0),
       ("Signal3", "Brake_Pedal", 0),
-
-      ("State", "STOP_START", 0),
-
     ]
 
     checks = [
@@ -122,6 +119,7 @@ class CarState(CarStateBase):
       ]
       signals += [
         ("Units", "Dash_State", 1),
+        ("State", "STOP_START", 0),
       ]
     elif CP.carFingerprint in (CAR.OUTBACK, CAR.LEGACY):
       signals += [
