@@ -15,7 +15,9 @@ class CarControllerParams():
       self.STEER_DRIVER_ALLOWANCE = 60   # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 10  # weight driver torque heavily
       self.STEER_DRIVER_FACTOR = 1       # from dbc
-      self.SNG_DISTANCE = 170            # Trigger value for Close_Distance (level ~90, hill ~160)
+      self.SNG_DISTANCE = 170            # distance trigger value for stop and go (0-255)
+      self.SNG_CANCEL_COUNT = 70         # number of brake messages to cancel acc in hold
+      self.SNG_RESUME_COUNT = 5          # number of acc resume messages to send
     if car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
       self.STEER_DRIVER_ALLOWANCE = 300  # allowed driver torque before start limiting
       self.STEER_DRIVER_MULTIPLIER = 1   # weight driver torque heavily
@@ -35,9 +37,11 @@ class CarController():
     self.sng_resume_acc = False
     self.sng_cancel_acc = False
     self.sng_cancel_acc_done = False
+    self.manual_hold = False
     self.sng_resume_cnt = -1
     self.sng_cancel_cnt = -1
     self.prev_close_distance = 0
+    self.prev_cruise_state = 0
     self.prev_wipers = 0
 
     # Setup detection helper. Routes commands to
@@ -89,30 +93,41 @@ class CarController():
     if CS.CP.carFingerprint == CAR.IMPREZA:
       '''
       if (frame % 10) == 0:
-        print("brake_pedal: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s sng_resume: %s sng_cancel: %s" % (CS.brake_pedal, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.sng_resume_acc, self.sng_cancel_acc))
+        print("es_brake_state: %s cruise_state: %s car_follow %s close_dist: %s prev_close_dist: %s manual_hold: %s" % (CS.es_brake_state, CS.cruise_state, CS.car_follow, CS.close_distance, self.prev_close_distance, self.manual_hold))
 
       # Manual trigger using wipers signal
-      if CS.wipers and not self.prev_wipers:
+      if CS.wipers and not self.prev_wipers and not self.manual_hold:
         self.sng_cancel_acc = True
         self.sng_resume_acc = False
         print("wipers cancel acc")
       self.prev_wipers = CS.wipers
       '''
 
+      # Record hold set while in standstill
+      if CS.standstill and self.prev_cruise_state == 1 and CS.cruise_state == 3:
+        self.manual_hold = True
+
+      # cancel set hold when car starts moving
+      if not CS.standstill:
+        self.manual_hold = False
+
       # Trigger sng_cancel_acc when in hold and close_distance increases > SNG_DISTANCE
-      # FIXME: better trigger logic, ignore short spikes down from 255 while in hold
+      # Ignore when hold has been set in standstill (eg at traffic lights) to avoid 
+      # false positives caused by pedestrians/cyclists crossing the street in front of car
       if (enabled
           and CS.cruise_state == 3
           and CS.close_distance > P.SNG_DISTANCE
           and CS.close_distance < 255
           and self.prev_close_distance < CS.close_distance
           and CS.car_follow == 1
+          and not self.manual_hold
           and not self.sng_cancel_acc):
         self.sng_cancel_acc = True
         self.sng_resume_acc = False
         print("set sng_cancel_acc")
 
       self.prev_close_distance = CS.close_distance
+      self.prev_cruise_state = CS.cruise_state
 
       # Trigger ACC resume when cruise state is ready
       if (self.sng_cancel_acc_done and CS.cruise_state == 2):
@@ -123,7 +138,7 @@ class CarController():
 
         # send pcm_resume_cmd to resume acc after canceling when cruise_state is ready
         if self.sng_resume_acc:
-          if self.sng_resume_cnt < 5:
+          if self.sng_resume_cnt < P.SNG_RESUME_COUNT:
               pcm_resume_cmd = True
               self.sng_resume_cnt += 1
               print("send pcm_resume_cmd")
@@ -140,16 +155,10 @@ class CarController():
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
       if self.brake_cnt != CS.brake_msg["Counter"]:
-
-        # longer brake_cmd press when stop/start is active
-        if CS.stop_start == 1:
-          sng_cancel_max = 80
-        else:
-          sng_cancel_max = 50
-
         # send brake_cmd to cancel acc in hold
+        # normal hold requires 50 and hold with stop_start 70 brake msgs to cancel acc
         if self.sng_cancel_acc:
-          if self.sng_cancel_cnt < sng_cancel_max:
+          if self.sng_cancel_cnt < P.SNG_CANCEL_COUNT:
               brake_cmd = True
               self.sng_cancel_cnt += 1
               print("send brake_cmd")
@@ -157,9 +166,6 @@ class CarController():
               self.sng_cancel_acc = False
               self.sng_cancel_acc_done = True
               self.sng_cancel_cnt = -1
-              print("set sng_resume_acc")
-              print("unset sng_cancel_acc")
-
         can_sends.append(subarucan.create_brake(self.packer, CS.brake_msg, brake_cmd))
         self.brake_cnt = CS.brake_msg["Counter"]
 
