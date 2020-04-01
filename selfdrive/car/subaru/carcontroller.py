@@ -103,8 +103,8 @@ class CarController():
       self.prev_wipers = CS.wipers
       '''
 
-      # Record hold set while in standstill
-      if CS.standstill and self.prev_cruise_state == 1 and CS.cruise_state == 3:
+      # Record hold set while in standstill while no car in front
+      if CS.standstill and self.prev_cruise_state == 1 and CS.cruise_state == 3 and CS.car_follow == 0:
         self.manual_hold = True
 
       # cancel set hold when car starts moving
