@@ -102,6 +102,11 @@ class CarController():
         print("wipers cancel acc")
       self.prev_wipers = CS.wipers
       '''
+      # cancel sng resume sequence on brake press
+      if CS.out.brakePressed:
+        self.sng_cancel_acc = False
+        self.sng_resume_acc = False
+        self.sng_cancel_acc_done = False
 
       # Record hold set while in standstill while no car in front
       if CS.standstill and self.prev_cruise_state == 1 and CS.cruise_state == 3 and CS.car_follow == 0:
