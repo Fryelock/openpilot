@@ -20,11 +20,13 @@ def create_steering_control(packer, apply_steer, frame, steer_step):
 def create_steering_status(packer, apply_steer, frame, steer_step):
   return packer.make_can_msg("ES_LKAS_State", 0, {})
 
-def create_es_distance(packer, es_distance_msg, pcm_cancel_cmd):
+def create_es_distance(packer, es_distance_msg, pcm_cancel_cmd, pcm_resume_cmd):
 
   values = copy.copy(es_distance_msg)
   if pcm_cancel_cmd:
     values["Cruise_Cancel"] = 1
+  elif pcm_resume_cmd:
+    values["Cruise_Resume"] = 1
 
   return packer.make_can_msg("ES_Distance", 0, values)
 
@@ -38,3 +40,13 @@ def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line):
   values["LKAS_Right_Line_Visible"] = int(right_line)
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)
+
+def create_brake(packer, brake_msg, brake_cmd):
+
+  values = copy.copy(brake_msg)
+
+  if brake_cmd:
+    values["Brake_Pedal"] = 5
+    values["Brake_Lights"] = 1
+
+  return packer.make_can_msg("Brake_Pedal", 2, values)

@@ -67,6 +67,11 @@ class CarState(CarStateBase):
 
     self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
     self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
+    self.brake_msg = copy.copy(cp.vl["Brake_Pedal"])
+
+    self.close_distance = cp_cam.vl["ES_Distance"]['Close_Distance']
+    self.car_follow = cp_cam.vl["ES_Distance"]['Car_Follow']
+    self.cruise_state = cp_cam.vl["ES_DashStatus"]['Cruise_State']
 
     return ret
 
@@ -81,7 +86,6 @@ class CarState(CarStateBase):
       ("Steer_Warning", "Steering_Torque", 0),
       ("Cruise_On", "CruiseControl", 0),
       ("Cruise_Activated", "CruiseControl", 0),
-      ("Brake_Pedal", "Brake_Pedal", 0),
       ("Throttle_Pedal", "Throttle", 0),
       ("LEFT_BLINKER", "Dashlights", 0),
       ("RIGHT_BLINKER", "Dashlights", 0),
@@ -94,6 +98,16 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_FL", "BodyInfo", 1),
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
+
+      ("Counter", "Brake_Pedal", 0),
+      ("Signal1", "Brake_Pedal", 0),
+      ("Speed", "Brake_Pedal", 0),
+      ("Signal2", "Brake_Pedal", 0),
+      ("Brake_Lights", "Brake_Pedal", 0),
+      ("Signal3", "Brake_Pedal", 0),
+      ("Brake_Pedal", "Brake_Pedal", 0),
+      ("Signal4", "Brake_Pedal", 0),
+
       ("Units", "Dash_State", 1),
       ("Gear", "Transmission", 0),
       ("L_ADJACENT", "BSD_RCTA", 0),
@@ -108,6 +122,7 @@ class CarState(CarStateBase):
       ("CruiseControl", 20),
       ("Wheel_Speeds", 50),
       ("Steering_Torque", 50),
+      ("Brake_Pedal", 50),
       ("BodyInfo", 10),
     ]
 
@@ -118,8 +133,11 @@ class CarState(CarStateBase):
     signals = [
       ("Cruise_Set_Speed", "ES_DashStatus", 0),
       ("Conventional_Cruise", "ES_DashStatus", 0),
+      ("Cruise_State", "ES_DashStatus", 0),
 
       ("Counter", "ES_Distance", 0),
+      ("ES_Cruise_Throttle", "ES_Distance", 0),
+      ("Car_Follow", "ES_Distance", 0),
       ("Signal1", "ES_Distance", 0),
       ("Cruise_Fault", "ES_Distance", 0),
       ("Cruise_Throttle", "ES_Distance", 0),
