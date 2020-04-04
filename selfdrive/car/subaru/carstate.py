@@ -141,9 +141,16 @@ class CarState(CarStateBase):
       signals += [
         ("Counter", "ES_Distance", 0),
         ("ES_Cruise_Throttle", "ES_Distance", 0),
+        ("Car_Follow", "ES_Distance", 0),
+        ("Signal1", "ES_Distance", 0),
+        ("Distance_Swap", "ES_Distance", 0),
         ("Signal2", "ES_Distance", 0),
-        ("Main", "ES_Distance", 0),
+        ("Close_Distance", "ES_Distance", 0),
         ("Signal3", "ES_Distance", 0),
+        ("Cruise_Cancel", "ES_Distance", 0),
+        ("Cruise_Set", "ES_Distance", 0),
+        ("Cruise_Resume", "ES_Distance", 0),
+        ("Signal4", "ES_Distance", 0),
 
         ("Checksum", "ES_LKAS_State", 0),
         ("Counter", "ES_LKAS_State", 0),

@@ -54,11 +54,13 @@ def create_steering_status(packer, car_fingerprint, apply_steer, frame, steer_st
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)
 
-def create_es_distance(packer, es_distance_msg, pcm_cancel_cmd):
+def create_es_distance(packer, es_distance_msg, pcm_cancel_cmd, pcm_resume_cmd):
 
   values = copy.copy(es_distance_msg)
   if pcm_cancel_cmd:
-    values["Main"] = 1
+    values["Cruise_Cancel"] = 1
+  elif pcm_resume_cmd:
+    values["Cruise_Resume"] = 1
 
   values["Checksum"] = subaru_checksum(packer, values, 545)
 
