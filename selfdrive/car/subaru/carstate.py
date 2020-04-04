@@ -90,7 +90,6 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_FL", "BodyInfo", 1),
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
-      ("WIPERS", "BodyInfo", 0),
 
       ("Checksum", "Brake_Pedal", 0),
       ("Counter", "Brake_Pedal", 0),
@@ -114,6 +113,7 @@ class CarState(CarStateBase):
          ("CruiseControl", 20),
       ]
       signals += [
+        ("WIPERS", "BodyInfo", 0),
         ("Units", "Dash_State", 1),
         ("State", "STOP_START", 0),
       ]
@@ -131,7 +131,6 @@ class CarState(CarStateBase):
   def get_cam_can_parser(CP):
     signals = [
       ("Cruise_Set_Speed", "ES_DashStatus", 0),
-      ("Cruise_State", "ES_DashStatus", 0),
     ]
 
     if CP.carFingerprint == CAR.IMPREZA:
@@ -171,6 +170,9 @@ class CarState(CarStateBase):
         ("Traffic_light_Ahead", "ES_LKAS_State", 0),
         ("Right_Depart", "ES_LKAS_State", 0),
         ("Signal5", "ES_LKAS_State", 0),
+
+        ("Cruise_State", "ES_DashStatus", 0),
+        ("State", "ES_Brake", 0),
 
       ]
 
