@@ -131,6 +131,7 @@ class CarState(CarStateBase):
   def get_cam_can_parser(CP):
     signals = [
       ("Cruise_Set_Speed", "ES_DashStatus", 0),
+      ("Cruise_State", "ES_DashStatus", 0),
     ]
 
     if CP.carFingerprint == CAR.IMPREZA:
