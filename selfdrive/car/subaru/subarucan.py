@@ -41,6 +41,7 @@ def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line):
 
   return packer.make_can_msg("ES_LKAS_State", 0, values)
 
+# cancel acc hold using driver Brake_Pedal message sent to eyesight (does not control brakes)
 def create_brake(packer, brake_msg, brake_cmd):
 
   values = copy.copy(brake_msg)

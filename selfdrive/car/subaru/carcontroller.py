@@ -71,7 +71,7 @@ class CarController():
 
     ### Stop and Go ###
 
-    # Resume ACC automatically when in hold and car in front moves
+    # Resume ACC automatically when in hold and car in front starts moving forward
     # Requires electric parking brake which can hold the car stopped >3 sec
     #
     # - record manual hold set in standstill with no car in front
