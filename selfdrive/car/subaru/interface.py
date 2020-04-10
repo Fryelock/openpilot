@@ -18,7 +18,6 @@ class CarInterface(CarInterfaceBase):
 
     ret.carName = "subaru"
     ret.radarOffCan = True
-    ret.safetyModel = car.CarParams.SafetyModel.subaru
 
     # force openpilot to fake the stock camera, since car harness is not supported yet and old style giraffe (with switches)
     # was never released
@@ -28,6 +27,7 @@ class CarInterface(CarInterfaceBase):
     ret.steerLimitTimer = 0.4
 
     if candidate == CAR.IMPREZA:
+      ret.safetyModel = car.CarParams.SafetyModel.subaru
       ret.mass = 1568. + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
@@ -41,6 +41,7 @@ class CarInterface(CarInterfaceBase):
       ret.steerMaxV = [1.]
 
     if candidate == CAR.OUTBACK:
+      ret.safetyModel = car.CarParams.SafetyModel.subaruLegacy
       ret.mass = 1568 + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
@@ -54,6 +55,7 @@ class CarInterface(CarInterfaceBase):
       ret.steerMaxV = [1.]
 
     if candidate == CAR.LEGACY:
+      ret.safetyModel = car.CarParams.SafetyModel.subaruLegacy
       ret.mass = 1568 + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
