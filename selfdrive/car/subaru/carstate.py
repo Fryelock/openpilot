@@ -84,7 +84,6 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_FL", "BodyInfo", 1),
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
-      ("Units", "Dash_State", 1),
     ]
 
     checks = [
