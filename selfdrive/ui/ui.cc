@@ -821,14 +821,13 @@ int main(int argc, char* argv[]) {
       if (s->started) {
         s->controls_timeout = 5 * UI_FREQ;
       }
-/*
-   // reverse gear
-    else if (s->scene.gear == 4) {
-        set_awake(s, false);
-*/
     } else {
-
-      set_awake(s, true);
+      // blank screen on reverse gear
+      if (s->scene.gear == 4) {
+        set_awake(s, false);
+      } else {
+        set_awake(s, true);
+      }
       // Car started, fetch a new rgb image from ipc
       if (s->vision_connected){
         ui_update(s);
