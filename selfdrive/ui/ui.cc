@@ -190,7 +190,7 @@ static void ui_init(UIState *s) {
 
   pthread_mutex_init(&s->lock, NULL);
   s->sm = new SubMaster({"model", "controlsState", "uiLayoutState", "liveCalibration", "radarState", "thermal",
-                         "health", "ubloxGnss", "driverState", "dMonitoringState", "offroadLayout"
+                         "health", "ubloxGnss", "driverState", "dMonitoringState", "offroadLayout", "carState"
 #ifdef SHOW_SPEEDLIMIT
                                     , "liveMapData"
 #endif
@@ -428,6 +428,12 @@ void handle_message(UIState *s, SubMaster &sm) {
 
     s->active_app = cereal::UiLayoutState::App::NONE;
     update_offroad_layout_state(s);
+    s->scene.hwType = datad.hwType;
+    s->hardware_timeout = 5*30; // 5 seconds at 30 fps
+  } else if (which == cereal::Event::CAR_STATE) {
+    auto data = event.getCarState();
+    scene.gear = data.getGearShifter();
+    printf("gear: %d\n", scene.gear);
   }
 }
 
@@ -815,7 +821,13 @@ int main(int argc, char* argv[]) {
       if (s->started) {
         s->controls_timeout = 5 * UI_FREQ;
       }
+/*
+   // reverse gear
+    else if (s->scene.gear == 4) {
+        set_awake(s, false);
+*/
     } else {
+
       set_awake(s, true);
       // Car started, fetch a new rgb image from ipc
       if (s->vision_connected){

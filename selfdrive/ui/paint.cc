@@ -619,6 +619,39 @@ static void ui_draw_driver_view(UIState *s) {
     } else {
       ui_draw_rect(s->vg, fbox_x, fbox_y, 0.6 * box_h / 2, 0.6 * box_h / 2, nvgRGBAf(1.0, 1.0, 1.0, 0.2), 35, 10);
     }
+}
+
+static void eng_ui_draw_UI(UIState *s)
+{
+  //get 3-state switch position
+  char tri_state_switch = 0;
+  FILE *tri_state_fd = fopen("/sys/devices/virtual/switch/tri-state-key/state", "r");
+  //if we can't open then switch should be considered in the left, nothing done
+  if (tri_state_fd == NULL)
+  {
+    tri_state_switch = 1;
+  }
+  else
+  {
+    fread(&tri_state_switch, sizeof(char), 1, tri_state_fd);
+    tri_state_switch = tri_state_switch - 48;
+    fclose(tri_state_fd);
+  }
+
+  // draw engineering ui measures
+  if (tri_state_switch >= 2)
+  {
+    const UIScene *scene = &s->scene;
+    const int bb_dml_w = 180;
+    const int bb_dml_x = (scene->ui_viz_rx + (bdr_s * 2));
+    const int bb_dml_y = (box_y + (bdr_s * 1.5)) + 220;
+
+    const int bb_dmr_w = 180;
+    const int bb_dmr_x = scene->ui_viz_rx + scene->ui_viz_rw - bb_dmr_w - (bdr_s * 2);
+    const int bb_dmr_y = (box_y + (bdr_s * 1.5)) + 220;
+
+    eng_ui_draw_measures_right(s, bb_dml_x, bb_dml_y, bb_dml_w);
+    eng_ui_draw_measures_left(s, bb_dmr_x, bb_dmr_y, bb_dmr_w);
   }
 
   // draw face icon
