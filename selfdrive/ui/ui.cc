@@ -217,6 +217,7 @@ static void ui_init(UIState *s) {
 
   s->ctx = Context::create();
   s->model_sock = SubSocket::create(s->ctx, "model");
+  s->carstate_sock = SubSocket::create(s->ctx, "carState");
   s->controlsstate_sock = SubSocket::create(s->ctx, "controlsState");
   s->uilayout_sock = SubSocket::create(s->ctx, "uiLayoutState");
   s->livecalibration_sock = SubSocket::create(s->ctx, "liveCalibration");
@@ -229,6 +230,7 @@ static void ui_init(UIState *s) {
   s->offroad_sock = PubSocket::create(s->ctx, "offroadLayout");
 
   assert(s->model_sock != NULL);
+  assert(s->carstate_sock != NULL);
   assert(s->controlsstate_sock != NULL);
   assert(s->uilayout_sock != NULL);
   assert(s->livecalibration_sock != NULL);
@@ -242,6 +244,7 @@ static void ui_init(UIState *s) {
 
   s->poller = Poller::create({
                               s->model_sock,
+                              s->carstate_sock,
                               s->controlsstate_sock,
                               s->uilayout_sock,
                               s->livecalibration_sock,
@@ -513,6 +516,9 @@ void handle_message(UIState *s,  Message* msg) {
     scene.is_rhd = data.getIsRHD();
     scene.awareness_status = data.getAwarenessStatus();
     s->preview_started = data.getIsPreview();
+  } else if (which == cereal::Event::CAR_STATE) {
+    auto data = event.getCarState();
+    auto gear = datad.gearShifter;
   }
 
   s->started = s->thermal_started || s->preview_started ;
@@ -952,7 +958,12 @@ int main(int argc, char* argv[]) {
       // always process events offroad
       check_messages(s);
     } else {
-      set_awake(s, true);
+      // blank screen on reverse gear
+      if (s->scene.gear == 4) {
+        set_awake(s, false);
+      } else {
+        set_awake(s, true);
+      }
       // Car started, fetch a new rgb image from ipc
       if (s->vision_connected){
         ui_update(s);
