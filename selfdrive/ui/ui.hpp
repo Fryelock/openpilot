@@ -161,7 +161,6 @@ typedef struct UIScene {
   int satelliteCount;
   uint8_t athenaStatus;
 
-  int reverse_gear_timer;
   int gear;
 } UIScene;
 
@@ -289,6 +288,8 @@ typedef struct UIState {
   float light_sensor;
 
   int touch_fd;
+
+  int reverse_gear_timer;
 
   // Hints for re-calculations and redrawing
   bool model_changed;
