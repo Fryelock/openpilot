@@ -519,7 +519,7 @@ void handle_message(UIState *s,  Message* msg) {
   } else if (which == cereal::Event::CAR_STATE) {
     auto data = event.getCarState();
     auto gear = data.getGearShifter();
-    if (s->scene.gear == 4) {
+    if (gear == cereal::CarState::GearShifter::REVERSE) {
       s->reverse_gear_timer++;
     }
     else {
@@ -964,8 +964,8 @@ int main(int argc, char* argv[]) {
       // always process events offroad
       check_messages(s);
     } else {
-      // blank screen when >1sec on reverse gear
-      if (s->reverse_gear_timer > 1 * UI_FREQ) {
+      // blank screen while in reverse gear
+      if (s->reverse_gear_timer > 3 * UI_FREQ) {
         set_awake(s, false);
       } else {
         set_awake(s, true);
