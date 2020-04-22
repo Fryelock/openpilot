@@ -518,7 +518,13 @@ void handle_message(UIState *s,  Message* msg) {
     s->preview_started = data.getIsPreview();
   } else if (which == cereal::Event::CAR_STATE) {
     auto data = event.getCarState();
-    auto gear = datad.gearShifter;
+    auto gear = data.getGearShifter();
+    if (s->scene.gear == 4) {
+      s->reverse_gear_timer++;
+    }
+    else {
+      s->reverse_gear_timer = 0;
+    }
   }
 
   s->started = s->thermal_started || s->preview_started ;
@@ -958,8 +964,8 @@ int main(int argc, char* argv[]) {
       // always process events offroad
       check_messages(s);
     } else {
-      // blank screen on reverse gear
-      if (s->scene.gear == 4) {
+      // blank screen when >1sec on reverse gear
+      if (s->reverse_gear_timer > 3 * UI_FREQ) {
         set_awake(s, false);
       } else {
         set_awake(s, true);

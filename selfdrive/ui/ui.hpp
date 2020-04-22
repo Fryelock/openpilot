@@ -160,6 +160,7 @@ typedef struct UIScene {
   cereal::HealthData::HwType hwType;
   int satelliteCount;
   uint8_t athenaStatus;
+  int reverse_gear_timer;
 } UIScene;
 
 typedef struct {
