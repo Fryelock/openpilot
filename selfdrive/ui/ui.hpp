@@ -240,6 +240,8 @@ typedef struct UIState {
 
   std::atomic<float> light_sensor;
 
+  int reverse_gear_timer;
+
   int touch_fd;
 
   GLuint frame_vao[2], frame_vbo[2], frame_ibo[2];
