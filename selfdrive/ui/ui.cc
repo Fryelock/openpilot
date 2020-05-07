@@ -169,6 +169,9 @@ static void ui_init(UIState *s) {
   pthread_mutex_init(&s->lock, NULL);
   s->sm = new SubMaster({"model", "controlsState", "uiLayoutState", "liveCalibration", "radarState", "thermal",
                          "health", "ubloxGnss", "driverState", "dMonitoringState"
+  // ENG UI START
+                                    , "gpsLocationExternal"
+  // ENG UI END
 #ifdef SHOW_SPEEDLIMIT
                                     , "liveMapData"
 #endif
@@ -294,6 +297,14 @@ void handle_message(UIState *s, SubMaster &sm) {
         s->sound.stop();
       } else {
         s->sound.play(alert_sound);
+
+    /*
+    // ENG UI START
+    scene.angleSteers = data.getAngleSteers();
+    scene.angleSteersDes = data.getAngleSteersDes();
+    // ENG UI END
+    */
+
       }
     }
     scene.alert_text1 = scene.controls_state.getAlertText1();
@@ -367,6 +378,26 @@ void handle_message(UIState *s, SubMaster &sm) {
   }
   if (sm.updated("ubloxGnss")) {
     auto data = sm["ubloxGnss"].getUbloxGnss();
+
+    /*
+    // ENG UI START
+    scene.maxCpuTemp = data.getCpu0();
+    if (scene.maxCpuTemp < data.getCpu1())
+    {
+      scene.maxCpuTemp = data.getCpu1();
+    }
+    else if (scene.maxCpuTemp < data.getCpu2())
+    {
+      scene.maxCpuTemp = data.getCpu2();
+    }
+    else if (scene.maxCpuTemp < data.getCpu3())
+    {
+      scene.maxCpuTemp = data.getCpu3();
+    }
+    scene.maxBatTemp = data.getBat();
+    // ENG UI END
+    */
+
     if (data.which() == cereal::UbloxGnss::MEASUREMENT_REPORT) {
       scene.satelliteCount = data.getMeasurementReport().getNumMeas();
     }
@@ -382,6 +413,16 @@ void handle_message(UIState *s, SubMaster &sm) {
     auto data = sm["dMonitoringState"].getDMonitoringState();
     scene.is_rhd = data.getIsRHD();
     s->preview_started = data.getIsPreview();
+  // ENG UI START
+  } else if (which == cereal::Event::GPS_LOCATION_EXTERNAL) {
+    auto data = event.getGpsLocationExternal();
+    scene.gpsAccuracy = data.getAccuracy();
+    // set default values for display
+    if (scene.gpsAccuracy == 0 || scene.gpsAccuracy > 100)
+    {
+      scene.gpsAccuracy = 99.99;
+    }
+  // ENG UI END
   }
 
   s->started = scene.thermal.getStarted() || s->preview_started;
