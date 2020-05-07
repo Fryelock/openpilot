@@ -619,7 +619,16 @@ static void ui_draw_driver_view(UIState *s) {
     } else {
       ui_draw_rect(s->vg, fbox_x, fbox_y, 0.6 * box_h / 2, 0.6 * box_h / 2, nvgRGBAf(1.0, 1.0, 1.0, 0.2), 35, 10);
     }
+  }
+
+  // draw face icon
+  const int face_size = 85;
+  const int x = (valid_frame_x + face_size + (bdr_s * 2)) + (scene->is_rhd ? valid_frame_w - box_h / 2:0);
+  const int y = (box_y + box_h - face_size - bdr_s - (bdr_s * 1.5));
+  ui_draw_circle_image(s->vg, x, y, face_size, s->img_face, scene->driver_state.getFaceProb() > 0.4);
 }
+
+/* ENG UI
 
 static void eng_ui_draw_UI(UIState *s)
 {
@@ -652,14 +661,10 @@ static void eng_ui_draw_UI(UIState *s)
 
     eng_ui_draw_measures_right(s, bb_dml_x, bb_dml_y, bb_dml_w);
     eng_ui_draw_measures_left(s, bb_dmr_x, bb_dmr_y, bb_dmr_w);
-  }
-
-  // draw face icon
-  const int face_size = 85;
-  const int x = (valid_frame_x + face_size + (bdr_s * 2)) + (scene->is_rhd ? valid_frame_w - box_h / 2:0);
-  const int y = (box_y + box_h - face_size - bdr_s - (bdr_s * 1.5));
-  ui_draw_circle_image(s->vg, x, y, face_size, s->img_face, scene->driver_state.getFaceProb() > 0.4);
-}
+  } else {
+    ;
+// END ENG UI
+*/
 
 static void ui_draw_vision_header(UIState *s) {
   const UIScene *scene = &s->scene;
