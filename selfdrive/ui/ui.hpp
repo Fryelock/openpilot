@@ -121,6 +121,14 @@ typedef struct UIScene {
   std::string alert_type;
   cereal::ControlsState::AlertSize alert_size;
 
+  // ENG UI START
+  uint16_t maxCpuTemp;
+  uint32_t maxBatTemp;
+  float gpsAccuracy;
+  float angleSteers;
+  float angleSteersDes;
+  // ENG UI END
+
   // Used to show gps planner status
   bool gps_planner_active;
 

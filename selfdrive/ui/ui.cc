@@ -190,7 +190,8 @@ static void ui_init(UIState *s) {
 
   pthread_mutex_init(&s->lock, NULL);
   s->sm = new SubMaster({"model", "controlsState", "uiLayoutState", "liveCalibration", "radarState", "thermal",
-                         "health", "ubloxGnss", "driverState", "dMonitoringState", "offroadLayout", "carState"
+                         "health", "ubloxGnss", "driverState", "dMonitoringState", "offroadLayout", "carState",
+                         "gpsLocationExternal"
 #ifdef SHOW_SPEEDLIMIT
                                     , "liveMapData"
 #endif
@@ -310,12 +311,19 @@ void handle_message(UIState *s, SubMaster &sm) {
     scene.frontview = scene.controls_state.getRearViewCam();
     if (!scene.frontview){ s->controls_seen = true; }
 
+/*
+    // ENG UI START
+    scene.angleSteers = data.getAngleSteers();
+    scene.angleSteersDes = data.getAngleSteersDes();
+    // ENG UI END
+*/
     auto alert_sound = scene.controls_state.getAlertSound();
     if (scene.alert_type.compare(scene.controls_state.getAlertType()) != 0) {
       if (alert_sound == AudibleAlert::NONE) {
         s->sound.stop();
       } else {
         s->sound.play(alert_sound);
+
       }
     }
     scene.alert_text1 = scene.controls_state.getAlertText1();
@@ -386,6 +394,26 @@ void handle_message(UIState *s, SubMaster &sm) {
 #endif
   if (sm.updated("thermal")) {
     scene.thermal = sm["thermal"].getThermal();
+/*
+    // ENG UI START
+    scene.maxCpuTemp = data.getCpu0();
+    if (scene.maxCpuTemp < data.getCpu1())
+    {
+      scene.maxCpuTemp = data.getCpu1();
+    }
+    else if (scene.maxCpuTemp < data.getCpu2())
+    {
+      scene.maxCpuTemp = data.getCpu2();
+    }
+    else if (scene.maxCpuTemp < data.getCpu3())
+    {
+      scene.maxCpuTemp = data.getCpu3();
+    }
+    scene.maxBatTemp = data.getBat();
+    // ENG UI END
+
+    s->thermal_started = data.getStarted();
+*/
   }
   if (sm.updated("ubloxGnss")) {
     auto data = sm["ubloxGnss"].getUbloxGnss();
@@ -404,6 +432,17 @@ void handle_message(UIState *s, SubMaster &sm) {
     auto data = sm["dMonitoringState"].getDMonitoringState();
     scene.is_rhd = data.getIsRHD();
     s->preview_started = data.getIsPreview();
+  }
+  // ENG UI START
+  if (sm.updated("gpsLocationExternal")) {
+    auto data = sm["gpsLocationExternal"].getGpsLocationExternal();
+    scene.gpsAccuracy = data.getAccuracy();
+    // set default values for display
+    if (scene.gpsAccuracy == 0 || scene.gpsAccuracy > 100)
+    {
+      scene.gpsAccuracy = 99.99;
+    }
+  // ENG UI END
   }
 
   s->started = scene.thermal.getStarted() || s->preview_started;
@@ -428,6 +467,7 @@ void handle_message(UIState *s, SubMaster &sm) {
 
     s->active_app = cereal::UiLayoutState::App::NONE;
     update_offroad_layout_state(s);
+/*
     s->scene.hwType = datad.hwType;
     s->hardware_timeout = 5*30; // 5 seconds at 30 fps
   } else if (which == cereal::Event::CAR_STATE) {
@@ -440,6 +480,7 @@ void handle_message(UIState *s, SubMaster &sm) {
     else {
       s->reverse_gear_timer = 0;
     }
+*/
   }
 }
 
