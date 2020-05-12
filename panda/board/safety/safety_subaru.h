@@ -6,11 +6,13 @@ const uint32_t SUBARU_RT_INTERVAL = 250000;    // 250ms between real time checks
 const int SUBARU_MAX_RATE_UP = 50;
 const int SUBARU_MAX_RATE_DOWN = 70;
 const int SUBARU_DRIVER_TORQUE_ALLOWANCE = 60;
+const int SUBARU_L_DRIVER_TORQUE_ALLOWANCE = 600;
 const int SUBARU_DRIVER_TORQUE_FACTOR = 10;
+const int SUBARU_L_DRIVER_TORQUE_FACTOR = 1;
 const int SUBARU_STANDSTILL_THRSLD = 20;  // about 1kph
 
 const AddrBus SUBARU_TX_MSGS[] = {{0x122, 0}, {0x221, 0}, {0x322, 0}};
-const AddrBus SUBARU_L_TX_MSGS[] = {{0x164, 0}, {0x221, 0}, {0x322, 0}};
+const AddrBus SUBARU_L_TX_MSGS[] = {{0x164, 0}, {0x374, 2}};
 const int SUBARU_TX_MSGS_LEN = sizeof(SUBARU_TX_MSGS) / sizeof(SUBARU_TX_MSGS[0]);
 const int SUBARU_L_TX_MSGS_LEN = sizeof(SUBARU_L_TX_MSGS) / sizeof(SUBARU_L_TX_MSGS[0]);
 
@@ -149,7 +151,11 @@ static int subaru_tx_hook(CAN_FIFOMailBox_TypeDef *to_send) {
     int desired_torque = ((GET_BYTES_04(to_send) >> bit_shift) & 0x1FFF);
     bool violation = 0;
     uint32_t ts = TIM2->CNT;
-    desired_torque = -1 * to_signed(desired_torque, 13);
+    if (subaru_global) {
+      desired_torque = -1 * to_signed(desired_torque, 13);
+    } else {
+      desired_torque = to_signed(desired_torque, 13);
+    }
 
     if (controls_allowed) {
 
@@ -157,9 +163,15 @@ static int subaru_tx_hook(CAN_FIFOMailBox_TypeDef *to_send) {
       violation |= max_limit_check(desired_torque, SUBARU_MAX_STEER, -SUBARU_MAX_STEER);
 
       // *** torque rate limit check ***
-      violation |= driver_limit_check(desired_torque, desired_torque_last, &torque_driver,
-        SUBARU_MAX_STEER, SUBARU_MAX_RATE_UP, SUBARU_MAX_RATE_DOWN,
-        SUBARU_DRIVER_TORQUE_ALLOWANCE, SUBARU_DRIVER_TORQUE_FACTOR);
+      if (subaru_global) {
+        violation |= driver_limit_check(desired_torque, desired_torque_last, &torque_driver,
+          SUBARU_MAX_STEER, SUBARU_MAX_RATE_UP, SUBARU_MAX_RATE_DOWN,
+          SUBARU_DRIVER_TORQUE_ALLOWANCE, SUBARU_DRIVER_TORQUE_FACTOR);
+      } else {
+        violation |= driver_limit_check(desired_torque, desired_torque_last, &torque_driver,
+          SUBARU_MAX_STEER, SUBARU_MAX_RATE_UP, SUBARU_MAX_RATE_DOWN,
+          SUBARU_L_DRIVER_TORQUE_ALLOWANCE, SUBARU_L_DRIVER_TORQUE_FACTOR);
+      }
 
       // used next time
       desired_torque_last = desired_torque;
@@ -203,14 +215,15 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
       bus_fwd = 2;  // Camera CAN
     }
     if (bus_num == 2) {
-      // 290 is LKAS for Global Platform
-      // 356 is LKAS for outback 2015
-      // 545 is ES_Distance
-      // 802 is ES_LKAS
+      // 0x122 is LKAS for Global Platform
+      // 0x221 is ES_Distance
+      // 0x322 is ES_LKAS
+      // 0x164 is LKAS for outback 2015
       int addr = GET_ADDR(to_fwd);
       int block_msg = ((addr == 0x122) && subaru_global) ||
-                      ((addr == 0x164) && !subaru_global) ||
-                      (addr == 0x221) || (addr == 0x322);
+                      ((addr == 0x221) && subaru_global) ||
+                      ((addr == 0x322) && subaru_global) ||
+                      ((addr == 0x164) && !subaru_global):
       if (!block_msg) {
         bus_fwd = 0;  // Main CAN
       }

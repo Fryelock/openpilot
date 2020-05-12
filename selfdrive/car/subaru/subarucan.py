@@ -6,7 +6,7 @@ VisualAlert = car.CarControl.HUDControl.VisualAlert
 def create_steering_control(packer, apply_steer, frame, steer_step):
 
   # counts from 0 to 15 then back to 0 + 16 for enable bit
-  idx = ((frame // steer_step) % 16)
+  idx = (frame / steer_step) % 16
 
   values = {
     "Counter": idx,
@@ -24,7 +24,7 @@ def create_steering_control(packer, apply_steer, frame, steer_step):
       chksm_steer = 0
       chksm_engage = 0
 
-    #counts from 0 to 7 then back to 0
+    # counts from 0 to 7 then back to 0
     idx = (frame / steer_step) % 8
     steer2 = (chksm_steer >> 8) & 0x1F
     steer1 =  chksm_steer - (steer2 << 8)
