@@ -8,12 +8,14 @@ def create_steering_control(packer, apply_steer, frame, steer_step):
   # counts from 0 to 15 then back to 0 + 16 for enable bit
   idx = (frame / steer_step) % 16
 
-  values = {
-    "Counter": idx,
-    "LKAS_Output": apply_steer,
-    "LKAS_Request": 1 if apply_steer != 0 else 0,
-    "SET_1": 1
-  }
+  if car_fingerprint == CAR.IMPREZA:
+
+    values = {
+      "Counter": idx,
+      "LKAS_Output": apply_steer,
+      "LKAS_Request": 1 if apply_steer != 0 else 0,
+      "SET_1": 1
+   }
 
   elif car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
 

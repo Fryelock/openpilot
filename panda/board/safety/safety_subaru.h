@@ -223,7 +223,7 @@ static int subaru_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
       int block_msg = ((addr == 0x122) && subaru_global) ||
                       ((addr == 0x221) && subaru_global) ||
                       ((addr == 0x322) && subaru_global) ||
-                      ((addr == 0x164) && !subaru_global):
+                      ((addr == 0x164) && !subaru_global);
       if (!block_msg) {
         bus_fwd = 0;  // Main CAN
       }
