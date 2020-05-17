@@ -1,9 +1,10 @@
 import copy
 from cereal import car
+from selfdrive.car.subaru.values import CAR
 
 VisualAlert = car.CarControl.HUDControl.VisualAlert
 
-def create_steering_control(packer, apply_steer, frame, steer_step):
+def create_steering_control(packer, car_fingerprint, apply_steer, frame, steer_step):
 
   # counts from 0 to 15 then back to 0 + 16 for enable bit
   idx = (frame / steer_step) % 16

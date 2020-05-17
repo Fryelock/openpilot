@@ -6,7 +6,7 @@ from opendbc.can.packer import CANPacker
 
 
 class CarControllerParams():
-  def __init__(self):
+  def __init__(self, car_fingerprint):
     self.STEER_MAX = 2047              # max_steer 4095
     self.STEER_STEP = 2                # how often we update the steer cmd
     self.STEER_DELTA_UP = 50           # torque increase per refresh, 0.8s to max
@@ -30,11 +30,10 @@ class CarController():
     self.es_distance_cnt = -1
     self.es_lkas_cnt = -1
     self.steer_rate_limited = False
-    self.car_fingerprint = CP.carFingerprint
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
-    self.params = CarControllerParams()
+    self.params = CarControllerParams(CP.carFingerprint)
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])
 
   def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert, left_line, right_line):
@@ -65,7 +64,7 @@ class CarController():
       if not enabled:
         apply_steer = 0
 
-      if self.car_fingerprint in (CAR.OUTBACK, CAR.LEGACY):
+      if CS.CP.carFingerprint in (CAR.OUTBACK, CAR.LEGACY):
 
         # add noise to prevent lkas fault from constant torque value for over 1s
         if enabled and apply_steer == self.apply_steer_last:
@@ -79,7 +78,7 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    if self.car_fingerprint == CAR.IMPREZA:
+    if CS.CP.carFingerprint == CAR.IMPREZA:
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
         can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, pcm_cancel_cmd))
         self.es_distance_cnt = CS.es_distance_msg["Counter"]
@@ -89,7 +88,7 @@ class CarController():
         self.es_lkas_cnt = CS.es_lkas_msg["Counter"]
 
     # FIXME: ES fault on accel pedal press (Legacy 2018)
-    elif self.car_fingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
+    elif CS.CP.carFingerprint in (CAR.OUTBACK) and pcm_cancel_cmd:
       can_sends.append(subarucan.create_door_control(self.packer, CS.body_info_msg))
     return can_sends
 
