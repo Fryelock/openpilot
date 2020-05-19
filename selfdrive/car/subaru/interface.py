@@ -38,6 +38,20 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.2, 0.3], [0.02, 0.03]]
 
+    # FIXME: add FPv2.0 since ASCENT FPv1 matches IMPREZA (ndtran)
+    if candidate == CAR.ASCENT:
+      ret.mass = 2031. + STD_CARGO_KG
+      ret.wheelbase = 2.89
+      ret.centerToFront = ret.wheelbase * 0.5
+      ret.steerRatio = 13.5
+      tire_stiffness_factor = 1.0
+      ret.steerActuatorDelay = 0.3   # end-to-end angle controller
+      ret.lateralTuning.pid.kf = 0.00003
+      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.0025, 0.1], [0.00025, 0.01]]
+      ret.steerMaxBP = [0.] # m/s
+      ret.steerMaxV = [1.]
+
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
     ret.rotationalInertia = scale_rot_inertia(ret.mass, ret.wheelbase)
