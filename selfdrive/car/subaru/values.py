@@ -47,5 +47,5 @@ DBC = {
   CAR.ASCENT: dbc_dict('subaru_global_2017', None),
   CAR.IMPREZA: dbc_dict('subaru_global_2017', None),
   CAR.FORESTER: dbc_dict('subaru_global_2017', None),
-  CAR.CROSSTREK: dbc_dict('subaru_crosstrek_2018', None),
+  CAR.CROSSTREK: dbc_dict('subaru_global_2017', None),
 }
