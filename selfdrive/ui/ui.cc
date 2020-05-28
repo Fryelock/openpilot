@@ -444,6 +444,17 @@ void handle_message(UIState *s, SubMaster &sm) {
     }
   // ENG UI END
   }
+  if (sm.updated("carState")) {
+    auto data = sm["carState"].getCarState();
+    auto gear = data.getGearShifter();
+    //printf("gear: %hu\n", gear);
+    if (gear == cereal::CarState::GearShifter::REVERSE) {
+      s->reverse_gear_timer++;
+    }
+    else {
+      s->reverse_gear_timer = 0;
+    }
+  }
 
   s->started = scene.thermal.getStarted() || s->preview_started;
   // Handle onroad/offroad transition
