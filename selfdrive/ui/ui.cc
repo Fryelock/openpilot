@@ -442,8 +442,8 @@ void handle_message(UIState *s, SubMaster &sm) {
     {
       scene.gpsAccuracy = 99.99;
     }
-  // ENG UI END
   }
+  // ENG UI END
   if (sm.updated("carState")) {
     auto data = sm["carState"].getCarState();
     auto gear = data.getGearShifter();
