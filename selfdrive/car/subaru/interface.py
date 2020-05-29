@@ -18,6 +18,7 @@ class CarInterface(CarInterfaceBase):
     # enable visual radar
     ret.radarOffCan = True
     ret.safetyModel = car.CarParams.SafetyModel.subaru
+    ret.dashcamOnly = True
 
     # Subaru port is a community feature, since we don't own one to test
     ret.communityFeature = True
