@@ -58,7 +58,7 @@ class CarInterface(CarInterfaceBase):
       ret.stoppingControl = True
       ret.startAccel = 0.0
       ret.gasMaxBP = [0.]
-      ret.gasMaxV = [1.] # max gas allowed
+      ret.gasMaxV = [1.]  # max gas allowed
       ret.brakeMaxBP = [0.]  # m/s
       ret.brakeMaxV = [1.]   # max brake allowed
       ret.openpilotLongitudinalControl = True
@@ -77,7 +77,7 @@ class CarInterface(CarInterfaceBase):
       ret.mass = 1470. + STD_CARGO_KG
       ret.wheelbase = 2.635
       ret.centerToFront = ret.wheelbase * 0.5
-      ret.steerRatio = 15 # spec = 13
+      ret.steerRatio = 15  # spec = 13
       ret.steerActuatorDelay = 0.4   # end-to-end angle controller
       ret.lateralTuning.pid.kf = 0.00005
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0., 20.], [0., 20.]]
@@ -91,7 +91,7 @@ class CarInterface(CarInterfaceBase):
       ret.stoppingControl = True
       ret.startAccel = 0.0
       ret.gasMaxBP = [0.]
-      ret.gasMaxV = [1.] # max gas allowed
+      ret.gasMaxV = [1.]  # max gas allowed
       ret.brakeMaxBP = [0.]  # m/s
       ret.brakeMaxV = [1.]   # max brake allowed
       ret.openpilotLongitudinalControl = True
