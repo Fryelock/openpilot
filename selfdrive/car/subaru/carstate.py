@@ -15,7 +15,8 @@ class CarState(CarStateBase):
     can_define = CANDefine(DBC[CP.carFingerprint]['pt'])
     self.shifter_values = can_define.dv["Transmission"]['Gear']
     self.car_country = Params().get('CarCountry')
-    self.is_metric = Params().get('IsMetric')
+    # Plan B
+    #self.is_metric = Params().get('IsMetric')
 
   def update(self, cp, cp_cam):
     ret = car.CarState.new_message()
