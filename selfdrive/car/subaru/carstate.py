@@ -104,9 +104,9 @@ class CarState(CarStateBase):
       # car_country
       # 1,2 = US/Canada
       # 6 = EU/AU
-      
+
       # EU Crosstrek has 3 for mph, US Crosstrek has 1
-      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 3):
+      if (self.car_country in [1, 2]) and (cp.vl["Dash_State"]['Units'] == 3):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
       if (self.car_country == 6) and (cp.vl["Dash_State"]['Units'] == 1):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
@@ -114,16 +114,14 @@ class CarState(CarStateBase):
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
 
-    # US Outback has 1 for mph, AU has 0
+    # Outbacks have 1 for mph
     if self.car_fingerprint == CAR.OUTBACK:
-      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 1):
-        ret.cruiseState.speed *= CV.MPH_TO_KPH
-      if (self.car_country == 6) and (cp.vl["Dash_State"]['Units'] == 0):
+      if (cp.vl["Dash_State"]['Units'] == 1):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     # US Legacy and Forester have 0 for mph
     if self.car_fingerprint in [CAR.LEGACY, CAR.FORESTER]:
-      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 0):
+      if (self.car_country in [1, 2]) and (cp.vl["Dash_State"]['Units'] == 0):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     if self.car_fingerprint in [CAR.OUTBACK, CAR.LEGACY, CAR.FORESTER]:
