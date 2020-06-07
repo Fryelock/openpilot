@@ -64,7 +64,7 @@ class CarState(CarStateBase):
     # UDM 2019 Crosstrek metric             Dash_State Units = 4
     #
     # imperial
-    # EDM 2018 Crosstrek (@mlp) imperial    Dash_State Units = 1
+    # EDM 2018 Crosstrek (@mlp) imperial    Dash_State Units = 1, 2
     # UDM 2019 Crosstrek (@Adam M) imperial Dash_State Units = 3
     #
     # Preglobal
@@ -106,9 +106,9 @@ class CarState(CarStateBase):
       # 6 = EU/AU
 
       # EU Crosstrek has 3 for mph, US Crosstrek has 1
-      if (self.car_country in [b'1', b'2']) and (cp.vl["Dash_State"]['Units'] == 3):
+      if (self.car_country in [b'\x01', b'\x02']) and (cp.vl["Dash_State"]['Units'] == 3):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
-      if (self.car_country == b'6') and (cp.vl["Dash_State"]['Units'] == 1):
+      if (self.car_country == b'\x06') and (cp.vl["Dash_State"]['Units'] in [1, 2]):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
@@ -121,7 +121,7 @@ class CarState(CarStateBase):
 
     # US Legacy and Forester have 0 for mph
     if self.car_fingerprint in [CAR.LEGACY, CAR.FORESTER]:
-      if (self.car_country in [b'1', b'2']) and (cp.vl["Dash_State"]['Units'] == 0):
+      if (self.car_country in [b'\x01', b'\x02']) and (cp.vl["Dash_State"]['Units'] == 0):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     if self.car_fingerprint in [CAR.OUTBACK, CAR.LEGACY, CAR.FORESTER]:
