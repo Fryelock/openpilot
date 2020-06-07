@@ -96,20 +96,21 @@ def fingerprint(logcan, sendcan, has_relay):
       cloudlog.warning("Getting VIN & FW versions")
       _, vin = get_vin(logcan, sendcan, bus)
       car_fw = get_fw_versions(logcan, sendcan, bus)
-      cloudlog.warning("Getting OBD PID value")
-      obd_pid = get_obd_pid28(logcan, sendcan, bus)
+
+      cloudlog.warning("Getting Car Country value")
+      car_country = get_car_country(logcan, sendcan, bus)
 
     fw_candidates = match_fw_to_car(car_fw)
   else:
     vin = VIN_UNKNOWN
     fw_candidates, car_fw = set(), []
-    obd_pid = ""
+    car_country = ""
 
   cloudlog.warning("VIN %s", vin)
   Params().put("CarVin", vin)
 
-  cloudlog.warning("OBD PID %s", obd_pid)
-  Params().put("ObdPid", obd_pid)
+  cloudlog.warning("Car Country %s", car_country)
+  Params().put("CarCountry", car_country)
 
   finger = gen_empty_fingerprint()
   candidate_cars = {i: all_known_cars() for i in [0, 1]}  # attempt fingerprint on both bus 0 and 1

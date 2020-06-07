@@ -1,11 +1,11 @@
 import copy
 from cereal import car
+from common.params import Params
 from opendbc.can.can_define import CANDefine
 from selfdrive.config import Conversions as CV
 from selfdrive.car.interfaces import CarStateBase
 from opendbc.can.parser import CANParser
 from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD, CAR
-from common.params import Params
 
 class CarState(CarStateBase):
   def __init__(self, CP):
@@ -14,6 +14,8 @@ class CarState(CarStateBase):
     self.right_blinker_cnt = 0
     can_define = CANDefine(DBC[CP.carFingerprint]['pt'])
     self.shifter_values = can_define.dv["Transmission"]['Gear']
+    self.car_country = Params().get('CarCountry')
+    self.is_metric = Params().get('IsMetric')
 
   def update(self, cp, cp_cam):
     ret = car.CarState.new_message()
@@ -88,10 +90,6 @@ class CarState(CarStateBase):
     # - Add market and model based conditional checks
     # - Analyze Eyesight OBD Mode22 scans to find acc speed units setting bit
 
-    # 1 = imperial
-    if cp.vl["Dash_State"]['Units'] == 1:
-      ret.cruiseState.speed *= CV.MPH_TO_KPH
-
     ret.seatbeltUnlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
     ret.doorOpen = any([cp.vl["BodyInfo"]['DOOR_OPEN_RR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
@@ -99,8 +97,33 @@ class CarState(CarStateBase):
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
     if self.car_fingerprint in [CAR.IMPREZA, CAR.ASCENT]:
+      # Subaru ACC speed unit values are target market specific
+      # using OBD PID 28 emissions standard compliance value for CarCountry
+      # https://en.wikipedia.org/wiki/OBD-II_PIDs#Service_01_PID_1C
+      # car_country
+      # 1,2 = US/Canada
+      # 6 = EU/AU
+      
+      # EU Crosstrek has 3 for mph, US Crosstrek has 1
+      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 3):
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
+      if (self.car_country == 6) and (cp.vl["Dash_State"]['Units'] == 1):
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
+
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
+
+    # US Outback has 1 for mph, AU has 0
+    if self.car_fingerprint == CAR.OUTBACK:
+      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 1):
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
+      if (self.car_country == 6) and (cp.vl["Dash_State"]['Units'] == 0):
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
+
+    # US Legacy and Forester have 0 for mph
+    if self.car_fingerprint in [CAR.LEGACY, CAR.FORESTER]:
+      if (self.car_country in [1,2]) and (cp.vl["Dash_State"]['Units'] == 0):
+        ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     if self.car_fingerprint in [CAR.OUTBACK, CAR.LEGACY, CAR.FORESTER]:
       self.button = cp_cam.vl["ES_CruiseThrottle"]["Button"]
