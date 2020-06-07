@@ -4,6 +4,7 @@ from common.basedir import BASEDIR
 from selfdrive.car.fingerprints import eliminate_incompatible_cars, all_known_cars
 from selfdrive.car.vin import get_vin, VIN_UNKNOWN
 from selfdrive.car.fw_versions import get_fw_versions, match_fw_to_car
+from selfdrive.car.obd_query import get_obd_pid28
 from selfdrive.swaglog import cloudlog
 import cereal.messaging as messaging
 from selfdrive.car import gen_empty_fingerprint
@@ -95,14 +96,20 @@ def fingerprint(logcan, sendcan, has_relay):
       cloudlog.warning("Getting VIN & FW versions")
       _, vin = get_vin(logcan, sendcan, bus)
       car_fw = get_fw_versions(logcan, sendcan, bus)
+      cloudlog.warning("Getting OBD PID value")
+      obd_pid = get_obd_pid28(logcan, sendcan, bus)
 
     fw_candidates = match_fw_to_car(car_fw)
   else:
     vin = VIN_UNKNOWN
     fw_candidates, car_fw = set(), []
+    obd_pid = ""
 
   cloudlog.warning("VIN %s", vin)
   Params().put("CarVin", vin)
+
+  cloudlog.warning("OBD PID %s", obd_pid)
+  Params().put("ObdPid", obd_pid)
 
   finger = gen_empty_fingerprint()
   candidate_cars = {i: all_known_cars() for i in [0, 1]}  # attempt fingerprint on both bus 0 and 1

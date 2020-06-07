@@ -14,10 +14,8 @@ def get_obd_pid28(logcan, sendcan, bus, timeout=0.1, retry=5, debug=False):
   for i in range(retry):
     try:
       query = IsoTpParallelQuery(sendcan, logcan, bus, [TX_ADDR], [OBD_DIAG_REQUEST], [OBD_DIAG_RESPONSE], debug=debug)
-      for addr, dat in query.get_data(timeout).items():
-        print("query response")
-        print(dat)
-        return dat
+      for addr, pid in query.get_data(timeout).items():
+        return pid.decode()
       print(f"query retry ({i+1}) ...")
     except Exception:
       cloudlog.warning(f"OBD2 query exception: {traceback.format_exc()}")

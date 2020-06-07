@@ -5,6 +5,7 @@ from selfdrive.config import Conversions as CV
 from selfdrive.car.interfaces import CarStateBase
 from opendbc.can.parser import CANParser
 from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD, CAR
+from common.params import Params
 
 class CarState(CarStateBase):
   def __init__(self, CP):
@@ -80,10 +81,12 @@ class CarState(CarStateBase):
     #
     # * - Preglobal Foresters do not support units change
 
-    # TODO:
+    # DONE:
     # - Add OBD2 PID 28 query to get target market (UDM/ADM/EDM) for car
+
+    # TODO:
     # - Add market and model based conditional checks
-    # - Analyze Eyesight OBD Mode22 scans to find better units bit
+    # - Analyze Eyesight OBD Mode22 scans to find acc speed units setting bit
 
     # 1 = imperial
     if cp.vl["Dash_State"]['Units'] == 1:
