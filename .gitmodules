@@ -14,8 +14,7 @@
 	url = ../../commaai/openpilot-apks.git
 [submodule "cereal"]
 	path = cereal
-	url = ../../martinl/cereal.git
-	branch = subaru-PR-acc-speed
+	url = ../../commaai/cereal.git
 [submodule "rednose_repo"]
 	path = rednose_repo
 	url = ../../commaai/rednose.git
