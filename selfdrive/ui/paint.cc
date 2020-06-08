@@ -942,7 +942,7 @@ static void eng_ui_draw_UI(UIState *s)
   //if we can't open then switch should be considered in the left, nothing done
   if (fd == NULL)
   {
-    tri_state_switch = 1;
+    tri_state_switch = 2;
   }
   else
   {
