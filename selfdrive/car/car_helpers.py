@@ -97,14 +97,14 @@ def fingerprint(logcan, sendcan, has_relay):
       _, vin = get_vin(logcan, sendcan, bus)
       car_fw = get_fw_versions(logcan, sendcan, bus)
 
-      cloudlog.warning("Getting Car Country value")
-      car_country = get_car_country(logcan, sendcan, bus)
+    cloudlog.warning("Getting Car Country value")
+    car_country = get_car_country(logcan, sendcan, bus)
 
     fw_candidates = match_fw_to_car(car_fw)
   else:
     vin = VIN_UNKNOWN
     fw_candidates, car_fw = set(), []
-    car_country = ""
+    car_country = b'\x00'
 
   cloudlog.warning("VIN %s", vin)
   Params().put("CarVin", vin)
