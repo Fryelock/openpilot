@@ -9,7 +9,7 @@ class CarControllerParams():
   def __init__(self, car_fingerprint):
     if car_fingerprint == CAR.IMPREZA:
       self.STEER_MAX = 2047            # max_steer 4095
-    if car_fingerprint == CAR.CROSSTREK2020:
+    if car_fingerprint == CAR.CROSSTREK_2020:
       self.STEER_MAX = 1439            # exceeding 1439 will generate ES fault
     self.STEER_STEP = 2                # how often we update the steer cmd
     self.STEER_DELTA_UP = 50           # torque increase per refresh, 0.8s to max
