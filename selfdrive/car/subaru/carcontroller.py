@@ -1,13 +1,16 @@
 #from common.numpy_fast import clip
 from selfdrive.car import apply_std_steer_torque_limits
 from selfdrive.car.subaru import subarucan
-from selfdrive.car.subaru.values import DBC
+from selfdrive.car.subaru.values import DBC, CAR
 from opendbc.can.packer import CANPacker
 
 
 class CarControllerParams():
-  def __init__(self):
-    self.STEER_MAX = 2047              # max_steer 4095
+  def __init__(self, car_fingerprint):
+    if car_fingerprint == CAR.IMPREZA:
+      self.STEER_MAX = 2047            # max_steer 4095
+    if car_fingerprint == CAR.CROSSTREK2020:
+      self.STEER_MAX = 1439            # exceeding 1439 will generate ES fault
     self.STEER_STEP = 2                # how often we update the steer cmd
     self.STEER_DELTA_UP = 50           # torque increase per refresh, 0.8s to max
     self.STEER_DELTA_DOWN = 70         # torque decrease per refresh
@@ -26,7 +29,7 @@ class CarController():
 
     # Setup detection helper. Routes commands to
     # an appropriate CAN bus number.
-    self.params = CarControllerParams()
+    self.params = CarControllerParams(CP.carFingerprint)
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])
 
   def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert, left_line, right_line):
