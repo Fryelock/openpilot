@@ -28,7 +28,7 @@ class CarInterface(CarInterfaceBase):
     ret.steerRateCost = 0.7
     ret.steerLimitTimer = 0.4
 
-    if candidate in [CAR.IMPREZA]:
+    if candidate in [CAR.IMPREZA, CAR.CROSSTREK_2020H]:
       ret.mass = 1568. + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5

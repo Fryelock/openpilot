@@ -41,7 +41,8 @@ class CarState(CarStateBase):
     ret.leftBlindspot = cp.vl["BSD_RCTA"]['L_ADJACENT'] == 1
     ret.rightBlindspot = cp.vl["BSD_RCTA"]['R_ADJACENT'] == 1
 
-    can_gear = int(cp.vl["Transmission"]['Gear'])
+    # FIXME: find Gear signal for Crosstrek 2020 Hybrid
+    can_gear = 'D'
     ret.gearShifter = self.parse_gear_shifter(self.shifter_values.get(can_gear, None))
 
     ret.steeringAngle = cp.vl["Steering_Torque"]['Steering_Angle']
@@ -51,8 +52,8 @@ class CarState(CarStateBase):
     ret.steerError = cp.vl["Steering_Torque"]['Steer_Error_1'] == 1
     ret.steerWarning = cp.vl["Steering_Torque"]['Steer_Warning'] == 1
 
-    ret.cruiseState.enabled = cp.vl["CruiseControl"]['Cruise_Activated'] != 0
-    ret.cruiseState.available = cp.vl["CruiseControl"]['Cruise_On'] != 0
+    ret.cruiseState.enabled = cp_cam.vl["ES_DashStatus"]['Cruise_Activated'] != 0
+    ret.cruiseState.available = cp_cam.vl["ES_DashStatus"]['Cruise_Activated'] != 0
     ret.cruiseState.speed = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed'] * CV.KPH_TO_MS
     ret.cruiseState.nonAdaptive = cp_cam.vl["ES_DashStatus"]['Conventional_Cruise'] == 1
     # 1 = imperial, 6 = metric
@@ -79,8 +80,8 @@ class CarState(CarStateBase):
       ("Steering_Angle", "Steering_Torque", 0),
       ("Steer_Error_1", "Steering_Torque", 0),
       ("Steer_Warning", "Steering_Torque", 0),
-      ("Cruise_On", "CruiseControl", 0),
-      ("Cruise_Activated", "CruiseControl", 0),
+      #("Cruise_On", "CruiseControl", 0),
+      #("Cruise_Activated", "CruiseControl", 0),
       ("Brake_Pedal", "Brake_Pedal", 0),
       ("Throttle_Pedal", "Throttle", 0),
       ("LEFT_BLINKER", "Dashlights", 0),
@@ -95,7 +96,7 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
       ("Units", "Dash_State", 1),
-      ("Gear", "Transmission", 0),
+      #("Gear", "Transmission", 0),
       ("L_ADJACENT", "BSD_RCTA", 0),
       ("R_ADJACENT", "BSD_RCTA", 0),
     ]
@@ -103,7 +104,7 @@ class CarState(CarStateBase):
     checks = [
       # sig_address, frequency
       ("Dashlights", 10),
-      ("CruiseControl", 20),
+      #("CruiseControl", 20),
       ("Wheel_Speeds", 50),
       ("Steering_Torque", 50),
       ("BodyInfo", 10),
@@ -116,6 +117,7 @@ class CarState(CarStateBase):
     signals = [
       ("Cruise_Set_Speed", "ES_DashStatus", 0),
       ("Conventional_Cruise", "ES_DashStatus", 0),
+      ("Cruise_Activated", "ES_DashStatus", 0),
 
       ("Counter", "ES_Distance", 0),
       ("Signal1", "ES_Distance", 0),
