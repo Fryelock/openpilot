@@ -56,8 +56,10 @@ class CarState(CarStateBase):
     ret.cruiseState.available = cp_cam.vl["ES_DashStatus"]['Cruise_On'] != 0
     ret.cruiseState.speed = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed'] * CV.KPH_TO_MS
     ret.cruiseState.nonAdaptive = cp_cam.vl["ES_DashStatus"]['Conventional_Cruise'] == 1
-    # 1 = imperial, 6 = metric
-    if cp.vl["Dash_State"]['Units'] == 1:
+    # EDM Crosstrek 2019: 1, 2 = mph
+    # UDM Crosstrek 2020 Hybrid: 7 = mph
+    # UDM Forester 2019: 7 = mph
+    if cp.vl["Dash_State"]['Units'] in [1, 2, 7]:
       ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     ret.seatbeltUnlatched = cp.vl["Dashlights"]['SEATBELT_FL'] == 1
