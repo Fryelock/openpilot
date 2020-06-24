@@ -66,7 +66,7 @@ class CarState(CarStateBase):
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
-    if CP.carFingerprint == CAR.IMPREZA:
+    if self.car_fingerprint == CAR.IMPREZA:
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
     self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
 
@@ -121,24 +121,6 @@ class CarState(CarStateBase):
       ("Cruise_Activated", "ES_DashStatus", 0),
       ("Cruise_On", "ES_DashStatus", 0),
 
-      #("Counter", "ES_Distance", 0),
-      #("Signal1", "ES_Distance", 0),
-      #("Cruise_Fault", "ES_Distance", 0),
-      #("Cruise_Throttle", "ES_Distance", 0),
-      #("Signal2", "ES_Distance", 0),
-      #("Car_Follow", "ES_Distance", 0),
-      #("Signal3", "ES_Distance", 0),
-      #("Cruise_Brake_Active", "ES_Distance", 0),
-      #("Distance_Swap", "ES_Distance", 0),
-      #("Cruise_EPB", "ES_Distance", 0),
-      #("Signal4", "ES_Distance", 0),
-      #("Close_Distance", "ES_Distance", 0),
-      #("Signal5", "ES_Distance", 0),
-      #("Cruise_Cancel", "ES_Distance", 0),
-      #("Cruise_Set", "ES_Distance", 0),
-      #("Cruise_Resume", "ES_Distance", 0),
-      #("Signal6", "ES_Distance", 0),
-
       ("Counter", "ES_LKAS_State", 0),
       ("Keep_Hands_On_Wheel", "ES_LKAS_State", 0),
       ("Empty_Box", "ES_LKAS_State", 0),
@@ -158,6 +140,27 @@ class CarState(CarStateBase):
       ("Signal3", "ES_LKAS_State", 0),
 
     ]
+
+    if CP.carFingerprint == CAR.IMPREZA:
+      signals += [
+        ("Counter", "ES_Distance", 0),
+        ("Signal1", "ES_Distance", 0),
+        ("Cruise_Fault", "ES_Distance", 0),
+        ("Cruise_Throttle", "ES_Distance", 0),
+        ("Signal2", "ES_Distance", 0),
+        ("Car_Follow", "ES_Distance", 0),
+        ("Signal3", "ES_Distance", 0),
+        ("Cruise_Brake_Active", "ES_Distance", 0),
+        ("Distance_Swap", "ES_Distance", 0),
+        ("Cruise_EPB", "ES_Distance", 0),
+        ("Signal4", "ES_Distance", 0),
+        ("Close_Distance", "ES_Distance", 0),
+        ("Signal5", "ES_Distance", 0),
+        ("Cruise_Cancel", "ES_Distance", 0),
+        ("Cruise_Set", "ES_Distance", 0),
+        ("Cruise_Resume", "ES_Distance", 0),
+        ("Signal6", "ES_Distance", 0),
+      ]
 
     checks = [
       ("ES_DashStatus", 10),
