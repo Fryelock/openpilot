@@ -1,7 +1,7 @@
 #from common.numpy_fast import clip
 from selfdrive.car import apply_std_steer_torque_limits
 from selfdrive.car.subaru import subarucan
-from selfdrive.car.subaru.values import DBC, CAR
+from selfdrive.car.subaru.values import DBC
 from opendbc.can.packer import CANPacker
 
 
@@ -60,10 +60,9 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    if CS.CP.carFingerprint == CAR.CROSSTREK_2020H:
-      if self.brake_cnt != CS.brake_msg["Counter"]:
-        can_sends.append(subarucan.create_brake(self.packer, CS.brake_msg, pcm_cancel_cmd))
-        self.brake_cnt = CS.brake_msg["Counter"]
+    if self.brake_cnt != CS.brake_msg["Counter"]:
+      can_sends.append(subarucan.create_brake(self.packer, CS.brake_msg, pcm_cancel_cmd))
+      self.brake_cnt = CS.brake_msg["Counter"]
 
     if self.es_lkas_cnt != CS.es_lkas_msg["Counter"]:
       can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert, left_line, right_line))
