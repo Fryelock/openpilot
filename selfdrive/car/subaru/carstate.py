@@ -81,7 +81,15 @@ class CarState(CarStateBase):
       ("Steering_Angle", "Steering_Torque", 0),
       ("Steer_Error_1", "Steering_Torque", 0),
       ("Steer_Warning", "Steering_Torque", 0),
+
+      ("Counter", "Brake_Pedal", 0),
+      ("Signal1", "Brake_Pedal", 0),
+      ("Speed", "Brake_Pedal", 0),
+      ("Brake_Lights", "Brake_Pedal", 0),
+      ("Signal2", "Brake_Pedal", 0),
       ("Brake_Pedal", "Brake_Pedal", 0),
+      ("Signal3", "Brake_Pedal", 0),
+
       ("LEFT_BLINKER", "Dashlights", 0),
       ("RIGHT_BLINKER", "Dashlights", 0),
       ("SEATBELT_FL", "Dashlights", 0),
