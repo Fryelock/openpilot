@@ -15,10 +15,10 @@ class CarState(CarStateBase):
     can_define = CANDefine(DBC[CP.carFingerprint]['pt'])
     self.shifter_values = can_define.dv["Transmission"]['Gear']
 
-  def update(self, cp, cp_cam):
+  def update(self, cp, cp_cam, cp_ept):
     ret = car.CarState.new_message()
 
-    ret.gas = cp.vl["Throttle"]['Throttle_Pedal'] / 255.
+    ret.gas = cp_ept.vl["Throttle_Hybrid"]['Throttle_Pedal'] / 255.
     ret.gasPressed = ret.gas > 1e-5
     ret.brakePressed = cp.vl["Brake_Pedal"]['Brake_Pedal'] > 1e-5
     ret.brakeLights = ret.brakePressed
@@ -41,8 +41,7 @@ class CarState(CarStateBase):
     ret.leftBlindspot = cp.vl["BSD_RCTA"]['L_ADJACENT'] == 1
     ret.rightBlindspot = cp.vl["BSD_RCTA"]['R_ADJACENT'] == 1
 
-    # FIXME: find Gear signal for Crosstrek 2020 Hybrid
-    can_gear = 'D'
+    can_gear = int(cp_ept.vl["Transmission"]['Gear'])
     ret.gearShifter = self.parse_gear_shifter(self.shifter_values.get(can_gear, None))
 
     ret.steeringAngle = cp.vl["Steering_Torque"]['Steering_Angle']
@@ -68,8 +67,7 @@ class CarState(CarStateBase):
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
-    if self.car_fingerprint == CAR.IMPREZA:
-      self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
+    self.brake_msg = copy.copy(cp.vl["Brake_Pedal"])
     self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
 
     return ret
@@ -83,10 +81,7 @@ class CarState(CarStateBase):
       ("Steering_Angle", "Steering_Torque", 0),
       ("Steer_Error_1", "Steering_Torque", 0),
       ("Steer_Warning", "Steering_Torque", 0),
-      #("Cruise_On", "CruiseControl", 0),
-      #("Cruise_Activated", "CruiseControl", 0),
       ("Brake_Pedal", "Brake_Pedal", 0),
-      ("Throttle_Pedal", "Throttle", 0),
       ("LEFT_BLINKER", "Dashlights", 0),
       ("RIGHT_BLINKER", "Dashlights", 0),
       ("SEATBELT_FL", "Dashlights", 0),
@@ -99,7 +94,6 @@ class CarState(CarStateBase):
       ("DOOR_OPEN_RR", "BodyInfo", 1),
       ("DOOR_OPEN_RL", "BodyInfo", 1),
       ("Units", "Dash_State", 1),
-      #("Gear", "Transmission", 0),
       ("L_ADJACENT", "BSD_RCTA", 0),
       ("R_ADJACENT", "BSD_RCTA", 0),
     ]
@@ -107,13 +101,30 @@ class CarState(CarStateBase):
     checks = [
       # sig_address, frequency
       ("Dashlights", 10),
-      #("CruiseControl", 20),
       ("Wheel_Speeds", 50),
       ("Steering_Torque", 50),
       ("BodyInfo", 10),
     ]
 
     return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 0)
+
+  @staticmethod
+  def get_ept_can_parser(CP):
+    signals = []
+    checks = []
+
+    if CP.carFingerprint == CAR.CROSSTREK_2020H:
+      signals += [
+        ("Throttle_Pedal", "Throttle_Hybrid", 0),
+        ("Gear", "Transmission", 0),
+      ]
+
+      checks += [
+        # sig_address, frequency
+        ("Throttle_Hybrid", 50),
+      ]
+
+    return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 1)
 
   @staticmethod
   def get_cam_can_parser(CP):
@@ -140,34 +151,11 @@ class CarState(CarStateBase):
       ("LKAS_Right_Line_Green", "ES_LKAS_State", 0),
       ("LKAS_Alert", "ES_LKAS_State", 0),
       ("Signal3", "ES_LKAS_State", 0),
-
     ]
-
-    if CP.carFingerprint == CAR.IMPREZA:
-      signals += [
-        ("Counter", "ES_Distance", 0),
-        ("Signal1", "ES_Distance", 0),
-        ("Cruise_Fault", "ES_Distance", 0),
-        ("Cruise_Throttle", "ES_Distance", 0),
-        ("Signal2", "ES_Distance", 0),
-        ("Car_Follow", "ES_Distance", 0),
-        ("Signal3", "ES_Distance", 0),
-        ("Cruise_Brake_Active", "ES_Distance", 0),
-        ("Distance_Swap", "ES_Distance", 0),
-        ("Cruise_EPB", "ES_Distance", 0),
-        ("Signal4", "ES_Distance", 0),
-        ("Close_Distance", "ES_Distance", 0),
-        ("Signal5", "ES_Distance", 0),
-        ("Cruise_Cancel", "ES_Distance", 0),
-        ("Cruise_Set", "ES_Distance", 0),
-        ("Cruise_Resume", "ES_Distance", 0),
-        ("Signal6", "ES_Distance", 0),
-      ]
 
     checks = [
       ("ES_DashStatus", 10),
-      #("ES_Distance", 20),
-      #("ES_LKAS_State", 10),
+      ("ES_LKAS_State", 10),
     ]
 
     return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 2)

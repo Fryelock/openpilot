@@ -22,6 +22,7 @@ class CarController():
     self.apply_steer_last = 0
     self.es_distance_cnt = -1
     self.es_lkas_cnt = -1
+    self.brake_cnt = -1
     self.steer_rate_limited = False
 
     # Setup detection helper. Routes commands to
@@ -59,10 +60,9 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    if (CS.CP.carFingerprint == CAR.IMPREZA):
-      if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
-        can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, pcm_cancel_cmd))
-        self.es_distance_cnt = CS.es_distance_msg["Counter"]
+    if self.brake_cnt != CS.brake_msg["Counter"]:
+      can_sends.append(subarucan.create_brake(self.packer, CS.brake_msg, pcm_cancel_cmd))
+      self.brake_cnt = CS.brake_msg["Counter"]
 
     if self.es_lkas_cnt != CS.es_lkas_msg["Counter"]:
       can_sends.append(subarucan.create_es_lkas(self.packer, CS.es_lkas_msg, visual_alert, left_line, right_line))
