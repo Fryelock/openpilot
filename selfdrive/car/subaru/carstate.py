@@ -118,16 +118,12 @@ class CarState(CarStateBase):
 
   @staticmethod
   def get_ept_can_parser(CP):
-    signals = []
-    checks = []
-
-    if CP.carFingerprint == CAR.CROSSTREK_2020H:
-      signals += [
+      signals = [
         ("Throttle_Pedal", "Throttle_Hybrid", 0),
         ("Gear", "Transmission", 0),
       ]
 
-      checks += [
+      checks = [
         # sig_address, frequency
         ("Throttle_Hybrid", 50),
       ]
