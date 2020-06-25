@@ -118,15 +118,15 @@ class CarState(CarStateBase):
 
   @staticmethod
   def get_ept_can_parser(CP):
-      signals = [
-        ("Throttle_Pedal", "Throttle_Hybrid", 0),
-        ("Gear", "Transmission", 0),
-      ]
+    signals = [
+      ("Throttle_Pedal", "Throttle_Hybrid", 0),
+      ("Gear", "Transmission", 0),
+    ]
 
-      checks = [
-        # sig_address, frequency
-        ("Throttle_Hybrid", 50),
-      ]
+    checks = [
+      # sig_address, frequency
+      ("Throttle_Hybrid", 50),
+    ]
 
     return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, 1)
 
