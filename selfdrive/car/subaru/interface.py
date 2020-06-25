@@ -8,8 +8,7 @@ class CarInterface(CarInterfaceBase):
   def __init__(self, CP, CarController, CarState):
     super().__init__(CP, CarController, CarState)
 
-    if CarState is not None:
-      self.cp_ept = self.CS.get_ept_can_parser(CP)
+    self.cp_ept = self.CS.get_ept_can_parser(CP)
 
   @staticmethod
   def compute_gb(accel, speed):
