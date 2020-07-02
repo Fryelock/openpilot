@@ -4,7 +4,7 @@ from opendbc.can.can_define import CANDefine
 from selfdrive.config import Conversions as CV
 from selfdrive.car.interfaces import CarStateBase
 from opendbc.can.parser import CANParser
-from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD, CAR
+from selfdrive.car.subaru.values import DBC, STEER_THRESHOLD, CAR, GLOBAL_CAR
 
 
 class CarState(CarStateBase):
@@ -52,7 +52,7 @@ class CarState(CarStateBase):
     ret.cruiseState.available = cp.vl["CruiseControl"]['Cruise_On'] != 0
     ret.cruiseState.speed = cp_cam.vl["ES_DashStatus"]['Cruise_Set_Speed'] * CV.KPH_TO_MS
     # EDM Global: mph = 1, 2
-    if self.car_fingerprint in [CAR.ASCENT, CAR.FORESTER, CAR.IMPREZA]:
+    if self.car_fingerprint in GLOBAL_CAR:
       if cp.vl["Dash_State"]['Units'] in [1, 2]:
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
@@ -67,7 +67,7 @@ class CarState(CarStateBase):
                         cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
                         cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
 
-    if self.car_fingerprint in [CAR.ASCENT, CAR.FORESTER, CAR.IMPREZA]:
+    if self.car_fingerprint in GLOBAL_CAR:
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
 
@@ -120,7 +120,7 @@ class CarState(CarStateBase):
       ("Steering_Torque", 50),
     ]
 
-    if CP.carFingerprint in [CAR.ASCENT, CAR.FORESTER, CAR.IMPREZA]:
+    if CP.carFingerprint in GLOBAL_CAR:
       checks += [
         ("Dashlights", 10),
         ("BodyInfo", 10),
@@ -137,7 +137,7 @@ class CarState(CarStateBase):
 
   @staticmethod
   def get_cam_can_parser(CP):
-    if CP.carFingerprint in [CAR.ASCENT, CAR.FORESTER, CAR.IMPREZA]:
+    if CP.carFingerprint in GLOBAL_CAR:
       signals = [
         ("Cruise_Set_Speed", "ES_DashStatus", 0),
 
