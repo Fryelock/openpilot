@@ -57,7 +57,7 @@ class CarState(CarStateBase):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
     # UDM Legacy: mph = 0
-    if self.car_fingerprint == CAR.LEGACY_2015:
+    if self.car_fingerprint == CAR.LEGACY_PREGLOBAL:
       if (cp.vl["Dash_State"]['Units'] == 0):
         ret.cruiseState.speed *= CV.MPH_TO_KPH
 
@@ -71,7 +71,7 @@ class CarState(CarStateBase):
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
 
-    if self.car_fingerprint == CAR.LEGACY_2015:
+    if self.car_fingerprint in LEGACY_CAR:
       ret.steerError = cp.vl["Steering_Torque"]["LKA_Lockout"] == 1
       self.button = cp_cam.vl["ES_CruiseThrottle"]["Button"]
       self.ready = not cp_cam.vl["ES_DashStatus"]["Not_Ready_Startup"]
@@ -109,7 +109,7 @@ class CarState(CarStateBase):
       ("R_APPROACHING", "BSD_RCTA", 0),
     ]
 
-    if CP.carFingerprint == CAR.LEGACY_2015:
+    if CP.carFingerprint in LEGACY_CAR:
       signals += [
         ("LKA_Lockout", "Steering_Torque", 0),
       ]
@@ -127,7 +127,7 @@ class CarState(CarStateBase):
         ("CruiseControl", 20),
      ]
 
-    if CP.carFingerprint == CAR.LEGACY_2015:
+    if CP.carFingerprint == CAR.LEGACY_PREGLOBAL:
       checks += [
         ("Dashlights", 10),
         ("CruiseControl", 50),
@@ -175,7 +175,7 @@ class CarState(CarStateBase):
         ("ES_DashStatus", 10),
       ]
 
-    if CP.carFingerprint == CAR.LEGACY_2015:
+    if CP.carFingerprint in LEGACY_CAR:
       signals = [
         ("Cruise_Set_Speed", "ES_DashStatus", 0),
         ("Not_Ready_Startup", "ES_DashStatus", 0),
