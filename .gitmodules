@@ -4,7 +4,8 @@
 	branch = crosstrek-2020-fix
 [submodule "opendbc"]
 	path = opendbc
-	url = ../../commaai/opendbc.git
+	url = ../../martinl/opendbc.git
+	branch = subaru-global-2020
 [submodule "laika_repo"]
 	path = laika_repo
 	url = ../../commaai/laika.git

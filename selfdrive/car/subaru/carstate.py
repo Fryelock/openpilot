@@ -20,7 +20,7 @@ class CarState(CarStateBase):
 
     ret.gas = cp.vl["Throttle"]['Throttle_Pedal'] / 255.
     ret.gasPressed = ret.gas > 1e-5
-    ret.brakePressed = cp.vl["Brake_Pedal"]['Brake_Pedal'] > 1e-5
+    ret.brakePressed = cp.vl["Brake_Pedal"]['Brake_Pedal'] > 1
     ret.brakeLights = ret.brakePressed
 
     ret.wheelSpeeds.fl = cp.vl["Wheel_Speeds"]['FL'] * CV.KPH_TO_MS
