@@ -1,6 +1,7 @@
 [submodule "panda"]
 	path = panda
-	url = ../../commaai/panda.git
+	url = ../../martinl/panda.git
+	branch = crosstrek-2020-fix
 [submodule "opendbc"]
 	path = opendbc
 	url = ../../commaai/opendbc.git
