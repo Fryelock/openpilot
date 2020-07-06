@@ -7,7 +7,7 @@ from opendbc.can.packer import CANPacker
 
 class CarControllerParams():
   def __init__(self, car_fingerprint):
-    if car_fingerprint == CAR.IMPREZA:
+    if car_fingerprint in [CAR.ASCENT, CAR.FORESTER, CAR.IMPREZA]:
       self.STEER_MAX = 2047            # max_steer 4095
     if car_fingerprint == CAR.CROSSTREK_2020:
       self.STEER_MAX = 1439            # exceeding 1439 will generate ES fault
