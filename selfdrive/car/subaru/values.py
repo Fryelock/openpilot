@@ -44,8 +44,8 @@ ECU_FINGERPRINT = {
 }
 
 DBC = {
-  CAR.ASCENT: dbc_dict('subaru_global_2017', None),
-  CAR.IMPREZA: dbc_dict('subaru_global_2017', None),
-  CAR.FORESTER: dbc_dict('subaru_global_2017', None),
-  CAR.CROSSTREK: dbc_dict('subaru_global_2017', None),
+  CAR.ASCENT: dbc_dict('subaru_global_2017_generated', None),
+  CAR.IMPREZA: dbc_dict('subaru_global_2017_generated', None),
+  CAR.FORESTER: dbc_dict('subaru_global_2017_generated', None),
+  CAR.CROSSTREK: dbc_dict('subaru_global_2017_generated', None),
 }
