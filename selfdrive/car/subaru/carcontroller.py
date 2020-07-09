@@ -108,13 +108,11 @@ class CarController():
     brake_cmd = False
     brake_value = 0
 
-    '''
     # Manual trigger using wipers signal
-    if CS.wipers:
-      actuators.brake = 0.5
-      print("wipers set brake 0.5")
-      brake_cmd = True
-    '''
+    #if CS.wipers:
+    #  actuators.brake = 0.5
+    #  print("wipers set brake 0.5")
+    #  brake_cmd = True
 
     if enabled and actuators.brake > 0:
       brake_value = clip(int(actuators.brake * P.BRAKE_SCALE), P.BRAKE_MIN, P.BRAKE_MAX)
@@ -143,7 +141,6 @@ class CarController():
 
       #print('actuators.gas: %s throttle_cruise: %s tcm_rpm: %s op_cruise_throttle: %s op_cruise_rpm: %s' % (actuators.gas, CS.throttle_cruise, CS.tcm_rpm, cruise_throttle, cruise_rpm))
 
-      '''
       # Te = torque at rpm (lookup table)
       # a  = acceleration (actuators.gas)
       # m  = vehicle mass (1470 kg)
@@ -160,16 +157,15 @@ class CarController():
       # xd = differential ratio / final drive ratio (3.9)
       # n  = transmission efficiency (0.7) - guess
       # Rw = wheel radius (33.91 mm) - P225/55R17 95H
-      a = actuators.gas
-      m = CS.CP.mass
-      xg = 1.516
-      xd = 3.9
-      n = 0.7
-      Rw = 0.34
+      #a = actuators.gas
+      #m = CS.CP.mass
+      #xg = 1.516
+      #xd = 3.9
+      #n = 0.7
+      #Rw = 0.34
 
-      Te = a * m * xg * xd * n * Rw
-      print('actuators.gas: %s torque: %s' % (actuators.gas, Te))
-      '''
+      #Te = a * m * xg * xd * n * Rw
+      #print('actuators.gas: %s torque: %s' % (actuators.gas, Te))
 
     if self.es_distance_cnt != CS.es_distance_msg["Counter"]:
       can_sends.append(subarucan.create_es_distance(self.packer, CS.es_distance_msg, enabled, pcm_cancel_cmd, brake_cmd, cruise_throttle))
