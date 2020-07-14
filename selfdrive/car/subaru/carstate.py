@@ -85,10 +85,11 @@ class CarState(CarStateBase):
       ("Counter", "Brake_Pedal", 0),
       ("Signal1", "Brake_Pedal", 0),
       ("Speed", "Brake_Pedal", 0),
-      ("Brake_Lights", "Brake_Pedal", 0),
       ("Signal2", "Brake_Pedal", 0),
-      ("Brake_Pedal", "Brake_Pedal", 0),
+      ("Brake_Lights", "Brake_Pedal", 0),
       ("Signal3", "Brake_Pedal", 0),
+      ("Brake_Pedal", "Brake_Pedal", 0),
+      ("Signal4", "Brake_Pedal", 0),
 
       ("LEFT_BLINKER", "Dashlights", 0),
       ("RIGHT_BLINKER", "Dashlights", 0),
