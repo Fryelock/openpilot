@@ -14,6 +14,28 @@ FINGERPRINTS = {
   }],
 }
 
+FW_VERSIONS = {
+  CAR.CROSSTREK_2020H: {
+    # 2020 Crosstrek Hybrid UDM / @revity
+    # Ecu, addr, subaddr: ROM ID
+    (Ecu.esp, 0x7b0, None): [
+      b'\xa2 \x19e\x01',
+    ],
+    (Ecu.eps, 0x746, None): [
+      b'\x9a\xc2\x01\x00',
+    ],
+    (Ecu.fwdCamera, 0x787, None): [
+      b'\x00\x00el\x1f@ #',
+    ],
+    (Ecu.engine, 0x7e0, None): [
+      b'\xd7!`@\x07',
+    ],
+    (Ecu.electricBrakeBooster, 0x717, None): [
+      b'\xb2 \x19\x01\x00',
+    ],
+  },
+}
+
 STEER_THRESHOLD = {
   CAR.CROSSTREK_2020H: 80,
 }
