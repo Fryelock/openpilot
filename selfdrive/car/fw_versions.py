@@ -59,6 +59,9 @@ TOYOTA_VERSION_RESPONSE = b'\x5a\x88\x01'
 OBD_VERSION_REQUEST = b'\x09\x04'
 OBD_VERSION_RESPONSE = b'\x49\x04'
 
+SUBARU_VERSION_REQUEST = b'\x22\xf1\x82'
+SUBARU_VERSION_RESPONSE = b'\x62\xf1\x82'
+
 
 # supports subaddressing, request, response
 REQUESTS = [
@@ -99,7 +102,13 @@ REQUESTS = [
     "toyota",
     [TESTER_PRESENT_REQUEST, DEFAULT_DIAGNOSTIC_REQUEST, EXTENDED_DIAGNOSTIC_REQUEST, UDS_VERSION_REQUEST],
     [TESTER_PRESENT_RESPONSE, DEFAULT_DIAGNOSTIC_RESPONSE, EXTENDED_DIAGNOSTIC_RESPONSE, UDS_VERSION_RESPONSE],
-  )
+  ),
+  # Subaru
+  (
+    "subaru",
+    [TESTER_PRESENT_REQUEST, SUBARU_VERSION_REQUEST],
+    [TESTER_PRESENT_RESPONSE, SUBARU_VERSION_RESPONSE],
+  ),
 ]
 
 
@@ -225,7 +234,7 @@ if __name__ == "__main__":
       extra[(Ecu.unknown, 0x750, i)] = []
     extra = {"any": {"debug": extra}}
 
-  time.sleep(1.)
+  time.sleep(10.)
 
   t = time.time()
   print("Getting vin...")
