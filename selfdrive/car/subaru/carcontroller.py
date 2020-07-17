@@ -23,7 +23,7 @@ class CarController():
     self.es_distance_cnt = -1
     self.es_accel_cnt = -1
     self.es_lkas_cnt = -1
-    self.fake_button_prev = 0
+    self.cruise_button_prev = 0
     self.steer_rate_limited = False
 
     # Setup detection helper. Routes commands to
@@ -58,25 +58,25 @@ class CarController():
 
       self.apply_steer_last = apply_steer
 
-    # button control
+    # cruise button control
     if CS.CP.carFingerprint in PREGLOBAL_CAR:
       if self.es_accel_cnt != CS.es_accel_msg["Counter"]:
         # 1 = main, 2 = set shallow, 3 = set deep, 4 = resume shallow, 5 = resume deep
         # disengage ACC when OP is disengaged
         if pcm_cancel_cmd:
-          fake_button = 1
+          cruise_button = 1
         # turn main on if off and past start-up state
         elif not CS.out.cruiseState.available and CS.ready:
-          fake_button = 1
+          cruise_button = 1
         else:
-          fake_button = CS.button
+          cruise_button = CS.cruise_button
 
         # unstick previous mocked button press
-        if fake_button == 1 and self.fake_button_prev == 1:
-          fake_button = 0
-        self.fake_button_prev = fake_button
+        if cruise_button == 1 and self.cruise_button_prev == 1:
+          cruise_button = 0
+        self.cruise_button_prev = cruise_button
 
-        can_sends.append(subarucan.create_es_throttle_control(self.packer, fake_button, CS.es_accel_msg))
+        can_sends.append(subarucan.create_es_throttle_control(self.packer, cruise_button, CS.es_accel_msg))
         self.es_accel_cnt = CS.es_accel_msg["Counter"]
     else:
       if self.es_distance_cnt != CS.es_distance_msg["Counter"]:

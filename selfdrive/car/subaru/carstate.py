@@ -100,14 +100,13 @@ class CarState(CarStateBase):
       cp.vl["BodyInfo"]['DOOR_OPEN_RL'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FR'],
       cp.vl["BodyInfo"]['DOOR_OPEN_FL']])
+    ret.steerError = cp.vl["Steering_Torque"]['Steer_Error_1'] == 1
 
     if self.car_fingerprint in PREGLOBAL_CAR:
-      ret.steerError = cp.vl["Steering_Torque"]["LKA_Lockout"] == 1
-      self.button = cp_cam.vl["ES_CruiseThrottle"]["Button"]
+      self.cruise_button = cp_cam.vl["ES_CruiseThrottle"]["Cruise_Button"]
       self.ready = not cp_cam.vl["ES_DashStatus"]["Not_Ready_Startup"]
       self.es_accel_msg = copy.copy(cp_cam.vl["ES_CruiseThrottle"])
     else:
-      ret.steerError = cp.vl["Steering_Torque"]['Steer_Error_1'] == 1
       ret.steerWarning = cp.vl["Steering_Torque"]['Steer_Warning'] == 1
       self.es_distance_msg = copy.copy(cp_cam.vl["ES_Distance"])
       self.es_lkas_msg = copy.copy(cp_cam.vl["ES_LKAS_State"])
@@ -193,17 +192,17 @@ class CarState(CarStateBase):
         ("Cruise_Activated", "ES_CruiseThrottle", 0),
         ("Signal2", "ES_CruiseThrottle", 0),
         ("Brake_On", "ES_CruiseThrottle", 0),
-        ("DistanceSwap", "ES_CruiseThrottle", 0),
+        ("Distance_Swap", "ES_CruiseThrottle", 0),
         ("Standstill", "ES_CruiseThrottle", 0),
         ("Signal3", "ES_CruiseThrottle", 0),
-        ("CloseDistance", "ES_CruiseThrottle", 0),
+        ("Close_Distance", "ES_CruiseThrottle", 0),
         ("Signal4", "ES_CruiseThrottle", 0),
         ("Standstill_2", "ES_CruiseThrottle", 0),
-        ("ES_Error", "ES_CruiseThrottle", 0),
+        ("Cruise_Fault", "ES_CruiseThrottle", 0),
         ("Signal5", "ES_CruiseThrottle", 0),
         ("Counter", "ES_CruiseThrottle", 0),
         ("Signal6", "ES_CruiseThrottle", 0),
-        ("Button", "ES_CruiseThrottle", 0),
+        ("Cruise_Button", "ES_CruiseThrottle", 0),
         ("Signal7", "ES_CruiseThrottle", 0),
       ]
 
