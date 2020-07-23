@@ -389,6 +389,7 @@ void handle_message(UIState *s, SubMaster &sm) {
       scene.max_cpu_temp = scene.thermal.getCpu3();
     }
     scene.max_bat_temp = scene.thermal.getBat();
+    scene.free_space = scene.thermal.getFreeSpace();
     // ENG UI END
 
   }
