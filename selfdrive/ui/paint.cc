@@ -667,14 +667,14 @@ static void eng_ui_draw_measures_left(UIState *s, int bb_x, int bb_y, int bb_w )
     char val_str[16];
     char uom_str[6];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
-    if((int)(scene->maxCpuTemp/10) > 80) {
+    if((int)(scene->max_cpu_temp/10) > 80) {
       val_color = nvgRGBA(255, 188, 3, 200);
     }
-    if((int)(scene->maxCpuTemp/10) > 92) {
+    if((int)(scene->max_cpu_temp/10) > 92) {
       val_color = nvgRGBA(255, 0, 0, 200);
     }
     // temp is always in C * 10
-    snprintf(val_str, sizeof(val_str), "%d°C", (int)(scene->maxCpuTemp/10));
+    snprintf(val_str, sizeof(val_str), "%d°C", (int)(scene->max_cpu_temp/10));
     snprintf(uom_str, sizeof(uom_str), "");
     bb_h += eng_ui_draw_measure(s, val_str, uom_str, "CPU TEMP",
                                 bb_rx, bb_ry, bb_uom_dx,
@@ -688,14 +688,14 @@ static void eng_ui_draw_measures_left(UIState *s, int bb_x, int bb_y, int bb_w )
     char val_str[16];
     char uom_str[6];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
-    if((int)(scene->maxBatTemp/1000) > 40) {
+    if((int)(scene->max_bat_temp/1000) > 40) {
       val_color = nvgRGBA(255, 188, 3, 200);
     }
-    if((int)(scene->maxBatTemp/1000) > 50) {
+    if((int)(scene->max_bat_temp/1000) > 50) {
       val_color = nvgRGBA(255, 0, 0, 200);
     }
     // temp is always in C * 1000
-    snprintf(val_str, sizeof(val_str), "%d°C", (int)(scene->maxBatTemp/1000));
+    snprintf(val_str, sizeof(val_str), "%d°C", (int)(scene->max_bat_temp/1000));
     snprintf(uom_str, sizeof(uom_str), "");
     bb_h += eng_ui_draw_measure(s, val_str, uom_str, "BAT TEMP",
                                 bb_rx, bb_ry, bb_uom_dx,
@@ -710,15 +710,15 @@ static void eng_ui_draw_measures_left(UIState *s, int bb_x, int bb_y, int bb_w )
     char uom_str[3];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
     // show red/orange if gps accuracy is high
-    if(scene->gpsAccuracy > 0.59) {
+    if(scene->gps_accuracy > 0.59) {
        val_color = nvgRGBA(255, 188, 3, 200);
     }
-    if(scene->gpsAccuracy > 0.8) {
+    if(scene->gps_accuracy > 0.8) {
        val_color = nvgRGBA(255, 0, 0, 200);
     }
 
     // gps accuracy is always in meters
-    snprintf(val_str, sizeof(val_str), "%.2f", (s->scene.gpsAccuracy));
+    snprintf(val_str, sizeof(val_str), "%.2f", (s->scene.gps_accuracy));
     snprintf(uom_str, sizeof(uom_str), "m");;
     bb_h += eng_ui_draw_measure(s, val_str, uom_str, "GPS PREC",
                                 bb_rx, bb_ry, bb_uom_dx,

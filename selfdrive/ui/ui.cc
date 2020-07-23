@@ -291,19 +291,17 @@ void handle_message(UIState *s, SubMaster &sm) {
     scene.frontview = scene.controls_state.getRearViewCam();
     if (!scene.frontview){ s->controls_seen = true; }
 
+    // ENG UI START
+    scene.angle_steers = scene.controls_state.getAngleSteers();
+    scene.angle_steers_des = scene.controls_state.getAngleSteersDes();
+    // ENG UI END
+
     auto alert_sound = scene.controls_state.getAlertSound();
     if (scene.alert_type.compare(scene.controls_state.getAlertType()) != 0) {
       if (alert_sound == AudibleAlert::NONE) {
         s->sound.stop();
       } else {
         s->sound.play(alert_sound);
-
-    /*
-    // ENG UI START
-    scene.angleSteers = data.getAngleSteers();
-    scene.angleSteersDes = data.getAngleSteersDes();
-    // ENG UI END
-    */
 
       }
     }
@@ -375,28 +373,27 @@ void handle_message(UIState *s, SubMaster &sm) {
 #endif
   if (sm.updated("thermal")) {
     scene.thermal = sm["thermal"].getThermal();
+
+    // ENG UI START
+    scene.max_cpu_temp = scene.thermal.getCpu0();
+    if (scene.max_cpu_temp < scene.thermal.getCpu1())
+    {
+      scene.max_cpu_temp = scene.thermal.getCpu1();
+    }
+    else if (scene.max_cpu_temp < scene.thermal.getCpu2())
+    {
+      scene.max_cpu_temp = scene.thermal.getCpu2();
+    }
+    else if (scene.max_cpu_temp < scene.thermal.getCpu3())
+    {
+      scene.max_cpu_temp = scene.thermal.getCpu3();
+    }
+    scene.max_bat_temp = scene.thermal.getBat();
+    // ENG UI END
+
   }
   if (sm.updated("ubloxGnss")) {
     auto data = sm["ubloxGnss"].getUbloxGnss();
-
-    /*
-    // ENG UI START
-    scene.maxCpuTemp = data.getCpu0();
-    if (scene.maxCpuTemp < data.getCpu1())
-    {
-      scene.maxCpuTemp = data.getCpu1();
-    }
-    else if (scene.maxCpuTemp < data.getCpu2())
-    {
-      scene.maxCpuTemp = data.getCpu2();
-    }
-    else if (scene.maxCpuTemp < data.getCpu3())
-    {
-      scene.maxCpuTemp = data.getCpu3();
-    }
-    scene.maxBatTemp = data.getBat();
-    // ENG UI END
-    */
 
     if (data.which() == cereal::UbloxGnss::MEASUREMENT_REPORT) {
       scene.satelliteCount = data.getMeasurementReport().getNumMeas();
@@ -413,17 +410,17 @@ void handle_message(UIState *s, SubMaster &sm) {
     auto data = sm["dMonitoringState"].getDMonitoringState();
     scene.is_rhd = data.getIsRHD();
     s->preview_started = data.getIsPreview();
-  // ENG UI START
-  } else if (which == cereal::Event::GPS_LOCATION_EXTERNAL) {
-    auto data = event.getGpsLocationExternal();
-    scene.gpsAccuracy = data.getAccuracy();
-    // set default values for display
-    if (scene.gpsAccuracy == 0 || scene.gpsAccuracy > 100)
-    {
-      scene.gpsAccuracy = 99.99;
-    }
-  // ENG UI END
   }
+  // ENG UI START
+  if (sm.updated("gpsLocationExternal")) {
+    scene.gps_accuracy = sm["gpsLocationExternal"].getGpsLocationExternal().getAccuracy();
+    // set default values for display
+    if (scene.gps_accuracy == 0 || scene.gps_accuracy > 100)
+    {
+      scene.gps_accuracy = 99.99;
+    }
+  }
+  // ENG UI END
 
   s->started = scene.thermal.getStarted() || s->preview_started;
   // Handle onroad/offroad transition

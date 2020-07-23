@@ -122,12 +122,12 @@ typedef struct UIScene {
   cereal::ControlsState::AlertSize alert_size;
 
   // ENG UI START
-  uint16_t maxCpuTemp;
-  uint32_t maxBatTemp;
-  float gpsAccuracy;
-  float freeSpace;
-  float angleSteers;
-  float angleSteersDes;
+  uint16_t max_cpu_temp;
+  uint32_t max_bat_temp;
+  float gps_accuracy;
+  float free_space;
+  float angle_steers;
+  float angle_steers_des;
   // ENG UI END
 
   // Used to show gps planner status
