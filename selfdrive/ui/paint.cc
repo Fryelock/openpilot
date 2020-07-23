@@ -888,10 +888,10 @@ static void eng_ui_draw_UI(UIState *s)
   // get 3-state switch position
   char tri_state_switch = 0;
   FILE *fd = fopen("/sys/devices/virtual/switch/tri-state-key/state", "r");
-  //if we can't open then switch should be considered in the left, nothing done
+  //if we can't open then switch should be considered in the middle, eng ui enabled
   if (fd == NULL)
   {
-    tri_state_switch = 1;
+    tri_state_switch = 2;
   }
   else
   {
