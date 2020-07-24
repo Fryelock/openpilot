@@ -136,8 +136,6 @@ class CarState(CarStateBase):
       ("Cruise_State", "ES_DashStatus", 0),
 
       ("Counter", "ES_Distance", 0),
-      ("ES_Cruise_Throttle", "ES_Distance", 0),
-      ("Car_Follow", "ES_Distance", 0),
       ("Signal1", "ES_Distance", 0),
       ("Cruise_Fault", "ES_Distance", 0),
       ("Cruise_Throttle", "ES_Distance", 0),
